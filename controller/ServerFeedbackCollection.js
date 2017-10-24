@@ -7,11 +7,21 @@ class ServerFeedbackCollection extends DAO {
 		return this.feedbackList;
 	}
 
-	/**
-	 * 
-	 * @param feedbackList
-	 */
 	setFeedbackList(feedbackList) {
 		this.feedbackList = feedbackList;
+	}
+
+	addFeedback(feedback) {
+		//todo
+		return boolean;
+	}
+
+	getFeedback(id) {
+		//todo
+		return feedback;
+	}
+	setClosed(id) {
+		//todo
+		return boolean;
 	}
 }

@@ -20,6 +20,6 @@ class RecordLotInformationUI extends UserUI{
         return boolean;
     };
     resetTime() {
-        //todo return boolean;
+        //todo 
     };
 }

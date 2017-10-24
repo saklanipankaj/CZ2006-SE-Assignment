@@ -1,18 +1,18 @@
 
 class AdminCollection extends DAO{
 
-    var feedbackList;
+    AdminList;
 
-	getFeedbackList() {
-		return this.feedbackList;
+	getAdminList() {
+		return this.AdminList;
 	}
 
 	/**
 	 * 
 	 * @param feedbackList
 	 */
-	setFeedbackList(feedbackList) {
-		this.feedbackList = feedbackList;
+	setAdminList(AdminList) {
+		this.AdminList = AdminList;
 	}
 	
 }

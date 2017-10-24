@@ -7,74 +7,84 @@ class AdminController {
 	 */
 	autheticate(userName, password) {
 		// TODO - implement AdminController.autheticate
+		return boolean;
 	}
-
-	viewFeedback() {
+	getFeedback(id) {
 		// TODO - implement AdminController.viewFeedback
+		//return ArrayList<id:String, title:String, message:String, email:String, contactNo:int>
 	}
+
+	closeFeedback(feedback) {
+		// TODO - implement AdminController.viewFeedback
+		return boolean;
+	}
+
 
 	/**
 	 *
-	 * @param f
+	 * @param c
 	 */
-	closeFeedback(var f) {
-		// TODO - implement AdminController.closeFeedback
+	addCarpark(name,addr,lat,long,rates) {
+		// TODO - implement AdminController.updateFeedback
+		return boolean;
 	}
 
 	/**
 	 *
 	 * @param c
 	 */
-	 addCarpark(var c) {
-		// TODO - implement AdminController.addCarpark
-
-	}
-
-	/**
-	 *
-	 * @param c
-	 */
-	editCarpark(var c) {
+	editCarpark(id,name,lat,long,rates) {
 		// TODO - implement AdminController.editCarpark
+		return  ArrayList<name:String, addr:String, rates:String>
 	}
 
 	/**
 	 *
 	 * @param c
 	 */
-  deleteCarpark(var c) {
+  	deleteCarpark(carpark) {
 		// TODO - implement AdminController.deleteCarpark
-
+		return boolean
 	}
 
 	/**
 	 *
 	 * @param c
 	 */
-	searchCarpark(var c) {
+	searchCarpark(name) {
 		// TODO - implement AdminController.searchCarpark
-
+		return string;
 	}
 
-	/**
-	 *
-	 * @param title
-	 */
 	retrieveFeedback(title) {
 		// TODO - implement AdminController.retrieveFeedback
+		return  Feedback;
 	}
 
-  retrieveFeedback() {
+  	retrieveFeedback() {
 		// TODO - implement AdminController.retrieveFeedback
-
+		//return  ArrayList<Feedback>;
 	}
 
-	/**
-	 *
-	 * @param f
-	 */
-	updateFeedback(var f) {
+	updateFeedback(feedback) {
 		// TODO - implement AdminController.updateFeedback
+		return boolean;
+	}
+//addCarpark(name,addr,lat,long,rates) {
+		// TODO - implement AdminController.updateFeedback
+	//	return boolean;
+	//}
+	checkExistingCarpark(name) {
+		// TODO - implement AdminController.updateFeedback
+		return boolean;
+	}
+	getAllFeedback() {
+		// TODO - implement AdminController.updateFeedback
+		return ArrayList<id:String, title: String>;
+	}
+	setFeedbackClosed(id) {
+		// TODO - implement AdminController.updateFeedback
+		return boolean;
 	}
 
 }

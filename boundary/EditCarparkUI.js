@@ -1,35 +1,23 @@
 class EditCarparkUI extends AdminUI {
 
-	var carpark;
+	constructor() {
+		this.carpark;
+    }
 
-	/**
-	 *
-	 * @param c
-	 */
-	 Carpark loadCarpark(var c) {
+	loadCarpark(carpark) {
 		// TODO - implement EditCarparkUI.loadCarpark
-		throw new UnsupportedOperationException();
+		return carpark;
 	}
 
-	 Carpark getCarpark() {
+	getCarpark() {
 		return this.carpark;
 	}
 
-	/**
-	 *
-	 * @param carpark
-	 */
-	 setCarpark(var carpark) {
+	setCarpark(carpark) {
 		this.carpark = carpark;
 	}
 
-	/**
-	 *
-	 * @param id
-	 * @param name
-	 * @param price
-	 */
-	save(id, name, price) {
+	addCarpark(id,name,price){
 		// TODO - implement EditCarparkUI.save
 		throw new UnsupportedOperationException();
 	}

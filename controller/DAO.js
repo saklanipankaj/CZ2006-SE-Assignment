@@ -1,31 +1,39 @@
 
 class DAO{
 
-
     getCollection();
 
 	/**
 	 * 
 	 * @param o
 	 */
-	delete(o);
+	delete(o){
+		
+	};
 
 	/**
 	 * 
 	 * @param o
 	 */
-	add(o);
+	add(o){
+		
+	};
 
 	/**
 	 * 
 	 * @param o
 	 */
-	edit(o);
+	edit(o){
+		
+	};
 
 	/**
 	 * 
 	 * @param o
 	 * @param objList
 	 */
-	filter(o, objList);
+	filter(o, objList)
+	{
+
+	};
 }

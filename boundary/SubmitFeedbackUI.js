@@ -1,13 +1,14 @@
-public class SubmitFeedbackUI extends UserUI {
+class SubmitFeedbackUI extends UserUI {
 
-	 submitFeedback() {
+	constructor() {
+    }
+
+	submitFeedback() {
 		// TODO - implement SubmitFeedbackUI.submitFeedback
-
 	}
 
-	 selectFeedbackType() {
+	createFeedback() {
 		// TODO - implement SubmitFeedbackUI.selectFeedbackType
-
 	}
 
 }
