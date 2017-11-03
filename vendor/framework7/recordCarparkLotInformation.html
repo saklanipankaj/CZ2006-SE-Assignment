@@ -107,7 +107,7 @@
 					<li class="item-content">
 					  <div class="item-inner">
 						<div class="item-title">Current Fees:</div>
-						<div class="item-after resizable">~ $1,234.56 ~</div>
+						<div class="item-after resizable" id="fee">~ $1,234.56 ~</div>
 					  </div>
 					</li>
 					</ul>
@@ -213,8 +213,11 @@
 				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-				// Display the result in the element with id="demo"
+				
 				document.getElementById("timer").innerHTML = ("0" + hours).slice(-2) + "h:" + ("0" + minutes).slice(-2) + "m:" + ("0" + seconds).slice(-2)+"s";
+
+				// change the price
+				document.getElementById("fee").innerHTML = "$"+((hours*60*60)+(minutes*60)+seconds)/100;
 
 			}, 1000);
 		}
