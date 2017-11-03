@@ -79,6 +79,7 @@
           <a href="#plan_route" style="right:3%; bottom:3%;" class="floating-button color-blue">
             GO
           </a>
+          <a href="#" id="clearBtn" onclick="resetRoute()" style="left:3%; bottom:3%; display:none;" class="floating-button color-red">Clear</a>
         </div>
       </div>
 
@@ -104,15 +105,15 @@
               </div>
           </form>
           <br>
-          <br>
           <form class="searchbar searchbar-init">
               <div class="searchbar-input">
                 <input id="destination" type="search" placeholder="Destination" >
                 <a href="#" class="searchbar-clear"></a>
               </div>
           </form>
+          <a href="#home" onclick="route()" class="button button-big button-round active">Plan Route</a>
         </div>
-      </div
+      </div>
     </div>
   </div>
 </div>
@@ -167,15 +168,23 @@
     //    });
     var autocomplete, map;
     var markers = [];
+    var directionsService, directionsDisplay;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {lat: -33.8688, lng: 151.2195},
             zoom: 13
         });
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay.setMap(map);
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('searchBox');
+        var startInput = document.getElementById('source');
+        var destinationInput = document.getElementById('destination');
         var searchBox = new google.maps.places.SearchBox(input);
+        var start = new google.maps.places.SearchBox(startInput);
+        var destination = new google.maps.places.SearchBox(destinationInput);
 
 //        // Bias the SearchBox results towards current map's viewport.
 //        map.addListener('bounds_changed', function() {
@@ -277,6 +286,29 @@
             });
         }
     }
+
+    function route(){
+        var start = document.getElementById('source').value;
+        var destination = document.getElementById('destination').value;
+        console.log(start+"  "+destination);
+        $('#clearBtn').toggle();
+        var request = {
+          origin:start,
+          destination:destination,
+          travelMode: 'DRIVING'
+        };
+        directionsService.route(request, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          }
+        });
+    }
+
+    function resetRoute(){
+        directionsDisplay.setMap(null);
+        $('#clearBtn').toggle();
+    }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
         async defer></script>
