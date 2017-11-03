@@ -98,10 +98,10 @@
 				  <ul>
 					<li class="item-content">
 					  <div class="item-inner" style="width: 60%;">
-						<p style="margin:auto; width:100%; text-align:left;">~ HH: MM: SS ~</p>
+						<p style="margin:auto; width:100%; text-align:left;" id="timer">~ HH: MM: SS ~</p>
 					  </div>
 					  <div class="item-inner" style="width: 40%; margin:0 auto;">
-							<a href="#" style="margin-left: auto">Reset Time</a>
+							<a href="#" onClick="starttimer()" style="margin-left: auto">Reset Time</a>
 					</div>
 					</li>
 					<li class="item-content">
@@ -118,7 +118,7 @@
 					<ul>
 						<li class="item-content">
 						<div class="item-content" style="width: 100%; padding: 0px;">
-							<div class="item-inner" style="padding: 0px;>
+							<div class="item-inner" style="padding: 0px;">
 							  <div class="item-input">
 								<textarea class="resizable"></textarea>
 							  </div>
@@ -192,7 +192,33 @@
 			domCache: true //enable inline pages
 		});
 	
-		
+		function starttimer()
+		{
+			// Set the date we're counting down to
+			var countDownDate = new Date("2014-03-26T12:48:42Z").getTime();
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+				// Get todays date and time
+				var now = new Date().getTime();
+
+				// Find the distance between now an the count down date
+				var distance =  now - countDownDate;
+
+				// Time calculations for , hours, minutes and seconds
+
+        
+	
+				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+				// Display the result in the element with id="demo"
+				document.getElementById("timer").innerHTML = ("0" + hours).slice(-2) + "h:" + ("0" + minutes).slice(-2) + "m:" + ("0" + seconds).slice(-2)+"s";
+
+			}, 1000);
+		}
 		
 		 function initService() {
 			document.getElementById('testingsearch').innerHTML="";
