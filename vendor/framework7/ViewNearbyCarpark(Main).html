@@ -24,27 +24,21 @@
       z-index: 20000;
       display: inline;
     }
-    /* Default Status bar background */
+     /* Default Status bar background */
     .statusbar-overlay {
-      background: pink;
-      /* We can add transition for smooth color animation */
-      -webkit-transition: 400ms;
-      transition: 400ms;
+        background: pink;
+        /* We can add transition for smooth color animation */
+        -webkit-transition: 400ms;
+        transition: 400ms;
     }
 
     /* Change Status bar background when panel opened */
     body.with-panel-left-cover .statusbar-overlay {
-      background: #222;
+        background: #222;
     }
 
     .picker-modal{
       height:40%;
-    }
-
-    .button .active .new{
-      bottom:10% !important;
-      left:90% !important;
-      position:absolute !important;
     }
 
   </style>
@@ -57,6 +51,7 @@
 <body>
 <div class = "views">
   <div class = "view view-main">
+<<<<<<< HEAD
     <div class="pages">
       <div data-page = "home" class = "page navbar-fixed">
         <div class="statusbar-overlay"></div>
@@ -93,27 +88,24 @@
             </div>
             <div class="center sliding">
               Plan Route
-            </div>
-          </div>
-        </div>
+=======
+    <div data-page = "home" class = "page navbar-fixed">
+      <div class="statusbar-overlay"></div>
+      <div id="pac-card" class="navbar">
+        <div class="navbar-inner" style="padding-right: 0px;">
 
-        <div class="page-content">
-          <form class="searchbar searchbar-init" style="margin-top:45px">
-              <div class="searchbar-input" >
-                <input id="source" type="search" placeholder="Start" >
-                <a href="#" class="searchbar-clear"></a>
-              </div>
+          <a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars size-20"></i>&nbsp;&nbsp;</a>
+          <form class="searchbar">
+            <div class="searchbar-input">
+              <input id="searchBox" type="search" placeholder="Search" autocomplete="off">
+              <a href="#" class="searchbar-clear"></a>
+>>>>>>> 3d79b952d830b0e4621f912feaf62f33f167e2e2
+            </div>
+            <a href="#" class="searchbar-cancel">Cancel</a>
           </form>
-          <br>
-          <form class="searchbar searchbar-init">
-              <div class="searchbar-input">
-                <input id="destination" type="search" placeholder="Destination" >
-                <a href="#" class="searchbar-clear"></a>
-              </div>
-          </form>
-          <a href="#home" onclick="route()" class="button button-big button-round active">Plan Route</a>
         </div>
       </div>
+<<<<<<< HEAD
 	  
 	  <!-- DisplayCP -->
 	  
@@ -381,6 +373,13 @@
 			
         </div>
         </div>
+=======
+
+      <div class="page-content">
+        <div id="map-container" style="height:100%"></div>
+      </div>
+
+>>>>>>> 3d79b952d830b0e4621f912feaf62f33f167e2e2
     </div>
   </div>
 </div>
@@ -391,7 +390,12 @@
   <div class="popover-inner">
     <div class="list-block">
       <ul>
+<<<<<<< HEAD
         <li><a href="#recordCP" class="list-button item-link">Record Lot Information</a></li>
+=======
+        <li><a href="#" class="list-button item-link">View Nearby Carpark</a></li>
+        <li><a href="#" class="list-button item-link">Record Lot Information</a></li>
+>>>>>>> 3d79b952d830b0e4621f912feaf62f33f167e2e2
         <li><a href="#" class="list-button item-link">Submit Feedback</a></li>
         <li><a href="#" class="list-button item-link">Quit</a></li>
       </ul>
@@ -405,9 +409,7 @@
 <script type="text/javascript" src="dist/carparks.json"></script>
 <script>
     var myApp = new Framework7();
-    var mainView = myApp.addView('.view-main',{
-        domCache: true // enable inline pages
-    });
+    var mainView = myApp.addView('.view-main');
     var map_contain = document.getElementById("map-container");
 
     // carpark data demo array for autocompelte
@@ -415,6 +417,7 @@
     var mySearchbar = myApp.searchbar('.searchbar', {
         customSearch: true,
     });
+<<<<<<< HEAD
     //    var autocompleteDropdownSimple = myApp.autocomplete({
     //        input: '#searchBox',
     //        openIn: 'dropdown',
@@ -443,14 +446,36 @@
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
         directionsDisplay.setMap(map);
+=======
+//    var autocompleteDropdownSimple = myApp.autocomplete({
+//        input: '#searchBox',
+//        openIn: 'dropdown',
+//        source: function (autocomplete, query, render) {
+//            var results = [];
+//            if (query.length === 0) {
+//                render(results);
+//                return;
+//            }
+//            // Find matched items
+//            for (var i = 0; i < fruits.length; i++) {
+//                if (fruits[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(fruits[i]);
+//            }
+//            // Render items by passing array with result items
+//            render(results);
+//        }
+//    });
+      var autocomplete, map;
+      var markers = [];
+      function initMap() {
+          map = new google.maps.Map(document.getElementById('map-container'), {
+              center: {lat: -33.8688, lng: 151.2195},
+              zoom: 13
+          });
+>>>>>>> 3d79b952d830b0e4621f912feaf62f33f167e2e2
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('searchBox');
-        var startInput = document.getElementById('source');
-        var destinationInput = document.getElementById('destination');
         var searchBox = new google.maps.places.SearchBox(input);
-        var start = new google.maps.places.SearchBox(startInput);
-        var destination = new google.maps.places.SearchBox(destinationInput);
 
 //        // Bias the SearchBox results towards current map's viewport.
 //        map.addListener('bounds_changed', function() {
@@ -460,75 +485,76 @@
         // more details for that place.
 
         searchBox.addListener('places_changed', function() {
-            var places = searchBox.getPlaces();
+          var places = searchBox.getPlaces();
 
-            if (places.length == 0) {
-                return;
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
             }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
 
-            // Clear out the old markers.
-            markers.forEach(function(marker) {
-                marker.setMap(null);
-            });
-            markers = [];
-
-            // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+                position: place.geometry.location
+            }).addListener('click', function(){
+                console.log("i here!");
+                // Check first, if we already have opened picker
+                if ($('.picker-modal.modal-in').length > 0) {
+                    myApp.closeModal('.picker-modal.modal-in');
                 }
-                var icon = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
 
-                // Create a marker for each place.
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                }).addListener('click', function(){
-                    console.log("i here!");
-                    // Check first, if we already have opened picker
-                    if ($('.picker-modal.modal-in').length > 0) {
-                        myApp.closeModal('.picker-modal.modal-in');
-                    }
+                myApp.pickerModal(
+                    '<div class="picker-modal">' +
+                    '<div class="toolbar">' +
+                    '<div class="toolbar-inner">' +
+                    '<div class="left"></div>' +
+                    '<div class="right"><a href="#" class="close-picker">Close</a></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="picker-modal-inner">' +
+                    '<div class="content-block">' +
+                      '<p>'+ place.name+"<br>"+
+                          place.html_attributions
+                      +'</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
+                )
+            }));
 
-                    myApp.pickerModal(
-                        '<div class="picker-modal">' +
-                        '<div class="toolbar">' +
-                        '<div class="toolbar-inner">' +
-                        '<div class="left"></div>' +
-                        '<div class="right"><a href="#" class="close-picker">Close</a></div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="picker-modal-inner">' +
-                        '<div class="content-block">' +
-                        '<p>'+ place.name+"<br>"+
-                        place.html_attributions
-                        +'</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>'
-                    )
-                }));
-
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-            });
-            map.setZoom(15);
-            map.fitBounds(bounds);
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+          map.setZoom(15);
         });
+<<<<<<< HEAD
     }
 
     $(document).ready(function(){
@@ -673,5 +699,33 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
         async defer></script>
+=======
+      }
+
+      $(document).ready(function(){
+
+      });
+      // Bias the autocomplete object to the user's geographical location,
+          // as supplied by the browser's 'navigator.geolocation' object.
+          function geolocate() {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(function(position) {
+                      var geolocation = {
+                          lat: position.coords.latitude,
+                          lng: position.coords.longitude
+                      };
+                      map.setCenter(geolocation);
+                      map.setZoom(17);
+                      var circle = new google.maps.Circle({
+                          center: geolocation,
+                          radius: position.coords.accuracy
+                      });
+                  });
+              }
+          }
+  </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
+         async defer></script>
+>>>>>>> 3d79b952d830b0e4621f912feaf62f33f167e2e2
 </body>
 </html>

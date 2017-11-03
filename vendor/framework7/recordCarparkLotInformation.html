@@ -98,16 +98,16 @@
 				  <ul>
 					<li class="item-content">
 					  <div class="item-inner" style="width: 60%;">
-						<p style="margin:auto; width:100%; text-align:left;">~ HH: MM: SS ~</p>
+						<p style="margin:auto; width:100%; text-align:left;" id="timer">~ HH: MM: SS ~</p>
 					  </div>
 					  <div class="item-inner" style="width: 40%; margin:0 auto;">
-							<a href="#" style="margin-left: auto">Reset Time</a>
+							<a href="#" onClick="starttimer()" style="margin-left: auto">Reset Time</a>
 					</div>
 					</li>
 					<li class="item-content">
 					  <div class="item-inner">
 						<div class="item-title">Current Fees:</div>
-						<div class="item-after resizable">~ $1,234.56 ~</div>
+						<div class="item-after resizable" id="fee">~ $1,234.56 ~</div>
 					  </div>
 					</li>
 					</ul>
@@ -118,7 +118,7 @@
 					<ul>
 						<li class="item-content">
 						<div class="item-content" style="width: 100%; padding: 0px;">
-							<div class="item-inner" style="padding: 0px;>
+							<div class="item-inner" style="padding: 0px;">
 							  <div class="item-input">
 								<textarea class="resizable"></textarea>
 							  </div>
@@ -192,6 +192,36 @@
 		var mainView = myApp.addView('.view-main', {
 			domCache: true //enable inline pages
 		});
+
+	
+		function starttimer()
+		{
+			// Set the date we're counting down to
+			var countDownDate = new Date().getTime();
+
+			// Update the count down every 1 second
+			var x = setInterval(function() {
+
+				// Get todays date and time
+				var now = new Date().getTime();
+
+				// Find the distance between now an the count down date
+				var distance =  now - countDownDate;
+
+				// Time calculations for , hours, minutes and seconds
+				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+				
+				document.getElementById("timer").innerHTML = ("0" + hours).slice(-2) + "h:" + ("0" + minutes).slice(-2) + "m:" + ("0" + seconds).slice(-2)+"s";
+
+				// change the price
+				document.getElementById("fee").innerHTML = "$"+((hours*60*60)+(minutes*60)+seconds)/100;
+
+			}, 1000);
+		}
+
 		document.getElementById('testingsearch').innerHTML="";
 		console.log(json);
 		for (place in json) {
