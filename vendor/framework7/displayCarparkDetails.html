@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Your app title -->
+  <title>Display Carpark Details</title>
+  <!-- Path to Framework7 iOS CSS theme styles-->
+  <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
+  <!-- Path to Framework7 iOS related color styles -->
+  <link rel="stylesheet" href="dist/css/framework7.ios.colors.min.css">
+  <!-- Path to Framework7 icons-->
+  <link rel="stylesheet" href="dist/css/framework7-icons.css">
+  <link rel="stylesheet" href="dist/css/my-app.css">
+</head>
+<body>
+  <!-- Status bar overlay for full screen mode (PhoneGap) -->
+
+  <!-- Panels overlay-->
+  
+  <!-- Left panel with reveal effect-->
+
+  <!-- Views -->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Top Navbar-->
+      <div class="navbar">
+        <div class="navbar-inner">
+          <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+			<div class="left">
+				<a href="#" class="link icon-only">
+					<i class="icon icon-back"></i>
+				</a>
+			</div>
+		  
+			<div class="center sliding">~CarparkNameHere~</div>
+			
+			<div class="right">
+
+				  <label class="label-checkbox item-content">
+					<input type="checkbox" name="my-checkbox" value="Movies">
+					<div class="item-media">
+					  <i class="icon icon-form-checkbox"></i>
+					</div>
+				  </label>
+	
+			</div>
+          
+          </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+		
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+			
+            <!-- Scrollable page content -->
+            <div class="page-content">
+				<div class="content-block-title">Carpark Details:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Name:</div>
+						<div class="item-after resizable">~Carpark Name~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Address</div>
+						<div class="item-after">~Carpark Address~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Available Lots:</div>
+						<div class="item-after"><span class="badge">5</span></div>
+					  </div>
+					</li>
+				  </ul>
+				</div>
+				
+				<div class="content-block-title">Weekday Fees:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title">Weekend Fees:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+				  </ul>
+				</div>
+				
+				<div class="content-block-title">Calculate Fees:</div>
+				<div class="list-block">
+				<div class="item-input">
+					<div class="range-slider" style="width: 80%;margin-left: 10%;margin-top:15px; margin-bottom: 15px;">
+						<input type="range" min="1" max="100" step="1" class="">
+					</div>
+				</div>
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Total Time::</div>
+						<div class="item-after resizable">~HH:MM~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Total Fees:</div>
+						<div class="item-after">~$100.000~</div>
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div style="padding: 0 5px;">
+				<div class="row">
+				  <div class="col-50">
+					<a href="#" class="button button-big button-red">Plan Route</a>
+				  </div>
+				  <div class="col-50">
+					<a href="#" class="button button-big button-green">Feedback</a>
+				  </div>
+				</div>     
+              </div>
+          </div>
+        </div>
+		
+		
+		
+        <!-- Bottom Toolbar-->
+		
+      </div>
+    </div>
+    <!-- Patht to Framework7 Library JS: required for js itnerativity-->
+    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript">
+		var myApp = new Framework7();
+		var mainView = myApp.addView('.view-main');
+    </script>
+  </body>
+  </html>           

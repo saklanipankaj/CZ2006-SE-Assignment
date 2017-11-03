@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <!-- Your app title -->
-  <title>Record Carpark Lot Information</title>
+  <title>Display Carpark Details</title>
   <!-- Path to Framework7 iOS CSS theme styles-->
   <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
   <!-- Path to Framework7 iOS related color styles -->
@@ -18,69 +18,251 @@
 </head>
 <body>
   <!-- Status bar overlay for full screen mode (PhoneGap) -->
-  <div class="statusbar-overlay"></div>
+
   <!-- Panels overlay-->
-  <div class="panel-overlay"></div>
+  
   <!-- Left panel with reveal effect-->
-  <div class="panel panel-left panel-reveal">
-    <div class="content-block">
-      <p>Left panel content goes here</p>
-    </div>
-  </div>
+
   <!-- Views -->
   <div class="views">
     <!-- Your main view, should have "view-main" class -->
     <div class="view view-main">
       <!-- Top Navbar-->
-      <div class="navbar">
-        <div class="navbar-inner">
-          <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-          <div class="center sliding">Awesome App</div>
-          <div class="right">
-              <!-- 
-                Right link contains only icon - additional "icon-only" class
-                Additional "open-panel" class tells app to open panel when we click on this link
-              -->
-              <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-            </div>
-          </div>
-        </div>
         <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
         <div class="pages navbar-through toolbar-through">
           <!-- Page, "data-page" contains page name -->
           <div data-page="index" class="page">
+			<div class="navbar">
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#" class="link icon-only">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+				  
+					<div class="center sliding">Record Carpark Lot Information</div>
+					
+				  </div>
+			</div>
             <!-- Scrollable page content -->
             <div class="page-content">
-              <div class="content-block-title">Record Carpark Lot Information</div>
-              <div class="row no-gutter">
-                  <div class="col-10"></div>
-                  <div class="col-80">
-                    <img data-src="http://via.placeholder.com/150x350" class="lazy">
-                  </div>
-                  <div class="col-10"></div>
-              </div>
-              <p class="buttons-row">
-                <a href="#" class="button">Button 1</a>
-              </p>
-            </div>
+				<div class="content-block-title">Select Carpark:</div>
+				<div class="list-block">
+				<ul>
+					<li class="item-content">
+					  <div class="item-inner" style="width: 60%;">
+						<p style="margin:auto; width:100%; text-align:left;" id="xferback"></p>
+					  </div>
+					  <div class="item-inner" style="width: 40%; margin:0 auto;">
+
+							<!-- <a href="#" data-picker=".picker-1" class="open-picker">Open Picker</a> -->
+							<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+							<a href="#search" style="margin-left: auto">Search</a>
+					</div>
+					</li>
+				</ul>
+				</div>
+				<!-- Picker -->
+				  <div class="picker-modal picker-1">
+					<div class="toolbar">
+					  <div class="toolbar-inner">
+						<div class="left"></div>
+						<div class="right"><a href="#" class="close-picker">Done</a></div>
+					  </div>
+					</div>
+					<div class="picker-modal-inner">
+					  <div class="content-block">
+						<h4>Info 1</h4>
+						<p>Lorem ipsum dolor...</p>
+					  </div>
+					</div>
+				  </div>
+  
+				<div class="content-block-title">Carpark Lot Picture:</div>
+				<div class="swiper-container swiper-1">
+					<div class="swiper-pagination"></div>
+					<div class="swiper-wrapper">
+					  <div class="swiper-slide"><img src="dist\noimage.png" style="width:90%; border-style:solid; border-radius: 5px; margin-left:5%;"></div>
+					</div>
+				  </div>
+				  
+				<div class="row center">
+				  <div class="col-70" style="margin:0 auto;">
+					<a href="#" class="button button-big button-red" disabled>No Camera Detected</a>
+				  </div>
+				</div>
+				
+				<div class="content-block-title">Time Elapsed:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner" style="width: 60%;">
+						<p style="margin:auto; width:100%; text-align:left;">~ HH: MM: SS ~</p>
+					  </div>
+					  <div class="item-inner" style="width: 40%; margin:0 auto;">
+							<a href="#" style="margin-left: auto">Reset Time</a>
+					</div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Current Fees:</div>
+						<div class="item-after resizable">~ $1,234.56 ~</div>
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title">Additional Details:</div>
+				<div class="list-block" style="margin-bottom:5px;">
+					<ul>
+						<li class="item-content">
+						<div class="item-content" style="width: 100%; padding: 0px;">
+							<div class="item-inner" style="padding: 0px;>
+							  <div class="item-input">
+								<textarea class="resizable"></textarea>
+							  </div>
+							</div>
+						  </div>
+						</li>
+					</ul>
+					<div class="row center">
+				  <div class="col-70" style="margin:0 auto;">
+					<a href="#" class="button button-big button-red">Save Additional Details</a>
+				  </div>
+				</div>
+				</div>
           </div>
+		  
+		  <div class="page cached" data-page="search">
+			
+			 
+			  <!-- Search Bar overlay -->
+			  <div class="searchbar-overlay"></div>
+			  
+            <div class="page-content"style="padding-top:0px;">
+				<div class="navbar" >
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#index" class="link icon-only back">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+					<div class="center sliding">Search Carpark</div>
+				  </div>
+			</div>
+			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+				<div class="searchbar-input">
+				  <input type="search" placeholder="Search" id="searchform" onchange="initService();">
+				</div>
+			  </form>
+			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+			<!-- <div class="content-block-inner">Nothing found</div> -->
+				<!-- </div> -->
+			 
+				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+				<div class="list-block" style="margin-top:0px;">
+				  <ul id="testingsearch">
+					
+					
+				</ul>
+			</div>
+			
         </div>
+        </div>
+		  
+        </div>
+		
+		
+		
         <!-- Bottom Toolbar-->
-        <div class="toolbar">
-          <div class="toolbar-inner">
-            <!-- Toolbar links -->
-            <a href="#" class="link">Link 1</a>
-            <a href="#" class="link">Link 2</a>
-          </div>
-        </div>
+		
       </div>
     </div>
     <!-- Patht to Framework7 Library JS: required for js itnerativity-->
     <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    <script type="text/javascript" src="dist/js/d3.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="dist/carparks.json"></script>
     <!-- Path to your app js-->
     <script type="text/javascript">
-    var myApp = new Framework7();
-    var mainView = myApp.addView('.view-main');
+		var myApp = new Framework7();
+		var mainView = myApp.addView('.view-main', {
+			domCache: true //enable inline pages
+		});
+	
+		
+		
+		 function initService() {
+			document.getElementById('testingsearch').innerHTML="";
+			
+			var displaySuggestions = function(predictions, status) {
+			  if (status != google.maps.places.PlacesServiceStatus.OK) {
+				alert(status);
+				return;
+			  }
+
+			  predictions.forEach(function(prediction) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = prediction.description };
+				a1.appendChild(document.createTextNode(prediction.description));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  });
+			  
+			  for (smth in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = smth };
+				a1.appendChild(document.createTextNode(smth));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  }
+			};
+
+				var service = new google.maps.places.AutocompleteService();
+					service.getQueryPredictions({ input: document.getElementById("searchform").value }, displaySuggestions);
+					
+				//console.log(document.getElementById("searchform").value);
+			  }
+		
+		var searchListElement = document.getElementById("testingsearch");
+		var searchListElement2 = document.getElementById("searchform");
+		//searchListElement2.value="hi";
+		
+ 
     </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initService"
+         async defer></script>
   </body>
   </html>           
