@@ -63,7 +63,7 @@
         <div id="pac-card" class="navbar">
           <div class="navbar-inner" style="padding:0;">
 
-            <a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars size-20"></i>&nbsp&nbsp</a>
+            <a href="#" data-popover=".popover-links" class="link open-popover"  style="margin-left:10px;"><i class="icon icon-bars size-20"></i>&nbsp&nbsp</a>
             <form class="searchbar">
               <div class="searchbar-input">
                 <input id="searchBox" type="search" placeholder="Search" >
@@ -114,6 +114,273 @@
           <a href="#home" onclick="route()" class="button button-big button-round active">Plan Route</a>
         </div>
       </div>
+	  
+	  <!-- DisplayCP -->
+	  
+	  <div data-page="displayCP" class="page cached">
+		  
+		  <div class="navbar">
+        <div class="navbar-inner">
+          <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+			<div class="left">
+				<a href="#home" class="link icon-only back">
+					<i class="icon icon-back"></i>
+				</a>
+			</div>
+		  
+			<div class="center sliding" id="displayCPname">~CarparkNameHere~</div>
+			
+			<div class="right">
+
+				  <label class="label-checkbox item-content">
+					<input type="checkbox" name="my-checkbox" value="Movies">
+					<div class="item-media">
+					  <i class="icon icon-form-checkbox"></i>
+					</div>
+				  </label>
+	
+			</div>
+          
+          </div>
+        </div>
+			
+            <!-- Scrollable page content -->
+            <div class="page-content">
+				<div class="content-block-title">Carpark Details:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Name:</div>
+						<div class="item-after resizable">~Carpark Name~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Address</div>
+						<div class="item-after">~Carpark Address~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Available Lots:</div>
+						<div class="item-after"><span class="badge">5</span></div>
+					  </div>
+					</li>
+				  </ul>
+				</div>
+				
+				<div class="content-block-title">Weekday Fees:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title">Weekend Fees:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						~$00.00~ for first half hour
+					  </div>
+					</li>
+				  </ul>
+				</div>
+				
+				<div class="content-block-title">Calculate Fees:</div>
+				<div class="list-block">
+				<div class="item-input">
+					<div class="range-slider" style="width: 80%;margin-left: 10%;margin-top:15px; margin-bottom: 15px;">
+						<input type="range" min="1" max="100" step="1" class="">
+					</div>
+				</div>
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Total Time::</div>
+						<div class="item-after resizable">~HH:MM~</div>
+					  </div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Total Fees:</div>
+						<div class="item-after">~$100.000~</div>
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div style="padding: 0 5px;">
+				<div class="row">
+				  <div class="col-50">
+					<a href="#" class="button button-big button-red">Plan Route</a>
+				  </div>
+				  <div class="col-50">
+					<a href="#" class="button button-big button-green">Feedback</a>
+				  </div>
+				</div>     
+              </div>
+          </div>
+        </div>
+		
+		<!-- RecordCPInfo -->
+		
+		<div data-page="recordCP" class="page cached">
+			<div class="navbar">
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#home" class="link icon-only back">
+							<i class="icon icon-back "></i>
+						</a>
+					</div>
+				  
+					<div class="center sliding">Record Carpark Lot Information</div>
+					
+				  </div>
+			</div>
+            <!-- Scrollable page content -->
+            <div class="page-content">
+				<div class="content-block-title">Select Carpark:</div>
+				<div class="list-block">
+				<ul>
+					<li class="item-content">
+					  <div class="item-inner" style="width: 60%;">
+						<p style="margin:auto; width:100%; text-align:left;" id="xferback"></p>
+					  </div>
+					  <div class="item-inner" style="width: 40%; margin:0 auto;">
+
+							<!-- <a href="#" data-picker=".picker-1" class="open-picker">Open Picker</a> -->
+							<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+							<a href="#search" style="margin-left: auto">Search</a>
+					</div>
+					</li>
+				</ul>
+				</div>
+				<!-- Picker -->
+				  <div class="picker-modal picker-1">
+					<div class="toolbar">
+					  <div class="toolbar-inner">
+						<div class="left"></div>
+						<div class="right"><a href="#" class="close-picker">Done</a></div>
+					  </div>
+					</div>
+					<div class="picker-modal-inner">
+					  <div class="content-block">
+						<h4>Info 1</h4>
+						<p>Lorem ipsum dolor...</p>
+					  </div>
+					</div>
+				  </div>
+  
+				<div class="content-block-title">Carpark Lot Picture:</div>
+				<div class="swiper-container swiper-1">
+					<div class="swiper-pagination"></div>
+					<div class="swiper-wrapper">
+					  <div class="swiper-slide"><img src="dist\noimage.png" style="width:90%; border-style:solid; border-radius: 5px; margin-left:5%;"></div>
+					</div>
+				  </div>
+				  
+				<div class="row center">
+				  <div class="col-70" style="margin:0 auto;">
+					<a href="#" class="button button-big button-red" disabled>No Camera Detected</a>
+				  </div>
+				</div>
+				
+				<div class="content-block-title">Time Elapsed:</div>
+				<div class="list-block">
+				  <ul>
+					<li class="item-content">
+					  <div class="item-inner" style="width: 60%;">
+						<p style="margin:auto; width:100%; text-align:left;" id="timer">Press to start!</p>
+					  </div>
+					  <div class="item-inner" style="width: 40%; margin:0 auto;">
+							<a href="#" onClick="starttimer()" style="margin-left: auto">Reset Time</a>
+					</div>
+					</li>
+					<li class="item-content">
+					  <div class="item-inner">
+						<div class="item-title">Current Fees:</div>
+						<div class="item-after resizable"  id="fee">$0.00</div>
+					  </div>
+					</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title">Additional Details:</div>
+				<div class="list-block" style="margin-bottom:5px;">
+					<ul>
+						<li class="item-content">
+						<div class="item-content" style="width: 100%; padding: 0px;">
+							<div class="item-inner" style="padding: 0px;>
+							  <div class="item-input">
+								<textarea class="resizable"></textarea>
+							  </div>
+							</div>
+						  </div>
+						</li>
+					</ul>
+					<!-- <div class="row center"> -->
+				  <!-- <div class="col-70" style="margin:0 auto;"> -->
+					<!-- <a href="#" class="button button-big button-red">Save Additional Details</a> -->
+				  <!-- </div> -->
+				<!-- </div> -->
+				</div>
+          </div>
+		  
+		  <div class="page cached" data-page="search">
+			
+			 
+			  <!-- Search Bar overlay -->
+			  <div class="searchbar-overlay"></div>
+			  
+            <div class="page-content"style="padding-top:0px;">
+				<div class="navbar" >
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#recordCP" class="link icon-only back">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+					<div class="center sliding">Search Carpark</div>
+				  </div>
+			</div>
+			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+				<div class="searchbar-input">
+				  <input type="search" placeholder="Search" id="searchform" onchange="initService();">
+				</div>
+			  </form>
+			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+			<!-- <div class="content-block-inner">Nothing found</div> -->
+				<!-- </div> -->
+			 
+				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+				
+				<div class="list-block list-block-search" style="margin-top:0px;">
+				  <ul id="testingsearch">
+					
+					
+				</ul>
+			</div>
+			
+        </div>
+        </div>
     </div>
   </div>
 </div>
@@ -124,8 +391,7 @@
   <div class="popover-inner">
     <div class="list-block">
       <ul>
-        <li><a href="#plan_route" class="list-button item-link">Plan Route</a></li>
-        <li><a href="#" class="list-button item-link">Record Lot Information</a></li>
+        <li><a href="#recordCP" class="list-button item-link">Record Lot Information</a></li>
         <li><a href="#" class="list-button item-link">Submit Feedback</a></li>
         <li><a href="#" class="list-button item-link">Quit</a></li>
       </ul>
@@ -136,7 +402,7 @@
 <!-- Patht to Framework7 Library JS: required for js itnerativity-->
 <script type = "text/javascript"
         src = "dist/js/framework7.min.js"></script>
-
+<script type="text/javascript" src="dist/carparks.json"></script>
 <script>
     var myApp = new Framework7();
     var mainView = myApp.addView('.view-main',{
@@ -171,8 +437,8 @@
     var directionsService, directionsDisplay;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
-            center: {lat: -33.8688, lng: 151.2195},
-            zoom: 13
+            center: {lat: 1.3521, lng: 103.81985},
+            zoom: 11
         });
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
@@ -299,6 +565,7 @@
         };
         directionsService.route(request, function(response, status) {
           if (status == 'OK') {
+			console.log("here");
             directionsDisplay.setDirections(response);
           }
         });
@@ -308,6 +575,129 @@
         directionsDisplay.setMap(null);
         $('#clearBtn').toggle();
     }
+	
+	//For RecordCPInfo
+	
+	document.getElementById('testingsearch').innerHTML="";
+		console.log(json);
+		console.log("hrllo");
+		for (place in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.id=place;
+				a1.onclick=function(){ 
+					document.getElementById('xferback').innerHTML = this.id;
+				};
+				a1.appendChild(document.createTextNode(place));
+				console.log(a1);
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+
+				}
+		
+		 function initService() {
+
+			document.getElementById('testingsearch').innerHTML="";
+			
+			
+			var displaySuggestions = function(predictions, status) {
+			  if (status != google.maps.places.PlacesServiceStatus.OK) {
+				alert(status);
+				return;
+			  }
+
+			  predictions.forEach(function(prediction) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = prediction.description };
+				a1.appendChild(document.createTextNode(prediction.description));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  });
+			  for (smth in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+				var itemsel = smth;
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
+				a1.appendChild(document.createTextNode(itemsel));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				console.log(a1);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  }
+			};
+
+				var service = new google.maps.places.AutocompleteService();
+					service.getQueryPredictions({ input: document.getElementById("searchform").value }, displaySuggestions);
+					
+				//console.log(document.getElementById("searchform").value);
+			  }
+			  var countDownDate;
+			  function starttimer()
+				{
+					// Set the date we're counting down to
+					countDownDate = new Date().getTime();
+
+					// Update the count down every 1 second
+					var x = setInterval(function() {
+
+						// Get todays date and time
+						var now = new Date().getTime();
+
+						// Find the distance between now an the count down date
+						var distance =  now - countDownDate;
+
+						// Time calculations for , hours, minutes and seconds
+						var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+						
+						document.getElementById("timer").innerHTML = ("0" + hours).slice(-2) + "h:" + ("0" + minutes).slice(-2) + "m:" + ("0" + seconds).slice(-2)+"s";
+
+						// change the price
+						document.getElementById("fee").innerHTML = "$"+((hours*60*60)+(minutes*60)+seconds)/100;
+
+					}, 1000);
+				}
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
