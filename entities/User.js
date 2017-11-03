@@ -1,6 +1,14 @@
-
+/**
+  *This class implements the User entity
+  *with attribute profile, parkingSession,currentLocation and favouriteList
+  *
+  */
 class User{
-
+  /**
+   * Represents a User
+   * User entity attribute are declared in the constructor
+   * @constructor
+   */
     constructor() {
         this.parkingSession = null;
         this.currentLocation = null;
@@ -12,7 +20,7 @@ class User{
     };
     /**
      *
-     * @param {*} profile
+     * @param {*} profile - profile of User
      */
     setProfile(profile) {
         this.profile = profile;
@@ -22,7 +30,7 @@ class User{
     };
     /**
      *
-     * @param {*} parkingSession
+     * @param {*} parkingSession - parking session of user
      */
     setParkingSession(parkingSession) {
         this.parkingSession = parkingSession;
@@ -32,7 +40,7 @@ class User{
     };
     /**
      *
-     * @param {*} currentLocation
+     * @param {*} currentLocation - location of user
      */
     setCurrentLocation(currentLocation) {
         this.currentLocation = currentLocation;
@@ -42,10 +50,10 @@ class User{
     };
     /**
      *
-     * @param {*} favouriteList
+     * @param {*} favouriteList - user's favourite list
      */
     setFavouriteList(favouriteList) {
         this.favouriteList = favouriteList;
     };
-   
+
 }

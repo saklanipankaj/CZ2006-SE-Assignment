@@ -1,18 +1,23 @@
 
+/**
+  *This class implements the AdminCollection controller
+  *with attribute adminList
+  *
+  */
 class AdminCollection extends DAO{
 
-    AdminList;
+    adminList;
 
 	getAdminList() {
 		return this.AdminList;
 	}
 
 	/**
-	 * 
-	 * @param feedbackList
+	 *
+	 * @param {ArrayList} AdminList - list of admin objects
 	 */
 	setAdminList(AdminList) {
 		this.AdminList = AdminList;
 	}
-	
+
 }

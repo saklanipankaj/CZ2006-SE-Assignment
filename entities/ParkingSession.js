@@ -1,6 +1,14 @@
-
+/**
+  *This class implements the ParkingSession entity
+  *with attribute startTime, endTime, lotPicture and lotDescription
+  *
+  */
 class ParkingSession{
-
+  /**
+   * Represents a ParkingSession
+   * ParkingSession entity attribute are declared in the constructor
+   * @constructor
+   */
     constructor() {
         this.startTime = null;
         this.endTime = null;
@@ -12,7 +20,7 @@ class ParkingSession{
     };
     /**
      *
-     * @param {string} startTime
+     * @param {string} startTime - startTime of parking session
      */
     setStartTime(startTime) {
         this.startTime = startTime;
@@ -22,7 +30,7 @@ class ParkingSession{
     };
     /**
      *
-     * @param {string} endTime
+     * @param {string} endTime - endTime of parking session
      */
     setEndTime(endTime) {
         this.endTime = endTime;
@@ -32,7 +40,7 @@ class ParkingSession{
     };
     /**
      *
-     * @param {string} lotPicture
+     * @param {string} lotPicture - picture of parking session
      */
     setLotPicture(lotPicture) {
         this.lotPicture = lotPicture;
@@ -42,7 +50,7 @@ class ParkingSession{
     };
     /**
      *
-     * @param {string} lotDescription
+     * @param {string} lotDescription - comment on parking session
      */
     setLotDescription(lotDescription) {
         this.lotDescription = lotDescription;
@@ -50,9 +58,4 @@ class ParkingSession{
     calculateElaspedTime() {
         //
     };
-	
-	setLotDescription(lotDescription) {
-        this.lotDescription = lotDescription;
-    };
-
 }

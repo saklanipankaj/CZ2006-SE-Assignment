@@ -1,6 +1,15 @@
-
+/**
+  *This class implements the feedback entity
+  *with attribute title, category, message, email,
+  *contactNo, currentStatus and id
+  *
+  */
 class Feedback{
-
+  /**
+   * Represents a Feedback.
+   * Feedback entity attribute are declared in the constructor
+   * @constructor
+   */
     constructor() {
         this.id = 0;
         this.title = null;
@@ -15,7 +24,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} title
+     * @param {string} title - title of feedback
      */
     setTitle(title) {
         this.title = title;
@@ -25,7 +34,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} category
+     * @param {string} category - category of feedback
      */
     setCategory(category) {
         this.category = category;
@@ -35,7 +44,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} message
+     * @param {string} message - message in the feedback
      */
     setMessage(message) {
         this.message = message;
@@ -45,7 +54,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} email
+     * @param {string} email - email of the person who send the feedback
      */
     setEmail(email) {
         this.email = email;
@@ -55,7 +64,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} contactNo
+     * @param {string} contactNo - contactNo of the person who send the feedback
      */
     setContactNo(contactNo) {
         this.contactNo = contactNo;
@@ -65,7 +74,7 @@ class Feedback{
     };
     /**
      *
-     * @param {string} currentStatus
+     * @param {string} currentStatus - status of feedback
      */
     setCurrentStatus(currentStatus) {
         this.currentStatus = currentStatus;
@@ -75,10 +84,10 @@ class Feedback{
     };
     /**
      *
-     * @param {number} id
+     * @param {number} id - id to identify each feedback
      */
     setId(id) {
         this.id = id;
     };
-    
+
 }

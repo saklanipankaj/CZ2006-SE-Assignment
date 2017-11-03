@@ -1,11 +1,23 @@
+/**
+  *This class implements the ViewNearbyCarparkUI extends from UserUI
+  *
+  *
+  */
 class ViewNearbyCarparkUI extends UserUI{
-
+  /**
+   * Represents ViewNearbyCarparkUI.
+   * ViewNearbyCarparkUI attribute are declared in the constructor
+   * @constructor
+   */
     constructor() {
         this.selectedCarpark = null;
     }
     getSelectedCarpark() {
         return this.selectedCarpark;
     };
+    /**
+     * @param {Carpark} selectedCarpark - selected carpark object by user
+     */
     setSelectedCarpark(selectedCarpark) {
         this.selectedCarpark = selectedCarpark;
     };
@@ -16,25 +28,31 @@ class ViewNearbyCarparkUI extends UserUI{
         //todo select
     };
     getLocation() {
-        //todo 
+        //todo
         return boolean;
     };
     enterSearchtext() {
-        //todo 
+        //todo
     };
     displayFoundCarpark() {
-        //todo 
+        //todo
     };
     planRoute() {
-        //todo 
+        //todo
     };
     displayCurrentLocation() {
-        //todo 
+        //todo
     };
+    /**
+     * @param {string} dest - destination entered by user
+     */
     viewNearbyCarpark(dest) {
-        //todo 
+        //todo
     };
+    /**
+     * @param {double} radius - define nearby
+     */
     viewNearbyCarpark(radius) {
-        //todo 
+        //todo
     };
 }

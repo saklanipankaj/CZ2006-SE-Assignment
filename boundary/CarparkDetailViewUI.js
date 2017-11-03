@@ -1,8 +1,13 @@
+/**
+  *This class implements the CarparkDetailViewUI extends from UserUI
+  *with attribute username and password
+  *
+  */
 class CarparkDetailViewUI extends UserUI {
 
 	constructor() {
     }
-	
+
 	CarparkDetailViewUI() {
 		// TODO - implement CarparkDetailViewUI.CarparkDetailViewUI
 	}

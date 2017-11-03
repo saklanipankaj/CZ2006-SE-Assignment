@@ -1,25 +1,37 @@
+/**
+  *This class implements the RecordLotInformationUI extends from UserUI
+  *
+  *
+  */
 class RecordLotInformationUI extends UserUI{
-
+  /**
+	 * Represents RecordLotInformationUI.
+	 * RecordLotInformationUI attribute are declared in the constructor
+	 * @constructor
+	 */
     constructor() {
     }
 
     loadLot() {
-        //todo 
+        //todo
         return boolean;
     };
+    /**
+     * @param {DateTime} elaspsedTime - duration
+     */
     calculateCost(elaspsedTime) {
-        //todo 
+        //todo
         return double;
     };
     selectCarpark() {
-        //todo 
+        //todo
         return carpark;
     };
     save() {
-        //todo 
+        //todo
         return boolean;
     };
     resetTime() {
-        //todo 
+        //todo
     };
 }

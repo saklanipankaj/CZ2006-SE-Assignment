@@ -1,6 +1,14 @@
-
+/**
+  *This class implements the carpark entity
+  *with attribute name, avaliableLots and location
+  *
+  */
 class Carpark{
-
+  /**
+   * Represents a Carpark.
+   * Carpark entity attribute are declared in the constructor
+   * @constructor
+   */
     constructor() {
         this.name = null;
         this.avaliableLots = 0;
@@ -12,7 +20,7 @@ class Carpark{
     };
     /**
      *
-     * @param {string} name
+     * @param {string} name - name of carpark
      */
     setName(name) {
         this.name = name;
@@ -22,7 +30,7 @@ class Carpark{
     };
     /**
      *
-     * @param {number} avaliableLots
+     * @param {number} avaliableLots - avaliablelots in carpark
      */
     setAvaliableLots(avaliableLots) {
         this.avaliableLots = avaliableLots;
@@ -30,39 +38,35 @@ class Carpark{
     getLocation() {
         return this.location;
     };
-	
+
 	 /**
      *
-     * @param {string} dictionary
+     * @param {string} location - location of carpark
      */
     setLocation(location) {
         this.location = location;
-    };
-	
-	  /**
-     *
-     * @param {string} location
-     */
+    }
+
     dictionary<String, ArrayList<Rate>> getRates() {
         return this.rate;
     };
-	
-	
+
+
 	 /**
      *
-     * @param {string} rates
+     * @param {string} rates - carpark rate
      */
     setRates(dictionary<String, ArrayList<Rate>> rates) {
         this.rate = rate;
     };
-	
+
     /**
      *
-     * @param {string} startTime
-     * @param {string} endTime
+     * @param {string} startTime - startTime of parking
+     * @param {string} endTime - endTime of parking
      */
     calculateParkingFee(startTime, endTime) {
         //
     };
-    
+
 }
