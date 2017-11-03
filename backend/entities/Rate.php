@@ -16,7 +16,7 @@ class Rate{
     private $endTime;
     private $prices;
 
-    public constructor() {
+    public function __construct() {
         $this->startTime = 0;
         $this->endTime = 0;
         $this->prices = null;
@@ -29,7 +29,7 @@ class Rate{
      *
      * @param {number} startTime - startTime of parking
      */
-    public setStartTime($startTime) {
+    public function setStartTime($startTime) {
         $this->startTime = $startTime;
     }
 
@@ -52,7 +52,7 @@ class Rate{
      * @param {Array} prices - list of prices
      */
     
-    public function setPrices(prices) {
+    public function setPrices($prices) {
         $this->prices = $prices;
     }
 

@@ -8,3 +8,15 @@ var FeedbackType = {
 	NEW_CARPARK : 2,
 	UPDATE_CARPARK : 3,
 }
+
+<?php
+
+abstract class FeedbackType
+{
+    const BUG = 1;
+    const NEW_CARPARK = 2;
+    const UPDATE_CARPARK =3;
+    // etc.
+}
+
+?>

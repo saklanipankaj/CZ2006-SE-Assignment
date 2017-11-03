@@ -12,20 +12,31 @@ class Carpark{
    * @constructor
    */
 
+    private $id;
     private $name;
     private $avaliablelots;
     private $location;
     private $rates;
 
-    public function __construct($name, $lots, $location, $rates) {
+    public function __construct($name, $lots, $location, $rates, $id) {
         $this->name = $name;
         $this->avaliableLots = $lots;
         $this->location = $location;
         $this->rates = $rates;
+        $this->id = $id
     }
 
     public function getName() {
         return $this->name;
+    }
+
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getAvaliableLots() {
+        return $this->avaliableLots;
     }
 
     /**
@@ -39,6 +50,7 @@ class Carpark{
     public function getAvaliableLots() {
         return $this->avaliableLots;
     }
+
     /**
      *
      * @param {number} avaliableLots - avaliablelots in carpark
