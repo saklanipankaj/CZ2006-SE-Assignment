@@ -192,12 +192,12 @@
 		var mainView = myApp.addView('.view-main', {
 			domCache: true //enable inline pages
 		});
-<<<<<<< HEAD
+
 	
 		function starttimer()
 		{
 			// Set the date we're counting down to
-			var countDownDate = new Date("2014-03-26T12:48:42Z").getTime();
+			var countDownDate = new Date().getTime();
 
 			// Update the count down every 1 second
 			var x = setInterval(function() {
@@ -209,9 +209,6 @@
 				var distance =  now - countDownDate;
 
 				// Time calculations for , hours, minutes and seconds
-
-        
-	
 				var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 				var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 				var seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -221,7 +218,7 @@
 
 			}, 1000);
 		}
-=======
+
 		document.getElementById('testingsearch').innerHTML="";
 		console.log(json);
 		for (place in json) {
@@ -249,7 +246,6 @@
 				document.getElementById('testingsearch').appendChild(li);
 
 				}
->>>>>>> 80c045370d881dba41b40a0358026037d28279f6
 		
 		 function initService() {
 
