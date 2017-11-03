@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+
+    <!-- Your app title -->
+    <title>Carpark Tracking</title>
+
+    <!-- Path to Framework7 iOS CSS theme styles-->
+    <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
+    <!-- Path to Framework7 iOS related color styles -->
+    <link rel="stylesheet" href="dist/css/framework7.ios.colors.min.css">
+    <!-- Path to Framework7 icons-->
+    <link rel="stylesheet" href="path/to/framework7-icons.css">
+
+
+    <!-- Custom css -->
+    <style>
+
+      #map-container { height: 650px} /*Change Google map Height here*/
+
+      .popover {width: 250px;}
+
+    </style>
+
+    <!-- Google map JS -->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+      function init_map() 
+      {
+        var var_location = new google.maps.LatLng(45.430817,12.331516);
+  
+        var var_mapoptions = 
+        {
+          center: var_location,
+          zoom: 14
+        };
+  
+        var var_marker = new google.maps.Marker({position: var_location,map: var_map,title:"Venice"});
+        var var_map = new google.maps.Map(document.getElementById("map-container"),var_mapoptions);var_marker.setMap(var_map);	
+      }
+      google.maps.event.addDomListener(window, 'load', init_map);
+    </script>
+  </head>
+
+  <body>
+    <div class = "views">
+      <div class = "view view-main">
+        <div data-page = "home" class = "page navbar-fixed">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+
+                  <a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars size-20"></i>&nbsp&nbsp</a>
+
+                  <form data-search-list = ".list-block-search" data-search-in = ".item-title" class = "searchbar searchbar-init">
+                    <div class = "searchbar-input">
+                      <input type = "search" placeholder = "Search Carpark" ><a href = "#" class = "searchbawr-clear"></a>
+                    </div>
+                    <a href = "#" class = "searchbar-cancel">Cancel</a>
+                  </form>
+
+              </div>
+            </div>
+
+          <div class="page-content">
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-media"><a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars"></i></a></div>
+                  <div class="item-inner">
+                    <div class="item-input">
+                      <input type="text" placeholder="Search Carpark" id="autocomplete-dropdown">
+                    </div>  
+                  </div>
+
+                </li>
+              </ul>
+            </div>
+
+            <div class="list-block">
+              <div id="map-container" ></div> 
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+      
+      <!-- Links popover -->
+      <div class="popover popover-links">
+        <div class="popover-angle"></div>
+        <div class="popover-inner">
+          <div class="list-block">
+            <ul>
+              <li><a href="#" class="list-button item-link">View Nearby Carpark</a></li>
+              <li><a href="#" class="list-button item-link">Record Lot Information</a></li>
+              <li><a href="#" class="list-button item-link">Submit Feedback</a></li>
+              <li><a href="#" class="list-button item-link">Quit</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patht to Framework7 Library JS: required for js itnerativity-->
+      <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+      <script>
+        var myApp = new Framework7();
+        var mainView = myApp.addView('.view-main');
+        
+
+        // carpark data demo array for autocompelte
+        var fruits = ('Apple Apricot Avocado Banana Melon Orange Peach Pear Pineapple').split(' ');
+
+        var autocompleteDropdownSimple = myApp.autocomplete({
+            input: '#autocomplete-dropdown',
+            openIn: 'dropdown',
+            source: function (autocomplete, query, render) {
+                var results = [];
+                if (query.length === 0) {
+                    render(results);
+                    return;
+                }
+                // Find matched items
+                for (var i = 0; i < fruits.length; i++) {
+                    if (fruits[i].toLowerCase().indexOf(query.toLowerCase()) >= 0) results.push(fruits[i]);
+                }
+                // Render items by passing array with result items
+                render(results);
+            }
+        });
+
+      </script>
+  </body>
+</html>
