@@ -2349,7 +2349,6 @@ html:not(.watch-active-state) .chip-delete:active,
 }
 /* === Content Block === */
 .content-block {
-  margin: 35px 0;
   padding: 0 15px;
   color: #6d6d72;
   box-sizing: border-box;
@@ -2373,8 +2372,7 @@ html:not(.watch-active-state) .chip-delete:active,
   font-size: 14px;
   text-transform: uppercase;
   line-height: 1;
-  color: #6d6d72;
-  margin: 35px 15px 10px;
+  color: #6d6d72
 }
 .content-block-title + .list-block,
 .content-block-title + .content-block,
