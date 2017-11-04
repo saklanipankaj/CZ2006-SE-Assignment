@@ -5,7 +5,9 @@
   *with attribute startTime, endTime and price
   *
   */
-class Rate{
+require_once('Object.php');
+
+class Rate extends Object{
   /**
    * Represents a Rate
    * Rate entity attribute are declared in the constructor
@@ -19,7 +21,7 @@ class Rate{
     public function __construct($startTime = 0, $endTime = 0, $prices = '') {
         $this->startTime = $startTime;
         $this->endTime = $endTime;
-        $this->prices = '';
+        $this->prices = $prices;
     }
 
     public function getStartTime() {

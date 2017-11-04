@@ -5,7 +5,10 @@
   *with attribute name, avaliableLots and location
   *
   */
-class Carpark{
+
+require_once('Object.php');
+
+class Carpark extends Object{
   /**
    * Represents a Carpark.
    * Carpark entity attribute are declared in the constructor
@@ -18,13 +21,24 @@ class Carpark{
     private $location = NULL;
     private $rates = NULL;
 
-    public function __construct($id = NULL,$name = NULL, $lots = NULL, $location = NULL, $rates = NUL:) {
+    public function __construct(int $id = NULL,string $name = NULL,int $lots = NULL,Location $location = NULL,array $rates = NULL) {
         $this->name = $name;
-        $this->avaliableLots = $lots;
+        $this->avaliablelots = $lots;
         $this->location = $location;
         $this->rates = $rates;
-        $this->id = $id
+        $this->id = $id;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
 
     public function getName() {
         return $this->name;
@@ -34,20 +48,14 @@ class Carpark{
         $this->name = $name;
     }
 
-    public function getAvaliableLots() {
-        return $this->avaliableLots;
-    }
 
     /**
      *
      * @param {string} name - name of carpark
      */
-    public function setName($name) {
-        $this->name = $name;
-    }
 
     public function getAvaliableLots() {
-        return $this->avaliableLots;
+        return $this->avaliablelots;
     }
 
     /**
@@ -72,7 +80,7 @@ class Carpark{
     }
 
     public function getRates() {
-        return $this->rate;
+        return $this->rates;
     }
 
 

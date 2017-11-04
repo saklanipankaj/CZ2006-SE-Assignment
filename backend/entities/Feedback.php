@@ -6,7 +6,10 @@
   *contactNo, currentStatus and id
   *
   */
-class Feedback{
+
+require_once('Object.php');
+
+class Feedback extends Object{
   /**
    * Represents a Feedback.
    * Feedback entity attribute are declared in the constructor

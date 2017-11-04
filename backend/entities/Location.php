@@ -1,12 +1,8 @@
-/**
-  *This class implements the location entity
-  *with attribute latitude and longtitude
-  *
-  */
-
 <?php
 
-class Location{
+require_once('Object.php');
+
+class Location extends Object{
   /**
    * Represents a location.
    * Location entity attribute are declared in the constructor
@@ -18,6 +14,7 @@ class Location{
     private $id;
 
     public function __construct($id, $latitude, $longtitude) {
+        $this->id = $id;
         $this->latitude = $latitude;
         $this->longtitude = $longtitude;
     }
@@ -29,19 +26,29 @@ class Location{
      *
      * @param {string} latitude - latitude on map
      */
-    public setLatitude($latitude) {
+    public function setLatitude($latitude) {
         $this->latitude = $latitude;
     }
     
-    public getLongtitude() {
+    public function getLongtitude() {
         return $this->longtitude;
     }
     /**
      *
      * @param {string} longtitude - longtitude on map
      */
-    public setLongtitude($longtitude) {
+    public function setLongtitude($longtitude) {
         $this->longtitude = $longtitude;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 }

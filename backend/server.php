@@ -10,12 +10,7 @@
 	}
 	else
 	{
-		error_log("WORK");
-		echo "BITCH";
-		$server = new ServerCarparkCollection($conn);
-		$server->getCollection();
-
-		$carpark = new carpark()
+		$server = new ServerCarparkCollection($dbhost, $dbuser, $dbname, $dbpass, $port);
 	}
 
 ?>
