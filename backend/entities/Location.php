@@ -15,10 +15,11 @@ class Location{
 
     private $latitude;
     private $longtitude;
+    private $id;
 
-    public function __construct() {
-        $this->latitude = null;
-        $this->longtitude = null;
+    public function __construct($id, $latitude, $longtitude) {
+        $this->latitude = $latitude;
+        $this->longtitude = $longtitude;
     }
 
     public function getLatitude() {

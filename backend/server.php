@@ -14,7 +14,8 @@
 		echo "BITCH";
 		$server = new ServerCarparkCollection($conn);
 		$server->getCollection();
-		echo "FKKKKKKKKKKKK";
+
+		$carpark = new carpark()
 	}
 
 ?>

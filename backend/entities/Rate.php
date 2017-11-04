@@ -16,10 +16,10 @@ class Rate{
     private $endTime;
     private $prices;
 
-    public function __construct() {
-        $this->startTime = 0;
-        $this->endTime = 0;
-        $this->prices = null;
+    public function __construct($startTime = 0, $endTime = 0, $prices = '') {
+        $this->startTime = $startTime;
+        $this->endTime = $endTime;
+        $this->prices = '';
     }
 
     public function getStartTime() {

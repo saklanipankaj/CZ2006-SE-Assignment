@@ -31,9 +31,11 @@
 			$list = array();
 			while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 			{
-				//Store current row into array
-				$returnarray[$i] = $row;
-					//Increment counter
+				$location = new Location($row['location.id'], $row['location.langtitude'], $row['location.longitude'];
+				$rates = new Rates
+				$carpark = new Carpark($row['id'],$row['name'],$row['avaliablelots'], $location); 
+				$list[] = 
+
 				$i++;
 			}
 			
@@ -42,29 +44,71 @@
 			return $returnarray;
 		}
 
-		public function add(Carpark $car)
+		public function add(object $object)
 		{
 			#No sanitization
-			$rates = $car->getRates();
+			$rates = $carpark->getRates();
 
-			$location_id = $car->getLocation()->getId();
+			#Get Location in Carpark
+			$location_id = $carpark->getLocation()->getId();
 
+			#Get Carpark Vars
 			$name = $car->getName();
-			$avaliablelots = $car->getAvaliableLots();
+			$avaliablelots = $carpark->getAvaliableLots();
+
+			#Get Rate Vars
+			$startTime = $rates->getStartTime();
+			$endTime = $rates->getEndTime();
+			$prices = $rates->getPrices();
+			$carpark = $rates->getId();
 
 			$carpark_sql = "INSERT INTO Carparks(name,avaliablelots,location) VALUES ('$name','$avaliablelots','$location_id')" ;
-			$rates_sql = "INSERT INTO Rates(startTime, endTime, prices, dayType,carpark) VALUES('$startTime', '$endTime', '$prices', '$dayType', $carpark)";
-			$result = mysqli_query($this->conn, $sql);
-			return 
+			$rates_sql = "INSERT INTO Rates(startTime, endTime, prices, dayType,carpark) VALUES('$startTime', '$endTime', '$prices', '$dayType', $carpark_id)";
+			$result = mysqli_query($this->conn, $carpark_sql);
+			if(!$result)
+			{
+				return false;
+			}
+
+			$result = mysqli_query($this->conn, $rates_sql)
+			if(!$result)
+			{
+				return false;
+			}
+
+			return true;
+
 		}
 
-		public function delete(Carpark $car)
+		public function delete(object $object)
 		{
-			$id = $car->getId();
-			$sql = "DELETE FROM Carparks WHERE ID = $id";
+			$carpark = $object;
+
+			$id = $carpark->getId();
+			$rates_sql = "DELETE FROM Carparks WHERE ID = $id";
+			$carpark_sql = "DELETE FROM Rates WHERE carpark = $id"
+
+			$retval = mysqli_query($conn, $rates_sql)
+			if(!$retval)
+			{
+				#Failed to delete rates object before carpark object, could not delete carpark
+				return false;
+			}
+
+			$retval = mysqli_query($conn, $carpark_sql)
+			if(!$retval)
+			{
+				#Failed to delete carpark object
+				return false
+			}
+
+			mysqli_close($conn);
+
+			return true;
+
 		}
 
-		public function edit($old, $new)
+		public function edit(object $old, object $new)
 		{
 			$carpark_sql = "UPDATE carparks SET "
 		}
@@ -74,7 +118,7 @@
 
 		}
 
-		public function getAddCarparkList(string addr)
+		public function getAddCarparkList(string $addr)
 		{
 
 		}
@@ -89,7 +133,7 @@
 
 		}
 
-		public function checkCarparkExists(name: String)
+		public function checkCarparkExists(string $name)
 		{
 
 		}

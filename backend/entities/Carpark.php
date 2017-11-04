@@ -12,13 +12,13 @@ class Carpark{
    * @constructor
    */
 
-    private $id;
-    private $name;
-    private $avaliablelots;
-    private $location;
-    private $rates;
+    private $id = 0;
+    private $name = '';
+    private $avaliablelots = 0;
+    private $location = NULL;
+    private $rates = NULL;
 
-    public function __construct($name, $lots, $location, $rates, $id) {
+    public function __construct($id = NULL,$name = NULL, $lots = NULL, $location = NULL, $rates = NUL:) {
         $this->name = $name;
         $this->avaliableLots = $lots;
         $this->location = $location;
@@ -29,7 +29,6 @@ class Carpark{
     public function getName() {
         return $this->name;
     }
-
 
     public function setName($name) {
         $this->name = $name;
