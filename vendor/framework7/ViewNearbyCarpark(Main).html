@@ -38,7 +38,7 @@
 		}
 
 		.picker-modal{
-			height:40%;
+			height:42%;
 		}
 
 		.button .active .new{
@@ -228,10 +228,10 @@
 					<div style="padding: 0 5px;">
 						<div class="row">
 							<div class="col-50">
-								<a href="#" class="button button-big button-red">Plan Route</a>
+								<a href="#plan_route" class="button button-big button-fill color-blue" onclick="setDestination()">Plan Route</a>
 							</div>
 							<div class="col-50">
-								<a href="#" class="button button-big button-green">Feedback</a>
+								<a href="#" class="button button-big button-fill color-red">Feedback</a>
 							</div>
 						</div>
 					</div>
@@ -404,6 +404,7 @@
 		src = "dist/js/framework7.min.js"></script>
 <script type="text/javascript" src="dist/carparks.json"></script>
 <script>
+	var selectedCarpark = 0;
     var myApp = new Framework7();
     var mainView = myApp.addView('.view-main',{
         domCache: true // enable inline pages
@@ -438,7 +439,13 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {lat: 1.3521, lng: 103.81985},
-            zoom: 11
+            zoom: 11,
+			zoomControl: false,
+          	scaleControl: false,
+			mapTypeControl: false,
+			streetViewControlOptions: {
+              position: google.maps.ControlPosition.LEFT_TOP
+          	}
         });
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
@@ -463,174 +470,222 @@
             carpark = json[name];
             if(carpark["GPS"]!=null){
                 var image = {
-                  url: 'dist/carpark_green.png',
-                  //size: new google.maps.Size(100, 100),
-                  // The origin for this image is (0, 0).
-                  origin: new google.maps.Point(0, 0),
-                  // The anchor with respect to the Lat and Long
-                  anchor: new google.maps.Point(15, 15)
+                    url: 'dist/carpark_green.png',
+                    //size: new google.maps.Size(100, 100),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor with respect to the Lat and Long
+                    anchor: new google.maps.Point(15, 15)
                 };
-				marker = new google.maps.Marker({
-					map: map,
-					icon: image,
-					title: name,
-					position: new google.maps.LatLng(carpark['GPS']['Lat'], carpark['GPS']['Long'])
-				});
-				marker.addListener('click', function(){
-					var carpark = json[this.title];
-					console.log(this.title)
-					console.log(carpark);
-					// Check first, if we already have opened picker
-					if ($('.picker-modal.modal-in').length > 0) {
-						myApp.closeModal('.picker-modal.modal-in');
-					}
+                marker = new google.maps.Marker({
+                    map: map,
+                    icon: image,
+                    title: name,
+                    position: new google.maps.LatLng(carpark['GPS']['Lat'], carpark['GPS']['Long'])
+                });
+                marker.addListener('click', function(){
+                    var carpark = json[this.title];
+                    //Change to Id once its done
+					selectedCarpark = this.title;
+					console.log(selectedCarpark);
+                    // Check first, if we already have opened picker
+                    if ($('.picker-modal.modal-in').length > 0) {
+                        myApp.closeModal('.picker-modal.modal-in');
+                    }
 
-					var modelText=
-						'<div class="picker-modal"  style="background-color:white">' +
+                    //Available Lots go here
+                    //var lots = getAvailableLots(carpark[id]);
+					var lots = 0;
+
+                    var modelText=
+                        '<div class="picker-modal"  style="background-color:white">' +
 							'<div class="picker-modal-inner">' +
 								'<div class="toolbar" style="background-color:#007aff">' +
 									'<div class="toolbar-inner">' +
-										'<div class="left"></div>' +
-										'<div class="right"><a href="#" class="link close-picker" style="color:white;">Done</a></div>\n' +
+										'<div class="left"></div>\n' +
+										'<div class="right"><a href="#" class="link close-picker" style="color:white;">Close</a></div>\n' +
 									'</div>' +
 								'</div>' +
 								'<div class="content-block left">' +
-									'<h5 class="content-block-title">'+ this.title+" Carpark</h5>";
-									//There is a Weekday Rate
-									if(carpark['Rates']['Weekday']!=null){
-									    var weekday = carpark['Rates']['Weekday'];
-										modelText+="<u>Weekday Rates</u><br>";
-										for(rate in weekday){
-										    var start = new Date()
-											modelText+="Start :"+weekday[rate]['startHour']+"00 - "+weekday[rate]['endHour']+"00 (";
-											var prices = weekday[rate]['pricePerHalfHour'];
-											//per entry display
-											if(prices[1]==0)
-											    modelText += "Per Entry:$"+prices[0]+")<br>";
-											else{
-											    //1St Hour and subsequent Hour
-											    if(prices.length>2){
-											       var prev = prices[0];
-													for(var i=1;i<prices.length;i++){
-														if(prices[i]!=prev){
-															modelText += "Price 1st h: $"+prev*2;
-															prev = prices[i];
-														}
-													}
-													modelText += " Subsequent 1/2 h: $"+prev+")<br>";
-												}
-											    else{
-													modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
-												}
-											}
-										}
-									}
-									//There is a Saturday Rate
-									if(carpark['Rates']['Saturday']!=null){
-									    var Saturday = carpark['Rates']['Saturday'];
-										modelText+="<u>Saturday Rates</u><br>";
-										for(rate in Saturday){
-										    var start = new Date()
-											modelText+="Start :"+Saturday[rate]['startHour']+"00 - "+Saturday[rate]['endHour']+"00 (";
-											var prices = Saturday[rate]['pricePerHalfHour'];
-											//per entry display
-											if(prices[1]==0)
-											    modelText += "Per Entry:$"+prices[0]+")<br>";
-											else{
-											    //1St Hour and subsequent Hour
-											    if(prices.length>2){
-											       var prev = prices[0];
-													for(var i=1;i<prices.length;i++){
-														if(prices[i]!=prev){
-															modelText += "Price 1st h: $"+prev*2;
-															prev = prices[i];
-														}
-													}
-													modelText += " Subsequent 1/2 h: $"+prev+")<br>";
-												}
-											    else{
-													modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
-												}
-											}
-										}
-									}
-									//There is a Saturday Rate
-									if(carpark['Rates']['Sunday']!=null){
-									    var Sunday = carpark['Rates']['Sunday'];
-										modelText+="<u>Sunday Rates</u><br>";
-										for(rate in Sunday){
-										    var start = new Date()
-											modelText+="Start :"+Sunday[rate]['startHour']+"00 - "+Sunday[rate]['endHour']+"00 (";
-											var prices = Sunday[rate]['pricePerHalfHour'];
-											//per entry display
-											if(prices[1]==0)
-											    modelText += "Per Entry:$"+prices[0]+")<br>";
-											else{
-											    //1St Hour and subsequent Hour
-											    if(prices.length>2){
-											       var prev = prices[0];
-													for(var i=1;i<prices.length;i++){
-														if(prices[i]!=prev){
-															modelText += "Price 1st h: $"+prev*2;
-															prev = prices[i];
-														}
-													}
-													modelText += " Subsequent 1/2 h: $"+prev+")<br>";
-												}
-											    else{
-													modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
-												}
-											}
-										}
-									}
-								modelText+='</div>' +
-							'</div>' +
-						'</div>';
-					myApp.pickerModal(modelText);
-				});
-				// Create a marker for each place.
-				markers.push(marker);
-			}
-    	}
+								'<div class="speed-dial">\n' +
+                        				'<!-- FAB inside will open Speed Dial actions -->\n' +
+										'<a href="#" class="floating-button">\n' +
+										'<!-- First icon is visible when Speed Dial actions are closed -->\n' +
+										'<i class="f7-icons">add</i>\n' +
+										'<!-- Second icon is visible when Speed Dial actions are opened -->\n' +
+										'<i class="f7-icons">close</i>' +
+										'</a>\n' +
+										'<!-- Speed Dial Actions -->\n' +
+										'<div class="speed-dial-buttons">\n' +
+											'<!-- First Speed Dial button -->\n' +
+											'<a href="#plan_route" class="link close-picker" onclick="setDestination()">\n' +
+											'GO' +
+											'</a>\n' +
+											'<!-- Second Speed Dial  button -->\n' +
+											'<a href="#displayCP" class="link close-picker" onclick="displayCP()">\n' +
+												'<i class="f7-icons">info_fill</i>\n' +
+											'</a>\n' +
+										'</div>' +
+								'</div>'+
+								'<h5 class="content-block-title">'+ this.title+' Carpark</h5>' +
+									'<p><u>Parking Rates</u><br>';
 
-		searchBox.addListener('places_changed', function() {
-			var places = searchBox.getPlaces();
+                    var now = new Date();
+					var day = now.getDay();
 
-			if (places.length == 0) {
-				return;
-			}
+                    //There is a Weekday Rate
+                    if(carpark['Rates']['Weekday']!=null && day!=5&&day!=6){
+                        var weekday = carpark['Rates']['Weekday'];
+                        for(rate in weekday){
+                            var start = new Date()
+                            modelText+="Start :"+weekday[rate]['startHour']+"00 - "+weekday[rate]['endHour']+"00 (";
+                            var prices = weekday[rate]['pricePerHalfHour'];
+                            //per entry display
+                            if(prices[1]==0)
+                                modelText += "Per Entry:$"+prices[0]+")<br>";
+                            else{
+                                //1St Hour and subsequent Hour
+                                if(prices.length>2){
+                                    var prev = prices[0];
+                                    for(var i=1;i<prices.length;i++){
+                                        if(prices[i]!=prev){
+                                            modelText += "Price 1st h: $"+prev*2;
+                                            prev = prices[i];
+                                        }
+                                    }
+                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                }
+                                else{
+                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                }
+                            }
+                        }
+                    }
+                    //There is a Saturday Rate
+                    if(carpark['Rates']['Saturday']!=null  && day==5){
+                        var Saturday = carpark['Rates']['Saturday'];
+                        for(rate in Saturday){
+                            var start = new Date()
+                            modelText+="Start :"+Saturday[rate]['startHour']+"00 - "+Saturday[rate]['endHour']+"00 (";
+                            var prices = Saturday[rate]['pricePerHalfHour'];
+                            //per entry display
+                            if(prices[1]==0)
+                                modelText += "Per Entry:$"+prices[0]+")<br>";
+                            else{
+                                //1St Hour and subsequent Hour
+                                if(prices.length>2){
+                                    var prev = prices[0];
+                                    for(var i=1;i<prices.length;i++){
+                                        if(prices[i]!=prev){
+                                            modelText += "Price 1st h: $"+prev*2;
+                                            prev = prices[i];
+                                        }
+                                    }
+                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                }
+                                else{
+                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                }
+                            }
+                        }
+                    }
+                    //There is a Saturday Rate
+                    if(carpark['Rates']['Sunday']!=null && day==6){
+                        var Sunday = carpark['Rates']['Sunday'];
+                        for(rate in Sunday){
+                            var start = new Date()
+                            modelText+="Start :"+Sunday[rate]['startHour']+"00 - "+Sunday[rate]['endHour']+"00 (";
+                            var prices = Sunday[rate]['pricePerHalfHour'];
+                            //per entry display
+                            if(prices[1]==0)
+                                modelText += "Per Entry:$"+prices[0]+")<br>";
+                            else{
+                                //1St Hour and subsequent Hour
+                                if(prices.length>2){
+                                    var prev = prices[0];
+                                    for(var i=1;i<prices.length;i++){
+                                        if(prices[i]!=prev){
+                                            modelText += "Price 1st h: $"+prev*2;
+                                            prev = prices[i];
+                                        }
+                                    }
+                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                }
+                                else{
+                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                }
+                            }
+                        }
+                    }
+
+                    modelText+= '</p></div>' +
+								'<!-- Floating Action Button -->\n' +
+								'<a class="floating-button color-red" style="left:5%; text-align:center">\n' +
+									'<b><u>Lots</u><br>'+lots+'</b>\n' +
+								'</a>'+
+                        '</div>';
+                    myApp.pickerModal(modelText);
+                });
+                // Create a marker for each place.
+                markers.push(marker);
+            }
+        }
+
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
 
 
-			// For each place, get the icon, name and location.
-			var bounds = new google.maps.LatLngBounds();
-			places.forEach(function(place) {
-				if (!place.geometry) {
-					console.log("Returned place contains no geometry");
-					return;
-				}
-				var icon = {
-					url: place.icon,
-					size: new google.maps.Size(71, 71),
-					origin: new google.maps.Point(0, 0),
-					anchor: new google.maps.Point(17, 34),
-					scaledSize: new google.maps.Size(25, 25)
-				};
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
 
-				if (place.geometry.viewport) {
-					// Only geocodes have viewport.
-					bounds.union(place.geometry.viewport);
-				} else {
-					bounds.extend(place.geometry.location);
-				}
-			});
-			map.setZoom(15);
-			map.fitBounds(bounds);
-		});
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.setZoom(15);
+            map.fitBounds(bounds);
+        });
     }
 
     $(document).ready(function(){
 
     });
+
+    //Get Available lots from LTA Server
+	function getAvailableLots(id) {
+
+    }
+
+
+    //Set Destination
+	function setDestination(){
+	    document.getElementById('destination').value = selectedCarpark;
+	}
+
+	//function to populate the Display Carpark Page
+	function displayCP() {
+
+    }
+
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     function geolocate() {
