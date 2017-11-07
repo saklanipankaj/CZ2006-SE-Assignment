@@ -1,7 +1,6 @@
 <?php
 
-	require_once 'ServerCarparkCollection.php';
-	require_once 'config.php';
+
 	
 	$response = array();
 
@@ -9,6 +8,8 @@
 	//switch ($trigger) {
 	switch ($_POST['Action']) {
 		case 'GET_CARPARKS':
+			require_once 'ServerCarparkCollection.php';
+			require_once 'config.php';
 			if (mysqli_connect_errno())
 			{
 				error_log("Failed to connect to MySQL: " . mysqli_connect_error());
@@ -110,7 +111,7 @@
 			break;
 		default:
 			$response['Status'] = 'ERROR';
-			$response['Data'] = "INVALID OPTION"
+			$response['Data'] = "INVALID OPTION";
 			break;
 	}
 
