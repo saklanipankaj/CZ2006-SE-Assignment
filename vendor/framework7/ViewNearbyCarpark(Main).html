@@ -259,7 +259,7 @@
 				</div>
 				<!-- Scrollable page content -->
 				<div class="page-content">
-					<div class="content-block-title">Select Carpark:</div>
+					<div class="content-block-title" style="margin-top:60px;">Select Carpark:</div>
 					<div class="list-block">
 						<ul>
 							<li class="item-content">
@@ -353,7 +353,7 @@
 				<div class="navbar-inner">
 				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
 					<div class="left">
-						<a href="#" class="link icon-only">
+						<a href="#home" class="link icon-only">
 							<i class="icon icon-back"></i>
 						</a>
 					</div>
@@ -444,7 +444,7 @@
 				</div>
 				
 				<div class="row center">
-				  <div class="col-70" style="margin:0 auto;">
+				  <div class="col-70" style="margin:0 auto; margin-bottom:25px;">
 					<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
 				  </div>
 				</div>
@@ -472,7 +472,7 @@
 			</div>
 			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
 				<div class="searchbar-input">
-				  <input type="search" placeholder="Search" id="searchform" onchange="initService();">
+				  <input type="search" placeholder="Search" id="searchform1" onchange="initService1();">
 				</div>
 			  </form>
 			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
@@ -482,7 +482,7 @@
 				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
 				
 				<div class="list-block list-block-search" style="margin-top:0px;">
-				  <ul id="testingsearch">
+				  <ul id="testingsearch1">
 					
 					
 				</ul>
@@ -1053,6 +1053,233 @@
 
         }, 1000);
     }
+	
+	function submitfb() {
+			var fbtitle = document.getElementById('fbtitle');
+			var fbtext = document.getElementById('fbtext');
+			var fbname = document.getElementById('fbname');
+			var fbcontact = document.getElementById('fbcontact');
+			var fbemail = document.getElementById('fbemail');
+			var option = document.getElementById("feedbacktype");	
+			var defaultoption = document.getElementById('fbtypedefault');
+			var tryclear = document.getElementById('tryclear');
+
+			fbtitle.value = "";
+			fbtext.value = "";
+			fbname.value = "";
+			fbcontact.value = "";
+			fbemail.value = "";
+			option.value = "suggestion"
+			defaultoption.selected = true;
+			
+			
+			var parentdiv = document.getElementById('parentdiv');
+			while (parentdiv.hasChildNodes()) {
+				parentdiv.removeChild(parentdiv.lastChild);
+			}
+			
+			while (tryclear.hasChildNodes()) {
+				tryclear.removeChild(tryclear.lastChild);
+			}
+			
+			var div1 = document.createElement('div');
+			div1.className="item-title";
+			div1.innerHTML = "Type";
+			
+			var div2 = document.createElement('div');
+			div2.className = "item-after";
+			div2.innerHTML = "Suggestion";
+			
+			console.log(tryclear.appendChild(div1));
+			console.log(tryclear.appendChild(div2));
+			
+		}
+	
+		function searchcp() {
+			var parentdiv = document.getElementById('parentdiv');
+			var option = document.getElementById("feedbacktype").value;	
+			console.log(option);
+			
+			var titlediv = document.createElement('div');
+				titlediv.className = "content-block-title";
+				titlediv.setAttribute("style","padding-left:10px");
+				titlediv.innerHTML = "Select Carpark";
+				titlediv.id = "searchcptitle";
+				
+				<!-- <div class="list-block"> -->
+			var licontdiv = document.createElement('div');
+				licontdiv.className = "list-block";
+				
+				<!-- <ul> -->
+			var ul = document.createElement('ul');
+				
+				<!-- <li class="item-content"> -->
+			var licont = document.createElement('li');
+				licont.className = "item-content";
+				
+				<!-- <div class="item-inner" style="width: 60%;"> -->
+			var innerdiv = document.createElement('div');
+				innerdiv.className = "item-inner";
+				innerdiv.setAttribute("style","width:60%");
+				
+				<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+			var p = document.createElement('p');
+				//p.css("width","100%");
+				//p.css("text-align","left");
+				p.setAttribute("style","width:100%; text-align:left;");
+				p.id = "xferback1";
+				
+				<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+			var inputdiv = document.createElement('div');
+				inputdiv.className = "item-inner";
+				//inputdiv.css("width","40%");
+				//inputdiv.css("margin","0 auto");
+				inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
+				
+				<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+			var a = document.createElement('a');
+				a.href = "#searchfromfeedback";
+				a.setAttribute("style","margin-left:auto;");
+				a.innerHTML="Search";
+								
+			/*		
+			<!-- <div class="content-block-title">Select Carpark:</div> -->
+			<!-- <div class="list-block"> -->
+				<!-- <ul> -->
+					<!-- <li class="item-content"> -->
+					  <!-- <div class="item-inner" style="width: 60%;"> -->
+						<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+					  <!-- </div> -->
+					  <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+							<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+					<!-- </div> -->
+					<!-- </li> -->
+				<!-- </ul> -->
+			<!-- </div> -->
+			*/
+			
+			if(option == "missingcp" || option == "incorrectcp") {
+				console.log("show");
+				
+				//create div
+							
+				<!-- <div class="content-block-title">Select Carpark:</div> -->
+				
+				inputdiv.appendChild(a);
+				
+				innerdiv.appendChild(p);
+				
+				licont.appendChild(innerdiv);
+				licont.appendChild(inputdiv);
+				
+				ul.appendChild(licont);
+				
+				licontdiv.appendChild(ul);
+				
+				parentdiv.appendChild(titlediv);
+				parentdiv.appendChild(licontdiv);
+			}
+			else {
+				console.log("hide");
+				//parentdiv.removeChild(titlediv);
+				//parentdiv.removeChild(licontdiv);
+				
+				while (parentdiv.hasChildNodes()) {
+					parentdiv.removeChild(parentdiv.lastChild);
+				}
+			}
+		}
+		
+		document.getElementById('testingsearch1').innerHTML="";
+		console.log(json);
+		for (place in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.id=place;
+				a1.onclick=function(){ 
+					document.getElementById('xferback1').innerHTML = this.id;
+				};
+				a1.appendChild(document.createTextNode(place));
+				//console.log(a1);
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch1').appendChild(li);
+
+				}
+		
+		 function initService1() {
+
+			document.getElementById('testingsearch1').innerHTML="";
+			
+			
+			var displaySuggestions = function(predictions, status) {
+			  if (status != google.maps.places.PlacesServiceStatus.OK) {
+				alert(status);
+				return;
+			  }
+
+			  predictions.forEach(function(prediction) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
+				a1.appendChild(document.createTextNode(prediction.description));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch1').appendChild(li);
+			  });
+			  for (smth in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+				var itemsel = smth;
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
+				a1.appendChild(document.createTextNode(itemsel));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//console.log(a1);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch1').appendChild(li);
+			  }
+			};
+
+				var service = new google.maps.places.AutocompleteService();
+					service.getQueryPredictions({ input: document.getElementById("searchform1").value }, displaySuggestions);
+					
+				//console.log(document.getElementById("searchform").value);
+			  }
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
