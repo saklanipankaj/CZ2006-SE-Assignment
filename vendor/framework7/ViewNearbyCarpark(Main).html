@@ -345,6 +345,151 @@
 				<!-- </div> -->
 			</div>
 		</div>
+		
+		<!-- Feedback -->
+		
+		<div data-page="feedback" class="page cached">
+			<div class="navbar">
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#" class="link icon-only">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+				  
+					<div class="center sliding">Submit Feedback</div>
+					
+				  </div>
+			</div>
+            <!-- Scrollable page content -->
+            <div class="page-content">
+				<div class="content-block-title"style="padding-left:10px; margin-top:60px;">Title</div>
+				<div class="list-block">
+				<ul>
+					<li class="item-content">
+							<div class="item-inner">
+							  	<div class="item-input">
+									<input type="text" placeholder="Title" id="fbtitle">
+								  </div>
+							</div>
+						  
+						</li>
+				</ul>
+				</div>
+  
+				<div class="content-block-title"style="padding-left:10px;">Feedback Type</div>
+				<div class="list-block">
+				  <ul>
+					<li>
+					  <!-- Smart select, will be opened in Picker -->
+					  <a href="#" class="item-link smart-select" data-open-in="picker">
+						<select name="feedbacktype" id="feedbacktype" onchange="searchcp()">
+						  <option value="suggestion" id="fbtypedefault" selected>Suggestion</option>
+						  <option value="bug">Application Bug</option>
+						  <option value="missingcp">Missing Carpark</option>
+						  <option value="incorrectcp">Incorrect Carpark Details</option>
+						</select>
+						<div class="item-content">
+						  <div class="item-inner" id="tryclear">
+							<!-- Select label -->
+							<div class="item-title">Type</div>
+							
+						  </div>
+						</div>     
+						</a>
+					</li>
+				  </ul>
+				</div>
+				
+				<div id="parentdiv">
+				
+				</div>
+				
+				<div class="content-block-title"style="padding-left:10px;">Feedback</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+						<div class="item-content" style="width: 100%; padding: 0px;">
+							<div class="item-inner" style="padding: 0px;">
+							  <div class="item-input">
+								<textarea class="resizable" id="fbtext"></textarea>
+							  </div>
+							</div>
+						  </div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title" style="padding-left:10px;">Contact Details</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Name" id="fbname">
+						  </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Contact Number" id="fbcontact">
+						  </div>
+						</li>
+						</li>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Email Address" id="fbemail">
+						  </div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="row center">
+				  <div class="col-70" style="margin:0 auto;">
+					<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
+				  </div>
+				</div>
+				
+				</div>
+          </div>
+		  
+		  <div class="page cached" data-page="searchfromfeedback">
+			
+			 
+			  <!-- Search Bar overlay -->
+			  <div class="searchbar-overlay"></div>
+			  
+            <div class="page-content"style="padding-top:0px;">
+				<div class="navbar" >
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#feedback" class="link icon-only back">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+					<div class="center sliding">Search Carpark</div>
+				  </div>
+			</div>
+			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+				<div class="searchbar-input">
+				  <input type="search" placeholder="Search" id="searchform" onchange="initService();">
+				</div>
+			  </form>
+			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+			<!-- <div class="content-block-inner">Nothing found</div> -->
+				<!-- </div> -->
+			 
+				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+				
+				<div class="list-block list-block-search" style="margin-top:0px;">
+				  <ul id="testingsearch">
+					
+					
+				</ul>
+			</div>
+			
+        </div>
+        </div>
 
 		<div class="page cached" data-page="search">
 
@@ -395,7 +540,7 @@
 		<div class="list-block">
 			<ul>
 				<li><a href="#recordCP" class="list-button item-link">Record Lot Information</a></li>
-				<li><a href="#" class="list-button item-link">Submit Feedback</a></li>
+				<li><a href="#feedback" class="list-button item-link">Submit Feedback</a></li>
 				<li><a href="#" class="list-button item-link">Quit</a></li>
 			</ul>
 		</div>
