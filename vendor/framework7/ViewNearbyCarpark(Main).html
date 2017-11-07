@@ -163,8 +163,11 @@
 									<div class="item-title">Address</div>
 									<div class="item-after">~Carpark Address~</div>
 								</div>
+
 							</li>-->
-							<li class="item-content">
+
+							<li class="item-content" id="avalot">
+
 								<div class="item-inner">
 									<div class="item-title">Available Lots:</div>
 									<div class="item-after"><span class="badge">5</span></div>
@@ -551,6 +554,7 @@
 <script type = "text/javascript"
 		src = "dist/js/framework7.min.js"></script>
 <script type="text/javascript" src="dist/carparks.json"></script>
+
 <script>
 	var selectedCarpark = 0;
     var myApp = new Framework7();
@@ -586,6 +590,39 @@
     var searchMarker;
     var directionsService, directionsDisplay;
     var searchBox, start, destination;
+	
+	//Passing the CSRF Token with every ajax call
+	$.ajaxSetup({
+		beforeSend: function(xhr, settings) {
+			var csrfToken = '6HsAmP1e0R/EkEYWOcjKg==';
+			xhr.setRequestHeader("AccountKey", csrfToken);
+		}
+	});
+	
+	console.log("FIRE");
+	
+	function testApi()
+	{
+			
+		$.ajax({
+			 url: "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability",
+			 //data: { signature: authHeader },
+			 dataType: 'json',
+			 type: "GET",
+			 xhrFields: {
+				withCrendentials: false
+			 },
+			 success: function(data) { console.log(data); },
+			 error: function(xhr,errmsg,err) {
+				console.log("Oops! We have encountered an error: "+errmsg);
+				console.log("Error: "+err);
+				console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+			}
+			 
+		  });
+		  
+	}
+	
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {lat: 1.3521, lng: 103.81985},
@@ -650,8 +687,12 @@
                     }
 
                     //Available Lots go here
-                    //var lots = getAvailableLots(carpark[id]);
-					var lots = 0;
+					var lots;
+					var id = carpark[id];
+					if(id != null)
+						lots = getAvailableLots(carpark[id]);
+					else
+						lots = 0;
 
                     var modelText=
                         '<div class="picker-modal"  style="background-color:white">' +
@@ -869,9 +910,120 @@
     $(document).ready(function(){
 
     });
+	/*
+	for (place in mingchuan) {
+		if(mingchuan[place].id !== undefined)
+			console.log(mingchuan[place].id);
+	}
+	*/
+	$.ajax({
+         url: "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability",
+         //data: { signature: authHeader },
+		 dataType: 'json',
+         type: "GET",
+		 xhrFields: {
+				withCrendentials: false
+			 },
+         success: function(data) { console.log(data); },
+		 error: function(xhr,errmsg,err) {
+			console.log("Oops! We have encountered an error: "+errmsg);
+			console.log("Error: "+err);
+			console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+		}
+		 
+      });
+	  
+	  
+	  
+	  /*
+	  $.ajax({
+			  url: baseURL,
+			  dataType: 'json',
+			  headers: { 'Authorization': 'Basic 0JRGDJW587832' },
+			  beforeSend: function(xhr){xhr.setRequestHeader(header);},
+			  success: function(data){
+					console.log(data);
+
+		 }
+		});
+
+	*/
+	
+	/*
+	$.ajax({
+		//headers : { 'AccountKey' : '6HsAmP1e0R/EkEYWOcjKg==','accept' : 'application/json'}
+		url : "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability", // the endpoint
+		type : "GET", // http method
+		dataType: 'JSON',
+		data: {
+			'AccountKey': '6HsAmP1e0R/EkEYWOcjKg=='
+		  },
+		// handle a successful response
+		success : function(benjamin) {
+			console.log(benjamin);
+		},
+		error : function(xhr,errmsg,err) {
+			console.log("Oops! We have encountered an error: "+errmsg);
+			console.log("Error: "+err);
+			console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+		}
+	});
+	*/
+	//Auto Refresh every 5 second
+    //setInterval(function() {
+	  
+		
+		//console.log();
+		
+		
+		
+		
+		
+	//}, 5000);
 
     //Get Available lots from LTA Server
 	function getAvailableLots(id) {
+	
+		$.ajax({
+			//headers : { 'AccountKey' : '6HsAmP1e0R/EkEYWOcjKg==','accept' : 'application/json'}
+            url : "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability", // the endpoint
+            type : "GET", // http method
+			dataType: 'JSON',
+			data: {
+				'AccountKey': '6HsAmP1e0R/EkEYWOcjKg=='
+			  },
+            // handle a successful response
+            success : function(json) {
+                var html = '';
+
+				$('#avalot').remove();
+				
+				html = '<li class="item-content" id=avalot>';
+				html += '<div class="item-inner">';
+				html += '<div class="item-title">Available Lots:</div>';
+                for (var i = 0; i < json.length; i++) {
+                                         
+                     if(json[i].id == id){				
+						html += '<div class="item-after"><span class="badge">'+json[i].Lots+'</span></div>';
+						break;
+					}
+					else
+						html += '<div class="item-after"><span class="badge">'+'Undefined by API'+'</span></div>';
+			
+
+                }
+				html += '</div>';                   
+				html += '</li>';
+				$("#avalot").append(html);
+
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
 
     }
 
@@ -883,6 +1035,7 @@
 
 	//function to populate the Display Carpark Page
 	function displayCP() {
+
 		carpark = json[selectedCarpark];
 		console.log(carpark['Rates']['Weekday'][0]['pricePerHalfHour']);
 
@@ -903,6 +1056,7 @@
 		document.getElementById('sunfee').innerHTML = "$"+ sunprice +"for first half hour";
 		document.getElementById('displayCPname').innerHTML = selectedCarpark;
 		document.getElementById('carparkname').innerHTML = selectedCarpark;
+
     }
 		function slidervalue(slider){
 			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
@@ -1307,5 +1461,6 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
 		async defer></script>
+
 </body>
 </html>
