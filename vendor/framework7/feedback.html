@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Your app title -->
+  <title>Display Carpark Details</title>
+  <!-- Path to Framework7 iOS CSS theme styles-->
+  <link rel="stylesheet" href="dist/css/framework7.ios.min.css">
+  <!-- Path to Framework7 iOS related color styles -->
+  <link rel="stylesheet" href="dist/css/framework7.ios.colors.min.css">
+  <!-- Path to Framework7 icons-->
+  <link rel="stylesheet" href="dist/css/framework7-icons.css">
+  <link rel="stylesheet" href="dist/css/my-app.css">
+</head>
+<body>
+  <!-- Status bar overlay for full screen mode (PhoneGap) -->
+
+  <!-- Panels overlay-->
+  
+  <!-- Left panel with reveal effect-->
+
+  <!-- Views -->
+  <div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+      <!-- Top Navbar-->
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+			<div class="navbar">
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#" class="link icon-only">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+				  
+					<div class="center sliding">Submit Feedback</div>
+					
+				  </div>
+			</div>
+            <!-- Scrollable page content -->
+            <div class="page-content">
+				<div class="content-block-title"style="padding-left:10px;">Title</div>
+				<div class="list-block">
+				<ul>
+					<li class="item-content">
+							<div class="item-inner">
+							  	<div class="item-input">
+									<input type="text" placeholder="Title" id="fbtitle">
+								  </div>
+							</div>
+						  
+						</li>
+				</ul>
+				</div>
+  
+				<div class="content-block-title"style="padding-left:10px;">Feedback Type</div>
+				<div class="list-block">
+				  <ul>
+					<li>
+					  <!-- Smart select, will be opened in Picker -->
+					  <a href="#" class="item-link smart-select" data-open-in="picker">
+						<select name="feedbacktype" id="feedbacktype" onchange="searchcp()">
+						  <option value="suggestion" id="fbtypedefault" selected>Suggestion</option>
+						  <option value="bug">Application Bug</option>
+						  <option value="missingcp">Missing Carpark</option>
+						  <option value="incorrectcp">Incorrect Carpark Details</option>
+						</select>
+						<div class="item-content">
+						  <div class="item-inner" id="tryclear">
+							<!-- Select label -->
+							<div class="item-title">Type</div>
+							
+						  </div>
+						</div>     
+						</a>
+					</li>
+				  </ul>
+				</div>
+				
+				<div id="parentdiv">
+				
+				</div>
+				
+				<div class="content-block-title"style="padding-left:10px;">Feedback</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+						<div class="item-content" style="width: 100%; padding: 0px;">
+							<div class="item-inner" style="padding: 0px;">
+							  <div class="item-input">
+								<textarea class="resizable" id="fbtext"></textarea>
+							  </div>
+							</div>
+						  </div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="content-block-title" style="padding-left:10px;">Contact Details</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Name" id="fbname">
+						  </div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Contact Number" id="fbcontact">
+						  </div>
+						</li>
+						</li>
+						<li class="item-content">
+							<div class="item-inner" style="padding:0px;">
+								<input type="text" placeholder="Email Address" id="fbemail">
+						  </div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="row center">
+				  <div class="col-70" style="margin:0 auto;">
+					<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
+				  </div>
+				</div>
+				
+				
+          </div>
+		  
+		  <div class="page cached" data-page="search">
+			
+			 
+			  <!-- Search Bar overlay -->
+			  <div class="searchbar-overlay"></div>
+			  
+            <div class="page-content"style="padding-top:0px;">
+				<div class="navbar" >
+				<div class="navbar-inner">
+				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<div class="left">
+						<a href="#index" class="link icon-only back">
+							<i class="icon icon-back"></i>
+						</a>
+					</div>
+					<div class="center sliding">Search Carpark</div>
+				  </div>
+			</div>
+			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+				<div class="searchbar-input">
+				  <input type="search" placeholder="Search" id="searchform" onchange="initService();">
+				</div>
+			  </form>
+			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+			<!-- <div class="content-block-inner">Nothing found</div> -->
+				<!-- </div> -->
+			 
+				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+				
+				<div class="list-block list-block-search" style="margin-top:0px;">
+				  <ul id="testingsearch">
+					
+					
+				</ul>
+			</div>
+			
+        </div>
+        </div>
+		  
+        </div>
+		
+		
+		
+        <!-- Bottom Toolbar-->
+		
+      </div>
+    </div>
+    <!-- Patht to Framework7 Library JS: required for js itnerativity-->
+    <script type="text/javascript" src="dist/js/framework7.min.js"></script>
+    <script type="text/javascript" src="dist/js/d3.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="dist/carparks.json"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript">
+		var myApp = new Framework7();
+		var mainView = myApp.addView('.view-main', {
+			domCache: true //enable inline pages
+		});
+		
+		function submitfb() {
+			var fbtitle = document.getElementById('fbtitle');
+			var fbtext = document.getElementById('fbtext');
+			var fbname = document.getElementById('fbname');
+			var fbcontact = document.getElementById('fbcontact');
+			var fbemail = document.getElementById('fbemail');
+			var option = document.getElementById("feedbacktype");	
+			var defaultoption = document.getElementById('fbtypedefault');
+			var tryclear = document.getElementById('tryclear');
+
+			fbtitle.value = "";
+			fbtext.value = "";
+			fbname.value = "";
+			fbcontact.value = "";
+			fbemail.value = "";
+			option.value = "suggestion"
+			defaultoption.selected = true;
+			
+			
+			var parentdiv = document.getElementById('parentdiv');
+			while (parentdiv.hasChildNodes()) {
+				parentdiv.removeChild(parentdiv.lastChild);
+			}
+			
+			while (tryclear.hasChildNodes()) {
+				tryclear.removeChild(tryclear.lastChild);
+			}
+			
+			var div1 = document.createElement('div');
+			div1.className="item-title";
+			div1.innerHTML = "Type";
+			
+			var div2 = document.createElement('div');
+			div2.className = "item-after";
+			div2.innerHTML = "Suggestion";
+			
+			console.log(tryclear.appendChild(div1));
+			console.log(tryclear.appendChild(div2));
+			
+		}
+	
+		function searchcp() {
+			var parentdiv = document.getElementById('parentdiv');
+			var option = document.getElementById("feedbacktype").value;	
+			console.log(option);
+			
+			var titlediv = document.createElement('div');
+				titlediv.className = "content-block-title";
+				titlediv.setAttribute("style","padding-left:10px");
+				titlediv.innerHTML = "Select Carpark";
+				titlediv.id = "searchcptitle";
+				
+				<!-- <div class="list-block"> -->
+			var licontdiv = document.createElement('div');
+				licontdiv.className = "list-block";
+				
+				<!-- <ul> -->
+			var ul = document.createElement('ul');
+				
+				<!-- <li class="item-content"> -->
+			var licont = document.createElement('li');
+				licont.className = "item-content";
+				
+				<!-- <div class="item-inner" style="width: 60%;"> -->
+			var innerdiv = document.createElement('div');
+				innerdiv.className = "item-inner";
+				innerdiv.setAttribute("style","width:60%");
+				
+				<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+			var p = document.createElement('p');
+				//p.css("width","100%");
+				//p.css("text-align","left");
+				p.setAttribute("style","width:100%; text-align:left;");
+				p.id = "xferback1";
+				
+				<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+			var inputdiv = document.createElement('div');
+				inputdiv.className = "item-inner";
+				//inputdiv.css("width","40%");
+				//inputdiv.css("margin","0 auto");
+				inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
+				
+				<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+			var a = document.createElement('a');
+				a.href = "#search";
+				a.setAttribute("style","margin-left:auto;");
+				a.innerHTML="Search";
+								
+			/*		
+			<!-- <div class="content-block-title">Select Carpark:</div> -->
+			<!-- <div class="list-block"> -->
+				<!-- <ul> -->
+					<!-- <li class="item-content"> -->
+					  <!-- <div class="item-inner" style="width: 60%;"> -->
+						<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+					  <!-- </div> -->
+					  <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+							<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+					<!-- </div> -->
+					<!-- </li> -->
+				<!-- </ul> -->
+			<!-- </div> -->
+			*/
+			
+			if(option == "missingcp" || option == "incorrectcp") {
+				console.log("show");
+				
+				//create div
+							
+				<!-- <div class="content-block-title">Select Carpark:</div> -->
+				
+				inputdiv.appendChild(a);
+				
+				innerdiv.appendChild(p);
+				
+				licont.appendChild(innerdiv);
+				licont.appendChild(inputdiv);
+				
+				ul.appendChild(licont);
+				
+				licontdiv.appendChild(ul);
+				
+				parentdiv.appendChild(titlediv);
+				parentdiv.appendChild(licontdiv);
+			}
+			else {
+				console.log("hide");
+				//parentdiv.removeChild(titlediv);
+				//parentdiv.removeChild(licontdiv);
+				
+				while (parentdiv.hasChildNodes()) {
+					parentdiv.removeChild(parentdiv.lastChild);
+				}
+			}
+		}
+
+		document.getElementById('testingsearch').innerHTML="";
+		console.log(json);
+		for (place in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.id=place;
+				a1.onclick=function(){ 
+					document.getElementById('xferback1').innerHTML = this.id;
+				};
+				a1.appendChild(document.createTextNode(place));
+				//console.log(a1);
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+
+				}
+		
+		 function initService() {
+
+			document.getElementById('testingsearch').innerHTML="";
+			
+			
+			var displaySuggestions = function(predictions, status) {
+			  if (status != google.maps.places.PlacesServiceStatus.OK) {
+				alert(status);
+				return;
+			  }
+
+			  predictions.forEach(function(prediction) {
+				var li = document.createElement('li');
+				li.className="item-content";
+			
+				
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
+				a1.appendChild(document.createTextNode(prediction.description));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  });
+			  for (smth in json) {
+				var li = document.createElement('li');
+				li.className="item-content";
+				var itemsel = smth;
+				var div2 = document.createElement('div');
+				div2.className = "item-title";
+				
+				
+				var a1 = document.createElement('a');
+				a1.href="#index";
+				a1.className="back";
+				a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
+				a1.appendChild(document.createTextNode(itemsel));
+				
+				div2.appendChild(a1);
+				
+				li.appendChild(div2);
+				
+				//console.log(a1);
+				
+				//li.appendChild(document.createTextNode(prediction.description));
+				document.getElementById('testingsearch').appendChild(li);
+			  }
+			};
+
+				var service = new google.maps.places.AutocompleteService();
+					service.getQueryPredictions({ input: document.getElementById("searchform").value }, displaySuggestions);
+					
+				//console.log(document.getElementById("searchform").value);
+			  }
+		
+		var searchListElement = document.getElementById("testingsearch");
+		var searchListElement2 = document.getElementById("searchform");
+		//searchListElement2.value="hi";
+		
+ 
+    </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places"
+         async defer></script>
+  </body>
+  </html>           
