@@ -435,7 +435,9 @@
     //    });
     var autocomplete, map;
     var markers = [];
+    var searchMarker;
     var directionsService, directionsDisplay;
+    var searchBox, start, destination;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {lat: 1.3521, lng: 103.81985},
@@ -455,9 +457,15 @@
         var input = document.getElementById('searchBox');
         var startInput = document.getElementById('source');
         var destinationInput = document.getElementById('destination');
-        var searchBox = new google.maps.places.SearchBox(input);
-        var start = new google.maps.places.SearchBox(startInput);
-        var destination = new google.maps.places.SearchBox(destinationInput);
+        searchBox = new google.maps.places.SearchBox(input);
+		start = new google.maps.places.SearchBox(startInput);
+        destination = new google.maps.places.SearchBox(destinationInput);
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+          start.setBounds(map.getBounds());
+          destination.setBounds(map.getBounds());
+        });
 
 //        // Bias the SearchBox results towards current map's viewport.
 //        map.addListener('bounds_changed', function() {
@@ -653,7 +661,14 @@
                     anchor: new google.maps.Point(17, 34),
                     scaledSize: new google.maps.Size(25, 25)
                 };
-
+				// Create a marker for each place.
+				if(searchMarker	!= null)
+				    searchMarker.setMap(null);
+				searchMarker = new google.maps.Marker({
+				  map: map,
+				  title: place.name,
+				  position: place.geometry.location
+				});
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
@@ -705,6 +720,7 @@
         }
     }
 
+    //Set up the Route for the persone to
     function route(){
         var start = document.getElementById('source').value;
         var destination = document.getElementById('destination').value;
@@ -713,12 +729,14 @@
         var request = {
             origin:start,
             destination:destination,
-            travelMode: 'DRIVING'
+            travelMode: 'DRIVING',
+			region:'sls'
         };
         directionsService.route(request, function(response, status) {
             if (status == 'OK') {
                 console.log("here");
                 directionsDisplay.setDirections(response);
+                directionsDisplay.setMap(map);
             }
         });
     }
