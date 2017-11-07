@@ -550,6 +550,8 @@
 <!-- Patht to Framework7 Library JS: required for js itnerativity-->
 <script type = "text/javascript"
 		src = "dist/js/framework7.min.js"></script>
+<script type="text/javascript" src="dist/carparkRateupdated3nov.json"></script>
+
 <script type="text/javascript" src="dist/carparks.json"></script>
 <script>
 	var selectedCarpark = 0;
@@ -557,6 +559,8 @@
     var mainView = myApp.addView('.view-main',{
         domCache: true // enable inline pages
     });
+	
+	console.log("mingchuan", mingchuan);
     var map_contain = document.getElementById("map-container");
 
     // carpark data demo array for autocompelte
