@@ -131,7 +131,7 @@
 							</a>
 						</div>
 
-						<div class="center sliding" id="displayCPname">~CarparkNameHere~</div>
+						<div class="center sliding" id="displayCPname">~Carpark Details~</div>
 
 						<div class="right">
 
@@ -155,15 +155,15 @@
 							<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Name:</div>
-									<div class="item-after resizable">~Carpark Name~</div>
+									<div class="item-after resizable" id="carparkname" >~Carpark Name~</div>
 								</div>
 							</li>
-							<li class="item-content">
+	<!--						<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Address</div>
 									<div class="item-after">~Carpark Address~</div>
 								</div>
-							</li>
+							</li>-->
 							<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Available Lots:</div>
@@ -177,7 +177,7 @@
 					<div class="list-block">
 						<ul>
 							<li class="item-content">
-								<div class="item-inner">
+								<div class="item-inner"id = "weekdayfee">
 									~$00.00~ for first half hour
 								</div>
 							</li>
@@ -193,12 +193,12 @@
 					<div class="list-block">
 						<ul>
 							<li class="item-content">
-								<div class="item-inner">
+								<div class="item-inner"id = "satfee">
 									~$00.00~ for first half hour
 								</div>
 							</li>
 							<li class="item-content">
-								<div class="item-inner">
+								<div class="item-inner"id = "sunfee">
 									~$00.00~ for first half hour
 								</div>
 							</li>
@@ -209,20 +209,20 @@
 					<div class="list-block">
 						<div class="item-input">
 							<div class="range-slider" style="width: 80%;margin-left: 10%;margin-top:15px; margin-bottom: 15px;">
-								<input type="range" min="1" max="100" step="1" class="">
+								<input type="range" id="slider" oninput="slidervalue(this)" min="1" max="100" step="1" class="">
 							</div>
 						</div>
 						<ul>
 							<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Total Time::</div>
-									<div class="item-after resizable">~HH:MM~</div>
+									<div class="item-after resizable"id = "slideroutput">~HH:MM~</div>
 								</div>
 							</li>
 							<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Total Fees:</div>
-									<div class="item-after">~$100.000~</div>
+									<div class="item-after"id="calculatefee">~$100.000~</div>
 								</div>
 							</li>
 						</ul>
@@ -345,9 +345,9 @@
 				<!-- </div> -->
 			</div>
 		</div>
-		
+
 		<!-- Feedback -->
-		
+
 		<div data-page="feedback" class="page cached">
 			<div class="navbar">
 				<div class="navbar-inner">
@@ -357,9 +357,9 @@
 							<i class="icon icon-back"></i>
 						</a>
 					</div>
-				  
+
 					<div class="center sliding">Submit Feedback</div>
-					
+
 				  </div>
 			</div>
             <!-- Scrollable page content -->
@@ -373,11 +373,11 @@
 									<input type="text" placeholder="Title" id="fbtitle">
 								  </div>
 							</div>
-						  
+
 						</li>
 				</ul>
 				</div>
-  
+
 				<div class="content-block-title"style="padding-left:10px;">Feedback Type</div>
 				<div class="list-block">
 				  <ul>
@@ -394,18 +394,18 @@
 						  <div class="item-inner" id="tryclear">
 							<!-- Select label -->
 							<div class="item-title">Type</div>
-							
+
 						  </div>
-						</div>     
+						</div>
 						</a>
 					</li>
 				  </ul>
 				</div>
-				
+
 				<div id="parentdiv">
-				
+
 				</div>
-				
+
 				<div class="content-block-title"style="padding-left:10px;">Feedback</div>
 				<div class="list-block">
 					<ul>
@@ -420,7 +420,7 @@
 						</li>
 					</ul>
 				</div>
-				
+
 				<div class="content-block-title" style="padding-left:10px;">Contact Details</div>
 				<div class="list-block">
 					<ul>
@@ -442,22 +442,22 @@
 						</li>
 					</ul>
 				</div>
-				
+
 				<div class="row center">
 				  <div class="col-70" style="margin:0 auto; margin-bottom:25px;">
 					<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
 				  </div>
 				</div>
-				
+
 				</div>
           </div>
-		  
+
 		  <div class="page cached" data-page="searchfromfeedback">
-			
-			 
+
+
 			  <!-- Search Bar overlay -->
 			  <div class="searchbar-overlay"></div>
-			  
+
             <div class="page-content"style="padding-top:0px;">
 				<div class="navbar" >
 				<div class="navbar-inner">
@@ -478,16 +478,16 @@
 			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
 			<!-- <div class="content-block-inner">Nothing found</div> -->
 				<!-- </div> -->
-			 
+
 				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
-				
+
 				<div class="list-block list-block-search" style="margin-top:0px;">
 				  <ul id="testingsearch1">
-					
-					
+
+
 				</ul>
 			</div>
-			
+
         </div>
         </div>
 
@@ -550,8 +550,6 @@
 <!-- Patht to Framework7 Library JS: required for js itnerativity-->
 <script type = "text/javascript"
 		src = "dist/js/framework7.min.js"></script>
-<script type="text/javascript" src="dist/carparkRateupdated3nov.json"></script>
-
 <script type="text/javascript" src="dist/carparks.json"></script>
 <script>
 	var selectedCarpark = 0;
@@ -559,8 +557,6 @@
     var mainView = myApp.addView('.view-main',{
         domCache: true // enable inline pages
     });
-	
-	console.log("mingchuan", mingchuan);
     var map_contain = document.getElementById("map-container");
 
     // carpark data demo array for autocompelte
@@ -887,8 +883,31 @@
 
 	//function to populate the Display Carpark Page
 	function displayCP() {
+		carpark = json[selectedCarpark];
+		console.log(carpark['Rates']['Weekday'][0]['pricePerHalfHour']);
 
+		var prices = carpark['Rates']['Weekday'][0]['pricePerHalfHour'];
+		var pricesSat = carpark['Rates']['Saturday'][0]['pricePerHalfHour'];
+		var pricesSun = carpark['Rates']['Sunday'][0]['pricePerHalfHour'];
+				if(prices.length>=0)
+						var wdprice = prices[0];
+				if(pricesSat.length>=0)
+						var satprice = pricesSat[0];
+				if(pricesSun.length>=0)
+						var sunprice = pricesSun[0];
+
+
+		document.getElementById('weekdayfee').innerHTML = "$"+ wdprice +"for first half hour";
+		document.getElementById('weekdayfee').value = wdprice*100;
+		document.getElementById('satfee').innerHTML = "$"+ satprice +"for first half hour";
+		document.getElementById('sunfee').innerHTML = "$"+ sunprice +"for first half hour";
+		document.getElementById('displayCPname').innerHTML = selectedCarpark;
+		document.getElementById('carparkname').innerHTML = selectedCarpark;
     }
+		function slidervalue(slider){
+			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
+			document.getElementById('calculatefee').innerHTML = "$" + slider.value * 2 * document.getElementById('weekdayfee').value /100 ;
+		}
 
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
@@ -1057,14 +1076,14 @@
 
         }, 1000);
     }
-	
+
 	function submitfb() {
 			var fbtitle = document.getElementById('fbtitle');
 			var fbtext = document.getElementById('fbtext');
 			var fbname = document.getElementById('fbname');
 			var fbcontact = document.getElementById('fbcontact');
 			var fbemail = document.getElementById('fbemail');
-			var option = document.getElementById("feedbacktype");	
+			var option = document.getElementById("feedbacktype");
 			var defaultoption = document.getElementById('fbtypedefault');
 			var tryclear = document.getElementById('tryclear');
 
@@ -1075,78 +1094,78 @@
 			fbemail.value = "";
 			option.value = "suggestion"
 			defaultoption.selected = true;
-			
-			
+
+
 			var parentdiv = document.getElementById('parentdiv');
 			while (parentdiv.hasChildNodes()) {
 				parentdiv.removeChild(parentdiv.lastChild);
 			}
-			
+
 			while (tryclear.hasChildNodes()) {
 				tryclear.removeChild(tryclear.lastChild);
 			}
-			
+
 			var div1 = document.createElement('div');
 			div1.className="item-title";
 			div1.innerHTML = "Type";
-			
+
 			var div2 = document.createElement('div');
 			div2.className = "item-after";
 			div2.innerHTML = "Suggestion";
-			
+
 			console.log(tryclear.appendChild(div1));
 			console.log(tryclear.appendChild(div2));
-			
+
 		}
-	
+
 		function searchcp() {
 			var parentdiv = document.getElementById('parentdiv');
-			var option = document.getElementById("feedbacktype").value;	
+			var option = document.getElementById("feedbacktype").value;
 			console.log(option);
-			
+
 			var titlediv = document.createElement('div');
 				titlediv.className = "content-block-title";
 				titlediv.setAttribute("style","padding-left:10px");
 				titlediv.innerHTML = "Select Carpark";
 				titlediv.id = "searchcptitle";
-				
+
 				<!-- <div class="list-block"> -->
 			var licontdiv = document.createElement('div');
 				licontdiv.className = "list-block";
-				
+
 				<!-- <ul> -->
 			var ul = document.createElement('ul');
-				
+
 				<!-- <li class="item-content"> -->
 			var licont = document.createElement('li');
 				licont.className = "item-content";
-				
+
 				<!-- <div class="item-inner" style="width: 60%;"> -->
 			var innerdiv = document.createElement('div');
 				innerdiv.className = "item-inner";
 				innerdiv.setAttribute("style","width:60%");
-				
+
 				<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
 			var p = document.createElement('p');
 				//p.css("width","100%");
 				//p.css("text-align","left");
 				p.setAttribute("style","width:100%; text-align:left;");
 				p.id = "xferback1";
-				
+
 				<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
 			var inputdiv = document.createElement('div');
 				inputdiv.className = "item-inner";
 				//inputdiv.css("width","40%");
 				//inputdiv.css("margin","0 auto");
 				inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
-				
+
 				<!-- <a href="#search" style="margin-left: auto">Search</a> -->
 			var a = document.createElement('a');
 				a.href = "#searchfromfeedback";
 				a.setAttribute("style","margin-left:auto;");
 				a.innerHTML="Search";
-								
-			/*		
+
+			/*
 			<!-- <div class="content-block-title">Select Carpark:</div> -->
 			<!-- <div class="list-block"> -->
 				<!-- <ul> -->
@@ -1161,25 +1180,25 @@
 				<!-- </ul> -->
 			<!-- </div> -->
 			*/
-			
+
 			if(option == "missingcp" || option == "incorrectcp") {
 				console.log("show");
-				
+
 				//create div
-							
+
 				<!-- <div class="content-block-title">Select Carpark:</div> -->
-				
+
 				inputdiv.appendChild(a);
-				
+
 				innerdiv.appendChild(p);
-				
+
 				licont.appendChild(innerdiv);
 				licont.appendChild(inputdiv);
-				
+
 				ul.appendChild(licont);
-				
+
 				licontdiv.appendChild(ul);
-				
+
 				parentdiv.appendChild(titlediv);
 				parentdiv.appendChild(licontdiv);
 			}
@@ -1187,45 +1206,45 @@
 				console.log("hide");
 				//parentdiv.removeChild(titlediv);
 				//parentdiv.removeChild(licontdiv);
-				
+
 				while (parentdiv.hasChildNodes()) {
 					parentdiv.removeChild(parentdiv.lastChild);
 				}
 			}
 		}
-		
+
 		document.getElementById('testingsearch1').innerHTML="";
 		console.log(json);
 		for (place in json) {
 				var li = document.createElement('li');
 				li.className="item-content";
-			
+
 				var div2 = document.createElement('div');
 				div2.className = "item-title";
-				
+
 				var a1 = document.createElement('a');
 				a1.href="#index";
 				a1.className="back";
 				a1.id=place;
-				a1.onclick=function(){ 
+				a1.onclick=function(){
 					document.getElementById('xferback1').innerHTML = this.id;
 				};
 				a1.appendChild(document.createTextNode(place));
 				//console.log(a1);
 				div2.appendChild(a1);
-				
+
 				li.appendChild(div2);
-				
+
 				//li.appendChild(document.createTextNode(prediction.description));
 				document.getElementById('testingsearch1').appendChild(li);
 
 				}
-		
+
 		 function initService1() {
 
 			document.getElementById('testingsearch1').innerHTML="";
-			
-			
+
+
 			var displaySuggestions = function(predictions, status) {
 			  if (status != google.maps.places.PlacesServiceStatus.OK) {
 				alert(status);
@@ -1235,22 +1254,22 @@
 			  predictions.forEach(function(prediction) {
 				var li = document.createElement('li');
 				li.className="item-content";
-			
-				
+
+
 				var div2 = document.createElement('div');
 				div2.className = "item-title";
-				
-				
+
+
 				var a1 = document.createElement('a');
 				a1.href="#index";
 				a1.className="back";
 				a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
 				a1.appendChild(document.createTextNode(prediction.description));
-				
+
 				div2.appendChild(a1);
-				
+
 				li.appendChild(div2);
-				
+
 				//li.appendChild(document.createTextNode(prediction.description));
 				document.getElementById('testingsearch1').appendChild(li);
 			  });
@@ -1260,20 +1279,20 @@
 				var itemsel = smth;
 				var div2 = document.createElement('div');
 				div2.className = "item-title";
-				
-				
+
+
 				var a1 = document.createElement('a');
 				a1.href="#index";
 				a1.className="back";
 				a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
 				a1.appendChild(document.createTextNode(itemsel));
-				
+
 				div2.appendChild(a1);
-				
+
 				li.appendChild(div2);
-				
+
 				//console.log(a1);
-				
+
 				//li.appendChild(document.createTextNode(prediction.description));
 				document.getElementById('testingsearch1').appendChild(li);
 			  }
@@ -1281,7 +1300,7 @@
 
 				var service = new google.maps.places.AutocompleteService();
 					service.getQueryPredictions({ input: document.getElementById("searchform1").value }, displaySuggestions);
-					
+
 				//console.log(document.getElementById("searchform").value);
 			  }
 
