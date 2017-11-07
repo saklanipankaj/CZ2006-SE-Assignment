@@ -176,9 +176,9 @@
 						</ul>
 					</div>
 
-					<div class="content-block-title">Weekday Fees:</div>
+					<div id="weekdayDiv" class="content-block-title">Weekday Fees:</div>
 					<div class="list-block">
-						<ul>
+						<ul id="weekDayRate">
 							<li class="item-content">
 								<div class="item-inner"id = "weekdayfee">
 									~$00.00~ for first half hour
@@ -192,9 +192,9 @@
 						</ul>
 					</div>
 
-					<div class="content-block-title">Weekend Fees:</div>
+					<div id="saturdayDiv" class="content-block-title">Saturday Fees:</div>
 					<div class="list-block">
-						<ul>
+						<ul id="saturdayRate">
 							<li class="item-content">
 								<div class="item-inner"id = "satfee">
 									~$00.00~ for first half hour
@@ -202,6 +202,22 @@
 							</li>
 							<li class="item-content">
 								<div class="item-inner"id = "sunfee">
+									~$00.00~ for first half hour
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div id="sundayDiv" class="content-block-title">Sunday Fees:</div>
+					<div class="list-block">
+						<ul id="sundayRate">
+							<li class="item-content">
+								<div class="item-inner">
+									~$00.00~ for first half hour
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
 									~$00.00~ for first half hour
 								</div>
 							</li>
@@ -610,7 +626,7 @@
 			 dataType: 'json',
 			 type: "GET",
 			 xhrFields: {
-				withCrendentials: false
+				withCrendentials: true
 			 },
 			 success: function(data) { console.log(data); },
 			 error: function(xhr,errmsg,err) {
@@ -920,6 +936,10 @@
          url: "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability",
          //data: { signature: authHeader },
 		 dataType: 'json',
+		 jsonp: "callback",
+		xhrFields: {
+        withCredentials: true
+    	},
          type: "GET",
 		 xhrFields: {
 				withCrendentials: false
@@ -1036,28 +1056,162 @@
 	//function to populate the Display Carpark Page
 	function displayCP() {
 
-		carpark = json[selectedCarpark];
-		console.log(carpark['Rates']['Weekday'][0]['pricePerHalfHour']);
+        var carpark = json[selectedCarpark];
 
-		var prices = carpark['Rates']['Weekday'][0]['pricePerHalfHour'];
-		var pricesSat = carpark['Rates']['Saturday'][0]['pricePerHalfHour'];
-		var pricesSun = carpark['Rates']['Sunday'][0]['pricePerHalfHour'];
-				if(prices.length>=0)
-						var wdprice = prices[0];
-				if(pricesSat.length>=0)
-						var satprice = pricesSat[0];
-				if(pricesSun.length>=0)
-						var sunprice = pricesSun[0];
+        var weekdayDiv = document.getElementById("weekdayDiv");
+        var saturdayDiv = document.getElementById("saturdayDiv");
+        var sundayDiv = document.getElementById("sundayDiv");
+        var weekdayRateUL = document.getElementById("weekDayRate");
+        var saturdayRateUL = document.getElementById("saturdayRate");
+        var sundayRateUL = document.getElementById("sundayRate");
+        weekdayRateUL.innerHTML='';
+        saturdayRateUL.innerHTML='';
+        sundayRateUL.innerHTML='';
 
 
-		document.getElementById('weekdayfee').innerHTML = "$"+ wdprice +"for first half hour";
-		document.getElementById('weekdayfee').value = wdprice*100;
-		document.getElementById('satfee').innerHTML = "$"+ satprice +"for first half hour";
-		document.getElementById('sunfee').innerHTML = "$"+ sunprice +"for first half hour";
-		document.getElementById('displayCPname').innerHTML = selectedCarpark;
-		document.getElementById('carparkname').innerHTML = selectedCarpark;
+        console.log(carpark['Rates']['Weekday'][0]['pricePerHalfHour']);
+        //There is a Weekday Rate
 
-    }
+        if(carpark['Rates']['Weekday']!=null){
+			weekdayDiv.style.display = "inline";
+            var weekday = carpark['Rates']['Weekday'];
+            for(rate in weekday){
+                //Used to Poulate the List
+                var weekdayRate = '<li class="item-content">\n' +
+                '<div class="item-inner"id = "satfee">\n';
+                var start = weekday[rate]['startHour'];
+                var startTime = moment().hours(start);
+                startTime.minutes((start*100)%100);
+                var end = weekday[rate]['endHour'];
+                var endTime = moment().hours(end);
+                endTime.minutes((end*100)%100);
+
+                weekdayRate+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
+				var prices = weekday[rate]['pricePerHalfHour'];
+                //per entry display
+                if(prices[1]==0)
+                    weekdayRate += "Per Entry:$"+prices[0];
+                else{
+                    //1St Hour and subsequent Hour
+                    if(prices.length>2){
+                        var prev = prices[0];
+                        for(var i=1;i<prices.length;i++){
+                            if(prices[i]!=prev){
+                                weekdayRate += "Price 1st h: <b>$"+prev*2+"</b>, ";
+                                prev = prices[i];
+                            }
+                        }
+                        weekdayRate += " Subsequent 1/2 h: $"+prev;
+                    }
+                    else{
+                        weekdayRate += " Price per 1/2 h: $"+prices[0];
+                    }
+                }
+                weekdayRate += '</div>\n</li>';
+                console.log(weekdayRate);
+                weekdayRateUL.innerHTML+=weekdayRate;
+            }
+        }
+        else{
+			weekdayDiv.style.display = "none";
+        }
+        //There is a Saturday Rate
+        if(carpark['Rates']['Saturday']!=null){
+            var Saturday = carpark['Rates']['Saturday'];
+            saturdayDiv.style.display = "inline";
+
+            for(rate in Saturday){
+				//Used to Poulate the List
+                var saturdayRate = '<li class="item-content">\n' +
+                '<div class="item-inner"id = "satfee">\n';
+
+                var start = weekday[rate]['startHour'];
+                var startTime = moment().hours(start);
+                startTime.day(5);
+                startTime.minutes((start*100)%100);
+                var end = weekday[rate]['endHour'];
+                var endTime = moment().hours(end);
+                endTime.day(5);
+                endTime.minutes((end*100)%100);
+
+                saturdayRate+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
+                var prices = Saturday[rate]['pricePerHalfHour'];
+                //per entry display
+                if(prices[1]==0)
+                    saturdayRate += "Per Entry:$"+prices[0]+"<br>";
+                else{
+                    //1St Hour and subsequent Hour
+                    if(prices.length>2){
+                        var prev = prices[0];
+                        for(var i=1;i<prices.length;i++){
+                            if(prices[i]!=prev){
+                                saturdayRate += "Price 1st h: <b>$"+prev*2+"</b>, ";
+                                prev = prices[i];
+                            }
+                        }
+                        saturdayRate += " Subsequent 1/2 h: $"+prev;
+                    }
+                    else{
+                        saturdayRate += " Price per 1/2 h: $"+prices[0];
+                    }
+                }
+                saturdayRate += '</div>\n</li>';
+                saturdayRateUL.innerHTML+=saturdayRate;
+            }
+        }else{
+            saturdayDiv.style.display = "none";
+        }
+        //There is a Saturday Rate
+        if(carpark['Rates']['Sunday']!=null){
+            var Sunday = carpark['Rates']['Sunday'];
+            sundayDiv.style.display = "inline";
+
+            for(rate in Sunday){
+				//Used to Poulate the List
+                var sundayRate = '<li class="item-content">\n' +
+                '<div class="item-inner"id = "satfee">\n';
+                var start = weekday[rate]['startHour'];
+                var startTime = moment().hours(start);
+                startTime.minutes((start*100)%100);
+                startTime.day(6);
+                var end = weekday[rate]['endHour'];
+                var endTime = moment().hours(end);
+                endTime.day(6);
+                endTime.minutes((end*100)%100);
+
+                sundayRate+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
+                var prices = Sunday[rate]['pricePerHalfHour'];
+                //per entry display
+                if(prices[1]==0)
+                    sundayRate += "Per Entry:$"+prices[0]+"<br>";
+                else{
+                    //1St Hour and subsequent Hour
+                    if(prices.length>2){
+                        var prev = prices[0];
+                        for(var i=1;i<prices.length;i++){
+                            if(prices[i]!=prev){
+                                sundayRate += "Price 1st h: $"+prev*2+"<br>";
+                                prev = prices[i];
+                            }
+                        }
+                        sundayRate += " Subsequent 1/2 h: $"+prev+"<br>";
+                    }
+                    else{
+                        sundayRate += " Price per 1/2 h: $"+prices[0]+"<br>";
+                    }
+                }
+                sundayRate += '</div>\n</li>';
+                sundayRateUL.innerHTML+=sundayRate;
+            }
+        }else{
+          sundayDiv.style.display = "none";
+        }
+
+			document.getElementById('displayCPname').innerHTML = selectedCarpark;
+			document.getElementById('carparkname').innerHTML = selectedCarpark;
+
+    	}
+
 		function slidervalue(slider){
 			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
 			document.getElementById('calculatefee').innerHTML = "$" + slider.value * 2 * document.getElementById('weekdayfee').value /100 ;
