@@ -126,7 +126,7 @@
 					<div class="navbar-inner">
 						<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
 						<div class="left">
-							<a href="#home" class="link icon-only back">
+							<a href="#home" class="link icon-only back" id="changethislater">
 								<i class="icon icon-back"></i>
 							</a>
 						</div>
@@ -149,7 +149,7 @@
 
 				<!-- Scrollable page content -->
 				<div class="page-content">
-					<div class="content-block-title">Carpark Details:</div>
+					<div class="content-block-title" style="margin-top:60px;">Carpark Details:</div>
 					<div class="list-block">
 						<ul>
 							<li class="item-content">
@@ -170,7 +170,7 @@
 
 								<div class="item-inner">
 									<div class="item-title">Available Lots:</div>
-									<div class="item-after"><span class="badge">5</span></div>
+									<div class="item-after" id="displaylots"></div>
 								</div>
 							</li>
 						</ul>
@@ -185,7 +185,7 @@
 								</div>
 							</li>
 							<li class="item-content">
-								<div class="item-inner">
+								<div class="item-inner"id = "weekdayfee2">
 									~$00.00~ for first half hour
 								</div>
 							</li>
@@ -193,6 +193,7 @@
 					</div>
 
 					<div id="saturdayDiv" class="content-block-title">Saturday Fees:</div>
+
 					<div class="list-block">
 						<ul id="saturdayRate">
 							<li class="item-content">
@@ -201,12 +202,13 @@
 								</div>
 							</li>
 							<li class="item-content">
-								<div class="item-inner"id = "sunfee">
+								<div class="item-inner"id = "satfee2">
 									~$00.00~ for first half hour
 								</div>
 							</li>
 						</ul>
 					</div>
+					
 
 					<div id="sundayDiv" class="content-block-title">Sunday Fees:</div>
 					<div class="list-block">
@@ -234,7 +236,7 @@
 						<ul>
 							<li class="item-content">
 								<div class="item-inner">
-									<div class="item-title">Total Time::</div>
+									<div class="item-title">Total Time:</div>
 									<div class="item-after resizable"id = "slideroutput">~HH:MM~</div>
 								</div>
 							</li>
@@ -253,7 +255,7 @@
 								<a href="#plan_route" class="button button-big button-fill color-blue" onclick="setDestination()">Plan Route</a>
 							</div>
 							<div class="col-50">
-								<a href="#" class="button button-big button-fill color-red">Feedback</a>
+								<a href="#feedback" class="button button-big button-fill color-red" onclick="fromdisplaycp()">Feedback</a>
 							</div>
 						</div>
 					</div>
@@ -372,12 +374,12 @@
 				<div class="navbar-inner">
 				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
 					<div class="left">
-						<a href="#home" class="link icon-only">
+						<a class="link icon-only" onclick="goBack()">
 							<i class="icon icon-back"></i>
 						</a>
 					</div>
 
-					<div class="center sliding">Submit Feedback</div>
+					<div class="center sliding alert-text-title">Submit Feedback</div>
 
 				  </div>
 			</div>
@@ -407,7 +409,7 @@
 						  <option value="suggestion" id="fbtypedefault" selected>Suggestion</option>
 						  <option value="bug">Application Bug</option>
 						  <option value="missingcp">Missing Carpark</option>
-						  <option value="incorrectcp">Incorrect Carpark Details</option>
+						  <option value="incorrectcp" id="fbtypedefault2">Incorrect Carpark Details</option>
 						</select>
 						<div class="item-content">
 						  <div class="item-inner" id="tryclear">
@@ -470,6 +472,7 @@
 
 				</div>
           </div>
+		  
 
 		  <div class="page cached" data-page="searchfromfeedback">
 
@@ -559,7 +562,7 @@
 		<div class="list-block">
 			<ul>
 				<li><a href="#recordCP" class="list-button item-link">Record Lot Information</a></li>
-				<li><a href="#feedback" class="list-button item-link">Submit Feedback</a></li>
+				<li><a href="#feedback" class="list-button item-link" onclick="document.getElementById('changethisnow').href = '#home';">Submit Feedback</a></li>
 				<li><a href="#" class="list-button item-link">Quit</a></li>
 			</ul>
 		</div>
@@ -570,6 +573,7 @@
 <script type = "text/javascript"
 		src = "dist/js/framework7.min.js"></script>
 <script type="text/javascript" src="dist/carparks.json"></script>
+<script type="text/javascript" src="dist/carparks2.json"></script>
 
 <script>
 	var selectedCarpark = 0;
@@ -578,6 +582,32 @@
         domCache: true // enable inline pages
     });
     var map_contain = document.getElementById("map-container");
+	var apiLots;
+	
+	console.log(json2);
+	get_lots();
+	
+	function get_lots()
+	{	
+		$.ajax({
+			url: "/CZ2006/backend/server.php",
+			method: "POST",
+			data: {'Action': 'GET_LOTS' },
+			dataType: 'json',
+			success:function(data,response)
+			{
+				console.log(data);
+				apiLots = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR); 
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+	}
+	
 
     // carpark data demo array for autocompelte
     var fruits = ('Apple Apricot Avocado Banana Melon Orange Peach Pear Pineapple').split(' ');
@@ -606,38 +636,6 @@
     var searchMarker;
     var directionsService, directionsDisplay;
     var searchBox, start, destination;
-	
-	//Passing the CSRF Token with every ajax call
-	$.ajaxSetup({
-		beforeSend: function(xhr, settings) {
-			var csrfToken = '6HsAmP1e0R/EkEYWOcjKg==';
-			xhr.setRequestHeader("AccountKey", csrfToken);
-		}
-	});
-	
-	console.log("FIRE");
-	
-	function testApi()
-	{
-			
-		$.ajax({
-			 url: "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability",
-			 //data: { signature: authHeader },
-			 dataType: 'json',
-			 type: "GET",
-			 xhrFields: {
-				withCrendentials: true
-			 },
-			 success: function(data) { console.log(data); },
-			 error: function(xhr,errmsg,err) {
-				console.log("Oops! We have encountered an error: "+errmsg);
-				console.log("Error: "+err);
-				console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-			}
-			 
-		  });
-		  
-	}
 	
     function initMap() {
         map = new google.maps.Map(document.getElementById('map-container'), {
@@ -675,8 +673,8 @@
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
         var marker, carpark, location
-        for (name in json) {
-            carpark = json[name];
+        for (name in json2) {
+            carpark = json2[name];
             if(carpark["GPS"]!=null){
                 var image = {
                     url: 'dist/carpark_green.png',
@@ -693,23 +691,30 @@
                     position: new google.maps.LatLng(carpark['GPS']['Lat'], carpark['GPS']['Long'])
                 });
                 marker.addListener('click', function(){
-                    var carpark = json[this.title];
+                    var carpark = json2[this.title];
                     //Change to Id once its done
 					selectedCarpark = this.title;
-					console.log(selectedCarpark);
+					//console.log(selectedCarpark);
                     // Check first, if we already have opened picker
                     if ($('.picker-modal.modal-in').length > 0) {
                         myApp.closeModal('.picker-modal.modal-in');
                     }
 
                     //Available Lots go here
-					var lots;
+					//var lots;
 					var id = carpark[id];
+					
+					var lots = "N.A.";
+					//console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
+					if(json2[selectedCarpark].id !== undefined){
+						lots = apiLots["Data"][json2[selectedCarpark].id];
+					}
+					/*
 					if(id != null)
 						lots = getAvailableLots(carpark[id]);
 					else
-						lots = 0;
-
+						lots = "N.A.";
+					*/
                     var modelText=
                         '<div class="picker-modal"  style="background-color:white">' +
 							'<div class="picker-modal-inner">' +
@@ -923,130 +928,7 @@
         });
     }
 
-    $(document).ready(function(){
-
-    });
-	/*
-	for (place in mingchuan) {
-		if(mingchuan[place].id !== undefined)
-			console.log(mingchuan[place].id);
-	}
-	*/
-	$.ajax({
-         url: "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability",
-         //data: { signature: authHeader },
-		 dataType: 'json',
-		 jsonp: "callback",
-		xhrFields: {
-        withCredentials: true
-    	},
-         type: "GET",
-		 xhrFields: {
-				withCrendentials: false
-			 },
-         success: function(data) { console.log(data); },
-		 error: function(xhr,errmsg,err) {
-			console.log("Oops! We have encountered an error: "+errmsg);
-			console.log("Error: "+err);
-			console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-		}
-		 
-      });
 	  
-	  
-	  
-	  /*
-	  $.ajax({
-			  url: baseURL,
-			  dataType: 'json',
-			  headers: { 'Authorization': 'Basic 0JRGDJW587832' },
-			  beforeSend: function(xhr){xhr.setRequestHeader(header);},
-			  success: function(data){
-					console.log(data);
-
-		 }
-		});
-
-	*/
-	
-	/*
-	$.ajax({
-		//headers : { 'AccountKey' : '6HsAmP1e0R/EkEYWOcjKg==','accept' : 'application/json'}
-		url : "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability", // the endpoint
-		type : "GET", // http method
-		dataType: 'JSON',
-		data: {
-			'AccountKey': '6HsAmP1e0R/EkEYWOcjKg=='
-		  },
-		// handle a successful response
-		success : function(benjamin) {
-			console.log(benjamin);
-		},
-		error : function(xhr,errmsg,err) {
-			console.log("Oops! We have encountered an error: "+errmsg);
-			console.log("Error: "+err);
-			console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-		}
-	});
-	*/
-	//Auto Refresh every 5 second
-    //setInterval(function() {
-	  
-		
-		//console.log();
-		
-		
-		
-		
-		
-	//}, 5000);
-
-    //Get Available lots from LTA Server
-	function getAvailableLots(id) {
-	
-		$.ajax({
-			//headers : { 'AccountKey' : '6HsAmP1e0R/EkEYWOcjKg==','accept' : 'application/json'}
-            url : "http://datamall2.mytransport.sg/ltaodataservice/CarParkAvailability", // the endpoint
-            type : "GET", // http method
-			dataType: 'JSON',
-			data: {
-				'AccountKey': '6HsAmP1e0R/EkEYWOcjKg=='
-			  },
-            // handle a successful response
-            success : function(json) {
-                var html = '';
-
-				$('#avalot').remove();
-				
-				html = '<li class="item-content" id=avalot>';
-				html += '<div class="item-inner">';
-				html += '<div class="item-title">Available Lots:</div>';
-                for (var i = 0; i < json.length; i++) {
-                                         
-                     if(json[i].id == id){				
-						html += '<div class="item-after"><span class="badge">'+json[i].Lots+'</span></div>';
-						break;
-					}
-					else
-						html += '<div class="item-after"><span class="badge">'+'Undefined by API'+'</span></div>';
-			
-
-                }
-				html += '</div>';                   
-				html += '</li>';
-				$("#avalot").append(html);
-
-            },
-            // handle a non-successful response
-            error : function(xhr,errmsg,err) {
-                $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
-                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
-            }
-        });
-
-    }
-
 
     //Set Destination
 	function setDestination(){
@@ -1056,7 +938,7 @@
 	//function to populate the Display Carpark Page
 	function displayCP() {
 
-        var carpark = json[selectedCarpark];
+        var carpark = json2[selectedCarpark];
 
         var weekdayDiv = document.getElementById("weekdayDiv");
         var saturdayDiv = document.getElementById("saturdayDiv");
@@ -1108,7 +990,7 @@
                     }
                 }
                 weekdayRate += '</div>\n</li>';
-                console.log(weekdayRate);
+                //console.log(weekdayRate);
                 weekdayRateUL.innerHTML+=weekdayRate;
             }
         }
@@ -1205,13 +1087,19 @@
             }
         }else{
           sundayDiv.style.display = "none";
-        }
+       }
+
 
 			document.getElementById('displayCPname').innerHTML = selectedCarpark;
 			document.getElementById('carparkname').innerHTML = selectedCarpark;
 
-    	}
-
+		var lots = "Not Available";
+					//console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
+					if(json2[selectedCarpark].id !== undefined){
+						lots = apiLots["Data"][json2[selectedCarpark].id];
+					}
+		document.getElementById('displaylots').innerHTML = lots;
+	}
 		function slidervalue(slider){
 			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
 			var carpark = json[selectedCarpark];
@@ -1419,8 +1307,8 @@
 
     document.getElementById('testingsearch').innerHTML="";
     //console.log(json);
-    console.log("hrllo");
-    for (place in json) {
+    //console.log("hrllo");
+    for (place in json2) {
         var li = document.createElement('li');
         li.className="item-content";
 
@@ -1479,7 +1367,7 @@
                 //li.appendChild(document.createTextNode(prediction.description));
                 document.getElementById('testingsearch').appendChild(li);
             });
-            for (smth in json) {
+            for (smth in json2) {
                 var li = document.createElement('li');
                 li.className="item-content";
                 var itemsel = smth;
@@ -1537,8 +1425,109 @@
 
         }, 1000);
     }
+	
+	function fromdisplaycp(){
+		//document.getElementById('changethisnow').href = "#displayCP";
+		//console.log(document.getElementById('changethisnow').href);
+		//document.getElementById('changethislater').href = "#home";
+		document.getElementById('changethislater').style.zIndex = '100000000000';
+		resetfb();
+		var parentdiv = document.getElementById('parentdiv');
+		var option = document.getElementById("feedbacktype").value;
 
+		var titlediv = document.createElement('div');
+			titlediv.className = "content-block-title";
+			titlediv.setAttribute("style","padding-left:10px");
+			titlediv.innerHTML = "Select Carpark";
+			titlediv.id = "searchcptitle";
+
+			<!-- <div class="list-block"> -->
+		var licontdiv = document.createElement('div');
+			licontdiv.className = "list-block";
+
+			<!-- <ul> -->
+		var ul = document.createElement('ul');
+
+			<!-- <li class="item-content"> -->
+		var licont = document.createElement('li');
+			licont.className = "item-content";
+
+			<!-- <div class="item-inner" style="width: 60%;"> -->
+		var innerdiv = document.createElement('div');
+			innerdiv.className = "item-inner";
+			innerdiv.setAttribute("style","width:60%");
+
+			<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+		var p = document.createElement('p');
+			//p.css("width","100%");
+			//p.css("text-align","left");
+			p.setAttribute("style","width:100%; text-align:left;");
+			p.id = "xferback1";
+
+			<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+		var inputdiv = document.createElement('div');
+			inputdiv.className = "item-inner";
+			//inputdiv.css("width","40%");
+			//inputdiv.css("margin","0 auto");
+			inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
+
+			<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+		var a = document.createElement('a');
+			a.href = "#searchfromfeedback";
+			a.setAttribute("style","margin-left:auto;");
+			a.innerHTML="Search";
+			
+		//set feedback type
+		var tryclear = document.getElementById('tryclear');
+
+		while (tryclear.hasChildNodes()) {
+				tryclear.removeChild(tryclear.lastChild);
+			}
+		var defaultoption = document.getElementById('fbtypedefault2');
+		defaultoption.selected = true;
+		option.value = "incorrectcp"
+		var div1 = document.createElement('div');
+			div1.className="item-title";
+			div1.innerHTML = "Type";
+
+		var div2 = document.createElement('div');
+			div2.className = "item-after";
+			div2.innerHTML = "Incorrect Carpark Information";
+
+		tryclear.appendChild(div1);
+		tryclear.appendChild(div2);
+		
+		//pass over the title
+		
+		inputdiv.appendChild(a);
+
+		innerdiv.appendChild(p);
+
+		licont.appendChild(innerdiv);
+		licont.appendChild(inputdiv);
+
+		ul.appendChild(licont);
+
+		licontdiv.appendChild(ul);
+
+		parentdiv.appendChild(titlediv);
+		parentdiv.appendChild(licontdiv);
+		
+		document.getElementById('xferback1').innerHTML = document.getElementById('carparkname').innerHTML;		
+	}
+	
 	function submitfb() {
+		myApp.alert('Thank you!', 'Feedback Submitted!');
+		resetfb();
+	}
+	
+	function goBack(){
+		resetfb();
+		mainView.router.back();
+	}
+
+	function resetfb() {
+			//var myApp = new Framework7();
 			var fbtitle = document.getElementById('fbtitle');
 			var fbtext = document.getElementById('fbtext');
 			var fbname = document.getElementById('fbname');
@@ -1643,7 +1632,7 @@
 			*/
 
 			if(option == "missingcp" || option == "incorrectcp") {
-				console.log("show");
+				//console.log("show");
 
 				//create div
 
@@ -1664,7 +1653,7 @@
 				parentdiv.appendChild(licontdiv);
 			}
 			else {
-				console.log("hide");
+				//console.log("hide");
 				//parentdiv.removeChild(titlediv);
 				//parentdiv.removeChild(licontdiv);
 
@@ -1675,8 +1664,8 @@
 		}
 
 		document.getElementById('testingsearch1').innerHTML="";
-		console.log(json);
-		for (place in json) {
+		//console.log(json);
+		for (place in json2) {
 				var li = document.createElement('li');
 				li.className="item-content";
 
@@ -1734,7 +1723,7 @@
 				//li.appendChild(document.createTextNode(prediction.description));
 				document.getElementById('testingsearch1').appendChild(li);
 			  });
-			  for (smth in json) {
+			  for (smth in json2) {
 				var li = document.createElement('li');
 				li.className="item-content";
 				var itemsel = smth;
