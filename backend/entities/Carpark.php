@@ -29,45 +29,34 @@ class Carpark extends Object{
         $this->id = $id;
     }
 
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(int $id) : void
     {
         $this->id = $id;
     }
 
 
-    public function getName() {
+    public function getName() : String{
         return $this->name;
     }
 
-    public function setName($name) {
+    public function setName(string $name) : void {
         $this->name = $name;
     }
 
-
-    /**
-     *
-     * @param {string} name - name of carpark
-     */
-
-    public function getAvaliableLots() {
+    public function getAvaliableLots() : int {
         return $this->avaliablelots;
     }
-
-    /**
-     *
-     * @param {number} avaliableLots - avaliablelots in carpark
-     */
     
-    public function setAvaliableLots($avaliableLots) {
+    public function setAvaliableLots(int $avaliableLots) : void {
         $this->avaliableLots = $avaliableLots;
     }
 
-    public function getLocation() {
+    public function getLocation() : Location {
         return $this->location;
     }
 
@@ -75,11 +64,11 @@ class Carpark extends Object{
      *
      * @param {string} location - location of carpark
      */
-    public function setLocation($location) {
+    public function setLocation(Location $location) : void {
         $this->location = $location;
     }
 
-    public function getRates() {
+    public function getRates() : array {
         return $this->rates;
     }
 
@@ -88,7 +77,7 @@ class Carpark extends Object{
      *
      * @param {string} rates - carpark rate
      */
-    public function setRates($rates) {
+    public function setRates(array $rates) : void {
         $this->rates = $rates;
     }
 

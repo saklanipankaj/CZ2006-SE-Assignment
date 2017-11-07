@@ -18,35 +18,35 @@ class Rate extends Object{
     private $endTime;
     private $prices;
 
-    public function __construct($startTime = 0, $endTime = 0, $prices = '') {
+    public function __construct(string $startTime = '0',string $endTime = '0',string $prices = '') {
         $this->startTime = $startTime;
         $this->endTime = $endTime;
         $this->prices = $prices;
     }
 
-    public function getStartTime() {
+    public function getStartTime() : string {
         return $this->startTime;
     }
     /**
      *
      * @param {number} startTime - startTime of parking
      */
-    public function setStartTime($startTime) {
+    public function setStartTime(string $startTime) : void {
         $this->startTime = $startTime;
     }
 
-    public function getEndTime() {
+    public function getEndTime() : string {
         return $this->endTime;
     }
     /**
      *
      * @param {number} endTime  - endTime of parking
      */
-    public function setEndTime($endTime) {
+    public function setEndTime(string $endTime) : void{
         $this->endTime = $endTime;
     }
 
-    public function getPrices() {
+    public function getPrices() : string {
         return $this->prices;
     }
     /**
@@ -54,7 +54,7 @@ class Rate extends Object{
      * @param {Array} prices - list of prices
      */
     
-    public function setPrices($prices) {
+    public function setPrices(string $prices) : void {
         $this->prices = $prices;
     }
 

@@ -68,6 +68,7 @@
 				$rates_dict = array();
 				while($rates_row = mysqli_fetch_array($rates_result, MYSQLI_ASSOC))
 				{
+
 					$rate = new Rate($rates_row['startTime'], $rates_row['endTime'], $rates_row['prices']);
 
 					if(array_key_exists($rates_row['dayType'], $rates_dict))
