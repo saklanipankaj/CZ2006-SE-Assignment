@@ -228,7 +228,7 @@
 					<div class="list-block">
 						<div class="item-input">
 							<div class="range-slider" style="width: 80%;margin-left: 10%;margin-top:15px; margin-bottom: 15px;">
-								<input type="range" id="slider" oninput="slidervalue(this)" min="1" max="100" step="1" class="">
+								<input type="range" id="slider" oninput="slidervalue(this)" min="1" max="12" step="1" class="">
 							</div>
 						</div>
 						<ul>
@@ -241,7 +241,7 @@
 							<li class="item-content">
 								<div class="item-inner">
 									<div class="item-title">Total Fees:</div>
-									<div class="item-after"id="calculatefee">~$100.000~</div>
+									<div class="item-after"id="calculatefee"></div>
 								</div>
 							</li>
 						</ul>
@@ -1097,7 +1097,7 @@
                         var prev = prices[0];
                         for(var i=1;i<prices.length;i++){
                             if(prices[i]!=prev){
-                                weekdayRate += "Price 1st h: <b>$"+prev*2+"</b>, ";
+                                weekdayRate += "Price 1st h: $"+prev*2+", ";
                                 prev = prices[i];
                             }
                         }
@@ -1145,7 +1145,7 @@
                         var prev = prices[0];
                         for(var i=1;i<prices.length;i++){
                             if(prices[i]!=prev){
-                                saturdayRate += "Price 1st h: <b>$"+prev*2+"</b>, ";
+                                saturdayRate += "Price 1st h: $"+prev*2+", ";
                                 prev = prices[i];
                             }
                         }
@@ -1214,7 +1214,160 @@
 
 		function slidervalue(slider){
 			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
-			document.getElementById('calculatefee').innerHTML = "$" + slider.value * 2 * document.getElementById('weekdayfee').value /100 ;
+			var carpark = json[selectedCarpark];
+			var now = moment();
+			var end = moment().add(document.getElementById('slideroutput').innerHTML=slider.value, 'h');
+			var total = 0;
+
+			while(!now.isSameOrAfter(end)){
+			    if(carpark['Rates']==null)
+			        break;
+
+				if(now.day()!=5 && now.day()!=6){
+					if(carpark['Rates']['Weekday']!=null){
+					    var weekday = carpark['Rates']['Weekday'];
+						for(rate in weekday){
+
+							var start = weekday[rate]['startHour'];
+							var startTime = moment().hours(start);
+							startTime.minutes((start*100)%100);
+							var end2 = weekday[rate]['endHour'];
+							var endTime = moment().hours(end2);
+							endTime.minutes((end*100)%100);
+
+							if(!now.isBetween(startTime,endTime)||now.day()==5||now.day()==6)
+								continue;
+
+							var prices = weekday[rate]['pricePerHalfHour'];
+							while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+								console.log("outerloop");
+							    //per entry display
+								if(prices[1]==0){
+									total+= prices[0]*100;
+								}
+								else{
+									//1St Hour and subsequent Hour
+									if(prices.length>2){
+										var i, last;
+									    for(i=0;i<prices.length;i++){
+											total+=(prices[i]*100);
+											now.add(30,'m');
+											last=prices[i]*100;
+											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
+											    break;
+										}
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+										    console.log("innerloop");
+										    console.log(last);
+										    total+=last;
+										    console.log(total);
+											now.add(30,'m');
+											console.log("Loop1");
+										}
+									}
+									else{
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+											total+=prices[0]*100;
+											now.add(30,'m');
+											console.log("Loop1");
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				else if(now.day()==5){
+				    if(carpark['Rates']['Saturday']!=null){
+						var saturday = carpark['Rates']['Saturday'];
+						for(rate in saturday){
+
+							var start = saturday[rate]['startHour'];
+							var startTime = moment().hours(start);
+							startTime.minutes((start*100)%100);
+							var end2 = saturday[rate]['endHour'];
+							var endTime = moment().hours(end2);
+							endTime.minutes((end*100)%100);
+
+							if(!now.isBetween(startTime,endTime)||now.day()!=5)
+								continue;
+							var prices = saturday[rate]['pricePerHalfHour'];
+							while(now.isBetween(startTime,endTime)){
+								//per entry display
+								if(prices[1]==0){
+									total+= prices[0]*100;
+								}
+								else{
+									//1St Hour and subsequent Hour
+									if(prices.length>2){
+										for(var i=0;i<prices.length;i++){
+											total+=prices[i]*100;
+											now.add(30,'m');
+											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
+											    break;
+										}
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+											total+=prices[prices.length-1]*100;
+											now.add(30,'m');
+										}
+									}
+									else{
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+											total+=prices[0]*100;
+											now.add(30,'m');
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				else{
+					if(carpark['Rates']['Sunday']!=null){
+						var sunday = carpark['Rates']['Sunday'];
+						for(rate in sunday){
+
+							var start = sunday[rate]['startHour'];
+							var startTime = moment().hours(start);
+							startTime.minutes((start*100)%100);
+							var end2 = sunday[rate]['endHour'];
+							var endTime = moment().hours(end2);
+
+							if(!now.isBetween(startTime,endTime)||now.day()!=5)
+								continue;
+							var prices = sunday[rate]['pricePerHalfHour'];
+							while(now.isBetween(startTime,endTime)){
+								//per entry display
+								if(prices[1]==0){
+									total+= prices[0]*100;
+								}
+								else{
+									//1St Hour and subsequent Hour
+									if(prices.length>2){
+										for(var i=0;i<prices.length;i++){
+											total+=prices[i]*100;
+											now.add(30,'m');
+											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
+											    break;
+										}
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+											total+=prices[prices.length-1]*100;
+											now.add(30,'m');
+										}
+									}
+									else{
+										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
+											total+=prices[0]*100;
+											now.add(30,'m');
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+            }
+            document.getElementById('calculatefee').innerHTML = "$"+total/100;
 		}
 
     // Bias the autocomplete object to the user's geographical location,
