@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="dist/css/framework7-icons.css">
 
 
+
 	<!-- Custom css -->
 	<style>
 
@@ -49,8 +50,10 @@
 
 	</style>
 
-	<!-- Google map JS -->
+	<!-- Framework 7 JS -->
 	<script type="text/javascript" src="dist/js/framework7.min.js"></script>
+	<!-- Moments JS -->
+	<script type="text/javascript" src="dist/js/moment-with-locales.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -545,26 +548,37 @@
                     if(carpark['Rates']['Weekday']!=null && day!=5&&day!=6){
                         var weekday = carpark['Rates']['Weekday'];
                         for(rate in weekday){
-                            var start = new Date()
-                            modelText+="Start :"+weekday[rate]['startHour']+"00 - "+weekday[rate]['endHour']+"00 (";
+                            var start = weekday[rate]['startHour'];
+                            var startTime = moment().hours(start);
+                            startTime.minutes((start*100)%100);
+                            var end = weekday[rate]['endHour'];
+                            var endTime = moment().hours(end);
+                            endTime.minutes((end*100)%100);
+                            var now = moment();
+
+                            //Check if current Time is within the start and endTime then display the price
+                            if(!now.isBetween(startTime,endTime))
+                                continue;
+
+                            modelText+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
                             var prices = weekday[rate]['pricePerHalfHour'];
                             //per entry display
                             if(prices[1]==0)
-                                modelText += "Per Entry:$"+prices[0]+")<br>";
+                                modelText += "Per Entry:$"+prices[0]+"<br>";
                             else{
                                 //1St Hour and subsequent Hour
                                 if(prices.length>2){
                                     var prev = prices[0];
                                     for(var i=1;i<prices.length;i++){
                                         if(prices[i]!=prev){
-                                            modelText += "Price 1st h: $"+prev*2;
+                                            modelText += "Price 1st h: $"+prev*2+"<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                    modelText += " Subsequent 1/2 h: $"+prev+"<br>";
                                 }
                                 else{
-                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                    modelText += " Price per 1/2 h: $"+prices[0]+"<br>";
                                 }
                             }
                         }
@@ -573,8 +587,21 @@
                     if(carpark['Rates']['Saturday']!=null  && day==5){
                         var Saturday = carpark['Rates']['Saturday'];
                         for(rate in Saturday){
-                            var start = new Date()
-                            modelText+="Start :"+Saturday[rate]['startHour']+"00 - "+Saturday[rate]['endHour']+"00 (";
+                            var start = weekday[rate]['startHour'];
+                            var startTime = moment().hours(start);
+                            startTime.day(5);
+                            startTime.minutes((start*100)%100);
+                            var end = weekday[rate]['endHour'];
+                            var endTime = moment().hours(end);
+                            endTime.day(5);
+                            endTime.minutes((end*100)%100);
+                            var now = moment();
+
+                            //Check if current Time is within the start and endTime then display the price
+                            if(!now.isBetween(startTime,endTime))
+                                continue;
+
+                            modelText+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
                             var prices = Saturday[rate]['pricePerHalfHour'];
                             //per entry display
                             if(prices[1]==0)
@@ -585,14 +612,14 @@
                                     var prev = prices[0];
                                     for(var i=1;i<prices.length;i++){
                                         if(prices[i]!=prev){
-                                            modelText += "Price 1st h: $"+prev*2;
+                                            modelText += "Price 1st h: $"+prev*2+"<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                    modelText += " Subsequent 1/2 h: $"+prev+"<br>";
                                 }
                                 else{
-                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                    modelText += " Price per 1/2 h: $"+prices[0]+"<br>";
                                 }
                             }
                         }
@@ -601,8 +628,21 @@
                     if(carpark['Rates']['Sunday']!=null && day==6){
                         var Sunday = carpark['Rates']['Sunday'];
                         for(rate in Sunday){
-                            var start = new Date()
-                            modelText+="Start :"+Sunday[rate]['startHour']+"00 - "+Sunday[rate]['endHour']+"00 (";
+                            var start = weekday[rate]['startHour'];
+                            var startTime = moment().hours(start);
+                            startTime.minutes((start*100)%100);
+                            startTime.day(6);
+                            var end = weekday[rate]['endHour'];
+                            var endTime = moment().hours(end);
+                            endTime.day(6);
+                            endTime.minutes((end*100)%100);
+                            var now = moment();
+
+                            //Check if current Time is within the start and endTime then display the price
+                            if(!now.isBetween(startTime,endTime))
+                                continue;
+
+                            modelText+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
                             var prices = Sunday[rate]['pricePerHalfHour'];
                             //per entry display
                             if(prices[1]==0)
@@ -613,14 +653,14 @@
                                     var prev = prices[0];
                                     for(var i=1;i<prices.length;i++){
                                         if(prices[i]!=prev){
-                                            modelText += "Price 1st h: $"+prev*2;
+                                            modelText += "Price 1st h: $"+prev*2+"<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $"+prev+")<br>";
+                                    modelText += " Subsequent 1/2 h: $"+prev+"<br>";
                                 }
                                 else{
-                                    modelText += " Price per 1/2 h: $"+prices[0]+")<br>";
+                                    modelText += " Price per 1/2 h: $"+prices[0]+"<br>";
                                 }
                             }
                         }
