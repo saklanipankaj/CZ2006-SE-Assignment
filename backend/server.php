@@ -4,9 +4,9 @@
 	
 	$response = array();
 
-	$trigger = 'GET_CARPARKS';
-	switch ($trigger) {
-	//switch ($_POST['Action']) {
+	//$trigger = 'GET_CARPARKS';
+	//switch ($trigger) {
+	switch ($_POST['Action']) {
 		case 'GET_CARPARKS':
 			require_once 'ServerCarparkCollection.php';
 			require_once 'config.php';
