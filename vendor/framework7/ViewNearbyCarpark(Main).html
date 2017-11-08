@@ -656,6 +656,7 @@
               position: google.maps.ControlPosition.LEFT_TOP
           	}
         });
+        geolocate();
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
         directionsDisplay.setMap(map);
@@ -1380,7 +1381,7 @@
                     lng: position.coords.longitude
                 };
                 map.setCenter(geolocation);
-                map.setZoom(17);
+                map.setZoom(15);
                 var circle = new google.maps.Circle({
                     center: geolocation,
                     radius: position.coords.accuracy
