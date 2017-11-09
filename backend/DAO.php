@@ -2,10 +2,10 @@
 
 	interface DAO
 	{
-		public function getCollection();
-		public function add(object $object);
-		public function delete(object $object);
-		public function edit(object $old,object $new);
+		public function getCollection() : array;
+		public function add(object $object) : boolean;
+		public function delete(object $object) : boolean;
+		public function edit(object $old,object $new) : boolean;
 	}
 
 ?>

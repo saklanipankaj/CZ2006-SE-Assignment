@@ -35,11 +35,10 @@
 			if($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
 			}
-
 			return $conn;
 		}
 
-		public function getCollection()
+		public function getCollection() : array
 		{
 			$conn = $this->get_connection();
 
@@ -95,7 +94,7 @@
 			return $carpark_list;
 		}
 
-		public function add(object $object)
+		public function add(object $object) : boolean
 		{
 
 			// if($object instanceof Carpark)
@@ -155,7 +154,7 @@
 
 		}
 
-		public function delete(object $object)
+		public function delete(object $object) : boolean
 		{
 
 			$conn = $this->get_connection();
@@ -187,7 +186,7 @@
 
 		}
 
-		public function edit(object $old, object $new)
+		public function edit(object $old, object $new) : boolean
 		{
 			if($this->delete($old))
 			{
@@ -199,7 +198,7 @@
 			}
 		}
 
-		public function getAddCarparkList(string $addr)
+		public function getAddCarparkList(string $addr) : array
 		{
 			$conn = $this->get_connection();
 
@@ -256,7 +255,7 @@
 			return $carpark_list;
 		}
 
-		public function getNameCarparkList(string $name)
+		public function getNameCarparkList(string $name) : array
 		{
 			$conn = $this->get_connection();
 
@@ -313,7 +312,7 @@
 			return $carpark_list;
 		}
 
-		public function getCarpark(int $id)
+		public function getCarpark(int $id) : Carpark
 		{
 
 			$conn = $this->get_connection();
@@ -369,7 +368,7 @@
 			return $carpark;
 		}
 
-		public function checkCarparkExists(string $name)
+		public function checkCarparkExists(string $name) : boolean
 		{
 			$conn = $this->get_connection();
 			$carpark_sql = "SELECT carparks.id AS 'carpark_id',`name`, `avaliablelots`, `location`, locations.id AS 'location_id', Locations.latitude, Locations.longtitude FROM carparks INNER JOIN Locations ON carparks.location = Locations.id WHERE carparks.id = " . $id;
