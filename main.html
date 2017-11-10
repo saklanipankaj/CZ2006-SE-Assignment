@@ -61,62 +61,6 @@
 <div class = "views">
 	<div class = "view view-main">
 		<div class="pages">
-			<div data-page = "home" class = "page navbar-fixed">
-				<div class="statusbar-overlay"></div>
-				<div id="pac-card" class="navbar">
-					<div class="navbar-inner" style="padding:0;">
-
-						<a href="#" data-popover=".popover-links" class="link open-popover"  style="margin-left:10px;"><i class="icon icon-bars size-20"></i>&nbsp&nbsp</a>
-						<form class="searchbar">
-							<div class="searchbar-input">
-								<input id="searchBox" type="search" placeholder="Search" >
-								<a href="#" class="searchbar-clear"></a>
-							</div>
-							<a href="#" class="searchbar-cancel">Cancel</a>
-						</form>
-					</div>
-				</div>
-
-				<div class="page-content">
-					<div id="map-container" style="height:100%"></div>
-					<a href="#plan_route" style="right:3%; bottom:3%;" class="floating-button color-blue">
-						GO
-					</a>
-					<a href="#" id="clearBtn" onclick="resetRoute()" style="left:3%; bottom:3%; display:none;" class="floating-button color-red">Clear</a>
-				</div>
-			</div>
-
-			<!--Plan Route-->
-			<div data-page="plan_route"class="page cached">
-				<div class="navbar">
-					<div class="navbar-inner" style="padding:0;">
-						<div class="left">
-							<a href="#home" class="link icon-only back">
-								<i class="icon icon-back"></i>&nbsp&nbsp</a>
-						</div>
-						<div class="center sliding">
-							Plan Route
-						</div>
-					</div>
-				</div>
-
-				<div class="page-content">
-					<form class="searchbar searchbar-init" style="margin-top:45px">
-						<div class="searchbar-input" >
-							<input id="source" type="search" placeholder="Start" >
-							<a href="#" class="searchbar-clear"></a>
-						</div>
-					</form>
-					<br>
-					<form class="searchbar searchbar-init">
-						<div class="searchbar-input">
-							<input id="destination" type="search" placeholder="Destination" >
-							<a href="#" class="searchbar-clear"></a>
-						</div>
-					</form>
-					<a href="#home" onclick="route()" class="button button-big button-round active">Plan Route</a>
-				</div>
-			</div>
 
 			<!-- DisplayCP -->
 
@@ -574,17 +518,36 @@
 <script type="text/javascript" src="dist/carparks.json"></script>
 <script type="text/javascript" src="dist/carparks2.json"></script>
 
+
+<script type = "text/javascript" src = "dist/js/viewFactory.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places"></script>
+
 <script>
     var selectedCarpark = 0;
+    var autocomplete, map;
+    var markers = [];
+    var searchMarker;
+    var directionsService, directionsDisplay;
+    var searchBox, start, destination;
+	var map_contain = document.getElementById("map-container");
+    var apiLots;
+	get_lots();
+
     var myApp = new Framework7();
     var mainView = myApp.addView('.view-main',{
         domCache: true // enable inline pages
     });
-    //var viewFactory = new ViewFactory();
-    //viewFactory.createView('viewNearbyCarpark.html');
-    var map_contain = document.getElementById("map-container");
-    var apiLots;
-	get_lots();
+    //mainView.router.loadPage('views/viewNearbyCarpark.html');
+    var viewFactory = new ViewFactory();
+    mainView.router.loadPage('views/viewNearybyCarpark.html');
+    myApp.onPageBeforeInit('home', function (page) {
+	  console.log('One more callback for About page');
+	  console.log(page);
+	  initMap();
+	});
+
+
+
 
     function get_lots(async)
     {
@@ -637,11 +600,7 @@
     //            render(results);
     //        }
     //    });
-    var autocomplete, map;
-    var markers = [];
-    var searchMarker;
-    var directionsService, directionsDisplay;
-    var searchBox, start, destination;
+
 
     function initMap() {
 
@@ -1925,8 +1884,6 @@
     }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
-		async defer></script>
 
 </body>
 </html>
