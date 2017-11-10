@@ -78,37 +78,30 @@ function fromdisplaycp(){
     titlediv.innerHTML = "Select Carpark";
     titlediv.id = "searchcptitle";
 
-    <!-- <div class="list-block"> -->
     var licontdiv = document.createElement('div');
     licontdiv.className = "list-block";
 
-    <!-- <ul> -->
     var ul = document.createElement('ul');
 
-    <!-- <li class="item-content"> -->
     var licont = document.createElement('li');
     licont.className = "item-content";
 
-    <!-- <div class="item-inner" style="width: 60%;"> -->
     var innerdiv = document.createElement('div');
     innerdiv.className = "item-inner";
     innerdiv.setAttribute("style","width:60%");
 
-<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
     var p = document.createElement('p');
     //p.css("width","100%");
     //p.css("text-align","left");
     p.setAttribute("style","width:100%; text-align:left;");
     p.id = "xferback1";
 
-    <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
     var inputdiv = document.createElement('div');
     inputdiv.className = "item-inner";
     //inputdiv.css("width","40%");
     //inputdiv.css("margin","0 auto");
     inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
-
-<!-- <a href="#search" style="margin-left: auto">Search</a> -->
+    
     var a = document.createElement('a');
     a.href = "views/SearchCarparkUI.html";
     a.setAttribute("style","margin-left:auto;");
