@@ -572,7 +572,6 @@
 <!-- Patht to Framework7 Library JS: required for js itnerativity-->
 <script type = "text/javascript" src = "dist/js/framework7.min.js"></script>
 <script type="text/javascript" src="dist/carparks.json"></script>
-<script type="text/javascript" src="dist/carparks2.json"></script>
 
 <script>
     var selectedCarpark = 0;
@@ -588,7 +587,6 @@
 
     function get_lots(async)
     {
-
         var response;
 
         $.ajax({
@@ -684,8 +682,8 @@
         var d = new Date();
         var today = d.getDay();
         //console.log(apiLots);
-        for (name in json2) {
-            carpark = json2[name];
+        for (name in json) {
+            carpark = json[name];
             if(carpark["GPS"]!=null){
                 //for normal carpark with api lots
                 //console.log(carpark);
@@ -803,7 +801,7 @@
                     position: new google.maps.LatLng(carpark['GPS']['Lat'], carpark['GPS']['Long'])
                 });
                 marker.addListener('click', function(){
-                    var carpark = json2[this.title];
+                    var carpark = json[this.title];
                     //Change to Id once its done
                     selectedCarpark = this.title;
                     //console.log(selectedCarpark);
@@ -817,9 +815,9 @@
                     var id = carpark[id];
 
                     var lots = "N.A.";
-                    //console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
-                    if(json2[selectedCarpark].id !== undefined){
-                        lots = apiLots["Data"][json2[selectedCarpark].id];
+                    //console.log(selectedCarpark, json[selectedCarpark].id, apiLots["Data"][json[selectedCarpark].id]);
+                    if(json[selectedCarpark].id !== undefined){
+                        lots = apiLots["Data"][json[selectedCarpark].id];
                     }
                     /*
                     if(id != null)
@@ -1062,7 +1060,7 @@
     //function to populate the Display Carpark Page
     function displayCP() {
 
-        var carpark = json2[selectedCarpark];
+        var carpark = json[selectedCarpark];
 
         var weekdayDiv = document.getElementById("weekdayDiv");
         var saturdayDiv = document.getElementById("saturdayDiv");
@@ -1218,9 +1216,9 @@
         document.getElementById('carparkname').innerHTML = selectedCarpark;
 
         var lots = "Not Available";
-        //console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
-        if(json2[selectedCarpark].id !== undefined){
-            lots = apiLots["Data"][json2[selectedCarpark].id];
+        //console.log(selectedCarpark, json[selectedCarpark].id, apiLots["Data"][json[selectedCarpark].id]);
+        if(json[selectedCarpark].id !== undefined){
+            lots = apiLots["Data"][json[selectedCarpark].id];
         }
         document.getElementById('displaylots').innerHTML = lots;
     }
@@ -1477,7 +1475,7 @@
     document.getElementById('testingsearch').innerHTML="";
     //console.log(json);
     //console.log("hrllo");
-    for (place in json2) {
+    for (place in json) {
         var li = document.createElement('li');
         li.className="item-content";
 
@@ -1536,7 +1534,7 @@
                 //li.appendChild(document.createTextNode(prediction.description));
                 document.getElementById('testingsearch').appendChild(li);
             });
-            for (smth in json2) {
+            for (smth in json) {
                 var li = document.createElement('li');
                 li.className="item-content";
                 var itemsel = smth;
@@ -1835,7 +1833,7 @@
 
     document.getElementById('testingsearch1').innerHTML="";
     //console.log(json);
-    for (place in json2) {
+    for (place in json) {
         var li = document.createElement('li');
         li.className="item-content";
 
@@ -1893,7 +1891,7 @@
                 //li.appendChild(document.createTextNode(prediction.description));
                 document.getElementById('testingsearch1').appendChild(li);
             });
-            for (smth in json2) {
+            for (smth in json) {
                 var li = document.createElement('li');
                 li.className="item-content";
                 var itemsel = smth;

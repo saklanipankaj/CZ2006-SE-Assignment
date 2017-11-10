@@ -1,0 +1,38 @@
+<div class="view view-main">
+    <div class="page cached" data-page="search">
+        <!-- Search Bar overlay -->
+        <div class="searchbar-overlay"></div>
+
+        <div class="page-content"style="padding-top:0px;">
+            <div class="navbar" >
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="left">
+                        <a onclick="mainView.router.back();" class="link icon-only back">
+                            <i class="icon icon-back"></i>
+                        </a>
+                    </div>
+                    <div class="center sliding">Search Carpark</div>
+                </div>
+            </div>
+            <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                <div class="searchbar-input">
+                    <input type="search" placeholder="Search" id="searchform" onchange="userController.initService();">
+                </div>
+            </form>
+            <!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+            <!-- <div class="content-block-inner">Nothing found</div> -->
+            <!-- </div> -->
+
+            <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+
+            <div class="list-block list-block-search" style="margin-top:0px;">
+                <ul id="testingsearch">
+
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
