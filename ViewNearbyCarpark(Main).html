@@ -158,13 +158,13 @@
 									<div class="item-after resizable" id="carparkname" >~Carpark Name~</div>
 								</div>
 							</li>
-	<!--						<li class="item-content">
-								<div class="item-inner">
-									<div class="item-title">Address</div>
-									<div class="item-after">~Carpark Address~</div>
-								</div>
+							<!--						<li class="item-content">
+                                                        <div class="item-inner">
+                                                            <div class="item-title">Address</div>
+                                                            <div class="item-after">~Carpark Address~</div>
+                                                        </div>
 
-							</li>-->
+                                                    </li>-->
 
 							<li class="item-content" id="avalot">
 
@@ -208,7 +208,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 
 					<div id="sundayDiv" class="content-block-title">Sunday Fees:</div>
 					<div class="list-block">
@@ -372,7 +372,7 @@
 		<div data-page="feedback" class="page cached">
 			<div class="navbar">
 				<div class="navbar-inner">
-				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+					<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
 					<div class="left">
 						<a class="link icon-only" onclick="goBack()">
 							<i class="icon icon-back"></i>
@@ -381,46 +381,46 @@
 
 					<div class="center sliding alert-text-title">Submit Feedback</div>
 
-				  </div>
+				</div>
 			</div>
-            <!-- Scrollable page content -->
-            <div class="page-content">
+			<!-- Scrollable page content -->
+			<div class="page-content">
 				<div class="content-block-title"style="padding-left:10px; margin-top:60px;">Title</div>
 				<div class="list-block">
-				<ul>
-					<li class="item-content">
+					<ul>
+						<li class="item-content">
 							<div class="item-inner">
-							  	<div class="item-input">
+								<div class="item-input">
 									<input type="text" placeholder="Title" id="fbtitle">
-								  </div>
+								</div>
 							</div>
 
 						</li>
-				</ul>
+					</ul>
 				</div>
 
 				<div class="content-block-title"style="padding-left:10px;">Feedback Type</div>
 				<div class="list-block">
-				  <ul>
-					<li>
-					  <!-- Smart select, will be opened in Picker -->
-					  <a href="#" class="item-link smart-select" data-open-in="picker">
-						<select name="feedbacktype" id="feedbacktype" onchange="searchcp()">
-						  <option value="suggestion" id="fbtypedefault" selected>Suggestion</option>
-						  <option value="bug">Application Bug</option>
-						  <option value="missingcp">Missing Carpark</option>
-						  <option value="incorrectcp" id="fbtypedefault2">Incorrect Carpark Details</option>
-						</select>
-						<div class="item-content">
-						  <div class="item-inner" id="tryclear">
-							<!-- Select label -->
-							<div class="item-title">Type</div>
+					<ul>
+						<li>
+							<!-- Smart select, will be opened in Picker -->
+							<a href="#" class="item-link smart-select" data-open-in="picker">
+								<select name="feedbacktype" id="feedbacktype" onchange="searchcp()">
+									<option value="suggestion" id="fbtypedefault" selected>Suggestion</option>
+									<option value="bug">Application Bug</option>
+									<option value="missingcp">Missing Carpark</option>
+									<option value="incorrectcp" id="fbtypedefault2">Incorrect Carpark Details</option>
+								</select>
+								<div class="item-content">
+									<div class="item-inner" id="tryclear">
+										<!-- Select label -->
+										<div class="item-title">Type</div>
 
-						  </div>
-						</div>
-						</a>
-					</li>
-				  </ul>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
 				</div>
 
 				<div id="parentdiv">
@@ -431,13 +431,13 @@
 				<div class="list-block">
 					<ul>
 						<li class="item-content">
-						<div class="item-content" style="width: 100%; padding: 0px;">
-							<div class="item-inner" style="padding: 0px;">
-							  <div class="item-input">
-								<textarea class="resizable" id="fbtext"></textarea>
-							  </div>
+							<div class="item-content" style="width: 100%; padding: 0px;">
+								<div class="item-inner" style="padding: 0px;">
+									<div class="item-input">
+										<textarea class="resizable" id="fbtext"></textarea>
+									</div>
+								</div>
 							</div>
-						  </div>
 						</li>
 					</ul>
 				</div>
@@ -448,70 +448,70 @@
 						<li class="item-content">
 							<div class="item-inner" style="padding:0px;">
 								<input type="text" placeholder="Name" id="fbname">
-						  </div>
+							</div>
 						</li>
 						<li class="item-content">
 							<div class="item-inner" style="padding:0px;">
 								<input type="text" placeholder="Contact Number" id="fbcontact">
-						  </div>
+							</div>
 						</li>
 						</li>
 						<li class="item-content">
 							<div class="item-inner" style="padding:0px;">
 								<input type="text" placeholder="Email Address" id="fbemail">
-						  </div>
+							</div>
 						</li>
 					</ul>
 				</div>
 
 				<div class="row center">
-				  <div class="col-70" style="margin:0 auto; margin-bottom:25px;">
-					<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
-				  </div>
-				</div>
-
-				</div>
-          </div>
-		  
-
-		  <div class="page cached" data-page="searchfromfeedback">
-
-
-			  <!-- Search Bar overlay -->
-			  <div class="searchbar-overlay"></div>
-
-            <div class="page-content"style="padding-top:0px;">
-				<div class="navbar" >
-				<div class="navbar-inner">
-				  <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-					<div class="left">
-						<a href="#feedback" class="link icon-only back">
-							<i class="icon icon-back"></i>
-						</a>
+					<div class="col-70" style="margin:0 auto; margin-bottom:25px;">
+						<a href="#" class="button button-big button-red" onclick="submitfb()">Submit Feedback</a>
 					</div>
-					<div class="center sliding">Search Carpark</div>
-				  </div>
-			</div>
-			<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
-				<div class="searchbar-input">
-				  <input type="search" placeholder="Search" id="searchform1" onchange="initService1();">
 				</div>
-			  </form>
-			<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
-			<!-- <div class="content-block-inner">Nothing found</div> -->
+
+			</div>
+		</div>
+
+
+		<div class="page cached" data-page="searchfromfeedback">
+
+
+			<!-- Search Bar overlay -->
+			<div class="searchbar-overlay"></div>
+
+			<div class="page-content"style="padding-top:0px;">
+				<div class="navbar" >
+					<div class="navbar-inner">
+						<!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+						<div class="left">
+							<a href="#feedback" class="link icon-only back">
+								<i class="icon icon-back"></i>
+							</a>
+						</div>
+						<div class="center sliding">Search Carpark</div>
+					</div>
+				</div>
+				<form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+					<div class="searchbar-input">
+						<input type="search" placeholder="Search" id="searchform1" onchange="initService1();">
+					</div>
+				</form>
+				<!-- <div class="content-block searchbar-not-found" style="margin-top:45px;"> -->
+				<!-- <div class="content-block-inner">Nothing found</div> -->
 				<!-- </div> -->
 
 				<!-- This block will be displayed if anything found, and this list block is used a searbar target -->
 
 				<div class="list-block list-block-search" style="margin-top:0px;">
-				  <ul id="testingsearch1">
+					<ul id="testingsearch1">
 
 
-				</ul>
+					</ul>
+				</div>
+
 			</div>
-
-        </div>
-        </div>
+		</div>
 
 		<div class="page cached" data-page="search">
 
@@ -576,45 +576,45 @@
 <script type="text/javascript" src="dist/carparks2.json"></script>
 
 <script>
-	var selectedCarpark = 0;
+    var selectedCarpark = 0;
     var myApp = new Framework7();
     var mainView = myApp.addView('.view-main',{
         domCache: true // enable inline pages
     });
     var map_contain = document.getElementById("map-container");
-	var apiLots;
-	
-	console.log(json2);
-	get_lots();
-	
-	function get_lots(async)
-	{	
-	
-		var response;
-	
-		$.ajax({
-			url: "/CZ2006/backend/server.php",
-			method: "POST",
-			data: {'Action': 'GET_LOTS' },
-			dataType: 'json',
-			async: false,
-			success:function(data,response)
-			{
-				console.log(data);
-				apiLots = data;
-				response = data;
-			},
-			error:function(jqXHR, text, errorThrown)
-			{
-				console.log(jqXHR); 
-				console.log(text);
-				console.log(errorThrown);
-			}
-		});
-		
-		return response;
-	}
-	
+    var apiLots;
+
+    console.log(json2);
+    get_lots();
+
+    function get_lots(async)
+    {
+
+        var response;
+
+        $.ajax({
+            url: "backend/server.php",
+            method: "POST",
+            data: {'Action': 'GET_LOTS' },
+            dataType: 'json',
+            async: false,
+            success:function(data,response)
+            {
+                console.log(data);
+                apiLots = data;
+                response = data;
+            },
+            error:function(jqXHR, text, errorThrown)
+            {
+                console.log(jqXHR);
+                console.log(text);
+                console.log(errorThrown);
+            }
+        });
+
+        return response;
+    }
+
 
     // carpark data demo array for autocompelte
     var fruits = ('Apple Apricot Avocado Banana Melon Orange Peach Pear Pineapple').split(' ');
@@ -643,18 +643,18 @@
     var searchMarker;
     var directionsService, directionsDisplay;
     var searchBox, start, destination;
-	
+
     function initMap() {
-		
+
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {lat: 1.3521, lng: 103.81985},
             zoom: 11,
-			zoomControl: false,
-          	scaleControl: false,
-			mapTypeControl: false,
-			streetViewControlOptions: {
-              position: google.maps.ControlPosition.LEFT_TOP
-          	}
+            zoomControl: false,
+            scaleControl: false,
+            mapTypeControl: false,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            }
         });
         geolocate();
         directionsDisplay = new google.maps.DirectionsRenderer;
@@ -666,13 +666,13 @@
         var startInput = document.getElementById('source');
         var destinationInput = document.getElementById('destination');
         searchBox = new google.maps.places.SearchBox(input);
-		start = new google.maps.places.SearchBox(startInput);
+        start = new google.maps.places.SearchBox(startInput);
         destination = new google.maps.places.SearchBox(destinationInput);
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-          start.setBounds(map.getBounds());
-          destination.setBounds(map.getBounds());
+            searchBox.setBounds(map.getBounds());
+            start.setBounds(map.getBounds());
+            destination.setBounds(map.getBounds());
         });
 
 //        // Bias the SearchBox results towards current map's viewport.
@@ -682,121 +682,121 @@
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
         var marker, carpark, location
-		var d = new Date();
-		var today = d.getDay();
-		//console.log(apiLots);
+        var d = new Date();
+        var today = d.getDay();
+        //console.log(apiLots);
         for (name in json2) {
             carpark = json2[name];
             if(carpark["GPS"]!=null){
-			//for normal carpark with api lots
-				//console.log(carpark);
-				if(carpark.id !== undefined) {
-					var lots = apiLots["Data"][carpark.id];
-					if(lots == 0) {
-						var image = {
-						url: 'dist/carpark_red.png',
-						//size: new google.maps.Size(100, 100),
-						// The origin for this image is (0, 0).
-						origin: new google.maps.Point(0, 0),
-						// The anchor with respect to the Lat and Long
-						anchor: new google.maps.Point(15, 15)}	
-					}else if(lots >= 25 && lots <= 50) {
-						var image = {
-						url: 'dist/carpark_orange.png',
-						//size: new google.maps.Size(100, 100),
-						// The origin for this image is (0, 0).
-						origin: new google.maps.Point(0, 0),
-						// The anchor with respect to the Lat and Long
-						anchor: new google.maps.Point(15, 15)}
-					}else
-					{
-						var image = {
-						url: 'dist/carpark_green.png',
-						//size: new google.maps.Size(100, 100),
-						// The origin for this image is (0, 0).
-						origin: new google.maps.Point(0, 0),
-						// The anchor with respect to the Lat and Long
-						anchor: new google.maps.Point(15, 15)}
-					}
-				}else
-				//weekday < 50c
-				if(today != 5 || today != 6) 
-				{
-					//console.log(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]);
-					if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= 0.5)
-					{
-						var image = {
-                    url: 'dist/cheapest_carpark_original.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}else{
-						var image = {
-                    url: 'dist/cheapest_carpark_original_red.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}
-				}else if (today == 5) {
-					if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= 1)
-					{
-						var image = {
-                    url: 'dist/cheapest_carpark_original.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}else{
-						var image = {
-                    url: 'dist/cheapest_carpark_original_red.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}
-				}else if (today == 6) {
-					if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= 1)
-					{
-						var image = {
-                    url: 'dist/cheapest_carpark_original.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}else{
-						var image = {
-                    url: 'dist/cheapest_carpark_original_red.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)}
-					}
-				}
-				else
-				{
-					var image = {
-                    url: 'dist/carpark_red.png',
-                    //size: new google.maps.Size(100, 100),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor with respect to the Lat and Long
-                    anchor: new google.maps.Point(15, 15)
-                };
-				}
-		
-			
-			
+                //for normal carpark with api lots
+                //console.log(carpark);
+                if(carpark.id !== undefined) {
+                    var lots = apiLots["Data"][carpark.id];
+                    if(lots == 0) {
+                        var image = {
+                            url: 'dist/carpark_red.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }else if(lots >= 25 && lots <= 50) {
+                        var image = {
+                            url: 'dist/carpark_orange.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }else
+                    {
+                        var image = {
+                            url: 'dist/carpark_green.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }
+                }else
+                //weekday < 50c
+                if(today != 0 || today != 6)
+                {
+                    //console.log(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]);
+                    if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= 0.5)
+                    {
+                        var image = {
+                            url: 'dist/cheapest_carpark_original.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }else{
+                        var image = {
+                            url: 'dist/cheapest_carpark_original_red.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }
+                }else if (today == 6) {
+                    if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= 1)
+                    {
+                        var image = {
+                            url: 'dist/cheapest_carpark_original.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }else{
+                        var image = {
+                            url: 'dist/cheapest_carpark_original_red.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }
+                }else if (today == 0) {
+                    if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= 1)
+                    {
+                        var image = {
+                            url: 'dist/cheapest_carpark_original.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }else{
+                        var image = {
+                            url: 'dist/cheapest_carpark_original_red.png',
+                            //size: new google.maps.Size(100, 100),
+                            // The origin for this image is (0, 0).
+                            origin: new google.maps.Point(0, 0),
+                            // The anchor with respect to the Lat and Long
+                            anchor: new google.maps.Point(15, 15)}
+                    }
+                }
+                else
+                {
+                    var image = {
+                        url: 'dist/carpark_red.png',
+                        //size: new google.maps.Size(100, 100),
+                        // The origin for this image is (0, 0).
+                        origin: new google.maps.Point(0, 0),
+                        // The anchor with respect to the Lat and Long
+                        anchor: new google.maps.Point(15, 15)
+                    };
+                }
 
-			//for normal carpark without api lots and price > 50c
-                
+
+
+
+                //for normal carpark without api lots and price > 50c
+
                 marker = new google.maps.Marker({
                     map: map,
                     icon: image,
@@ -806,66 +806,67 @@
                 marker.addListener('click', function(){
                     var carpark = json2[this.title];
                     //Change to Id once its done
-					selectedCarpark = this.title;
-					//console.log(selectedCarpark);
+                    selectedCarpark = this.title;
+                    //console.log(selectedCarpark);
                     // Check first, if we already have opened picker
                     if ($('.picker-modal.modal-in').length > 0) {
                         myApp.closeModal('.picker-modal.modal-in');
                     }
 
                     //Available Lots go here
-					//var lots;
-					var id = carpark[id];
-					
-					var lots = "N.A.";
-					//console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
-					if(json2[selectedCarpark].id !== undefined){
-						lots = apiLots["Data"][json2[selectedCarpark].id];
-					}
-					/*
-					if(id != null)
-						lots = getAvailableLots(carpark[id]);
-					else
-						lots = "N.A.";
-					*/
+                    //var lots;
+                    var id = carpark[id];
+
+                    var lots = "N.A.";
+                    //console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
+                    if(json2[selectedCarpark].id !== undefined){
+                        lots = apiLots["Data"][json2[selectedCarpark].id];
+                    }
+                    /*
+                    if(id != null)
+                        lots = getAvailableLots(carpark[id]);
+                    else
+                        lots = "N.A.";
+                    */
                     var modelText=
                         '<div class="picker-modal"  style="background-color:white">' +
-							'<div class="picker-modal-inner">' +
-								'<div class="toolbar" style="background-color:#007aff">' +
-									'<div class="toolbar-inner">' +
-										'<div class="left"></div>\n' +
-										'<div class="right"><a href="#" class="link close-picker" style="color:white;">Close</a></div>\n' +
-									'</div>' +
-								'</div>' +
-								'<div class="content-block left">' +
-								'<div class="speed-dial">\n' +
-                        				'<!-- FAB inside will open Speed Dial actions -->\n' +
-										'<a href="#" class="floating-button">\n' +
-										'<!-- First icon is visible when Speed Dial actions are closed -->\n' +
-										'<i class="f7-icons">add</i>\n' +
-										'<!-- Second icon is visible when Speed Dial actions are opened -->\n' +
-										'<i class="f7-icons">close</i>' +
-										'</a>\n' +
-										'<!-- Speed Dial Actions -->\n' +
-										'<div class="speed-dial-buttons">\n' +
-											'<!-- First Speed Dial button -->\n' +
-											'<a href="#plan_route" class="link close-picker" onclick="setDestination()">\n' +
-											'GO' +
-											'</a>\n' +
-											'<!-- Second Speed Dial  button -->\n' +
-											'<a href="#displayCP" class="link close-picker" onclick="displayCP()">\n' +
-												'<i class="f7-icons">info_fill</i>\n' +
-											'</a>\n' +
-										'</div>' +
-								'</div>'+
-								'<h5 class="content-block-title">'+ this.title+' Carpark</h5>' +
-									'<p><u>Parking Rates</u><br>';
+                        '<div class="picker-modal-inner">' +
+                        '<div class="toolbar" style="background-color:#007aff">' +
+                        '<div class="toolbar-inner">' +
+                        '<div class="left"></div>\n' +
+                        '<div class="right"><a href="#" class="link close-picker" style="color:white;">Close</a></div>\n' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="content-block left">' +
+                        '<div class="speed-dial">\n' +
+                        '<!-- FAB inside will open Speed Dial actions -->\n' +
+                        '<a href="#" class="floating-button">\n' +
+                        '<!-- First icon is visible when Speed Dial actions are closed -->\n' +
+                        '<i class="f7-icons">add</i>\n' +
+                        '<!-- Second icon is visible when Speed Dial actions are opened -->\n' +
+                        '<i class="f7-icons">close</i>' +
+                        '</a>\n' +
+                        '<!-- Speed Dial Actions -->\n' +
+                        '<div class="speed-dial-buttons">\n' +
+                        '<!-- First Speed Dial button -->\n' +
+                        '<a href="#plan_route" class="link close-picker" onclick="setDestination()">\n' +
+                        'GO' +
+                        '</a>\n' +
+                        '<!-- Second Speed Dial  button -->\n' +
+                        '<a href="#displayCP" class="link close-picker" onclick="displayCP()">\n' +
+                        '<i class="f7-icons">info_fill</i>\n' +
+                        '</a>\n' +
+                        '</div>' +
+                        '</div>'+
+                        '<h5 class="content-block-title">'+ this.title+' Carpark</h5>' +
+                        '<p><u>Parking Rates</u><br>';
 
                     var now = new Date();
-					var day = now.getDay();
+                    var day = now.getDay();
+                    console.log(day);
 
                     //There is a Weekday Rate
-                    if(carpark['Rates']['Weekday']!=null && day!=5&&day!=6){
+                    if(carpark['Rates']['Weekday']!=null && day!=0&&day!=6){
                         var weekday = carpark['Rates']['Weekday'];
                         for(rate in weekday){
                             var start = weekday[rate]['startHour'];
@@ -904,14 +905,14 @@
                         }
                     }
                     //There is a Saturday Rate
-                    if(carpark['Rates']['Saturday']!=null  && day==5){
+                    if(carpark['Rates']['Saturday']!=null  && day==6){
                         var Saturday = carpark['Rates']['Saturday'];
                         for(rate in Saturday){
-                            var start = weekday[rate]['startHour'];
+                            var start = Saturday[rate]['startHour'];
                             var startTime = moment().hours(start);
                             startTime.day(5);
                             startTime.minutes((start*100)%100);
-                            var end = weekday[rate]['endHour'];
+                            var end = Saturday[rate]['endHour'];
                             var endTime = moment().hours(end);
                             endTime.day(5);
                             endTime.minutes((end*100)%100);
@@ -945,14 +946,14 @@
                         }
                     }
                     //There is a Saturday Rate
-                    if(carpark['Rates']['Sunday']!=null && day==6){
+                    if(carpark['Rates']['Sunday']!=null && day==0){
                         var Sunday = carpark['Rates']['Sunday'];
                         for(rate in Sunday){
-                            var start = weekday[rate]['startHour'];
+                            var start = Sunday[rate]['startHour'];
                             var startTime = moment().hours(start);
                             startTime.minutes((start*100)%100);
                             startTime.day(6);
-                            var end = weekday[rate]['endHour'];
+                            var end = Sunday[rate]['endHour'];
                             var endTime = moment().hours(end);
                             endTime.day(6);
                             endTime.minutes((end*100)%100);
@@ -987,10 +988,10 @@
                     }
 
                     modelText+= '</p></div>' +
-								'<!-- Floating Action Button -->\n' +
-								'<a class="floating-button color-red" style="left:5%; text-align:center">\n' +
-									'<b><u>Lots</u><br>'+lots+'</b>\n' +
-								'</a>'+
+                        '<!-- Floating Action Button -->\n' +
+                        '<a class="floating-button color-red" style="left:5%; text-align:center">\n' +
+                        '<b><u>Lots</u><br>'+lots+'</b>\n' +
+                        '</a>'+
                         '</div>';
                     myApp.pickerModal(modelText);
                 });
@@ -1021,14 +1022,14 @@
                     anchor: new google.maps.Point(17, 34),
                     scaledSize: new google.maps.Size(25, 25)
                 };
-				// Create a marker for each place.
-				if(searchMarker	!= null)
-				    searchMarker.setMap(null);
-				searchMarker = new google.maps.Marker({
-				  map: map,
-				  title: place.name,
-				  position: place.geometry.location
-				});
+                // Create a marker for each place.
+                if(searchMarker	!= null)
+                    searchMarker.setMap(null);
+                searchMarker = new google.maps.Marker({
+                    map: map,
+                    title: place.name,
+                    position: place.geometry.location
+                });
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
@@ -1041,15 +1042,15 @@
         });
     }
 
-	  
+
 
     //Set Destination
-	function setDestination(){
-	    document.getElementById('destination').value = selectedCarpark;
-	}
+    function setDestination(){
+        document.getElementById('destination').value = selectedCarpark;
+    }
 
-	//function to populate the Display Carpark Page
-	function displayCP() {
+    //function to populate the Display Carpark Page
+    function displayCP() {
 
         var carpark = json2[selectedCarpark];
 
@@ -1068,12 +1069,12 @@
         //There is a Weekday Rate
 
         if(carpark['Rates']['Weekday']!=null){
-			weekdayDiv.style.display = "inline";
+            weekdayDiv.style.display = "inline";
             var weekday = carpark['Rates']['Weekday'];
             for(rate in weekday){
                 //Used to Poulate the List
                 var weekdayRate = '<li class="item-content">\n' +
-                '<div class="item-inner"id = "satfee">\n';
+                    '<div class="item-inner"id = "satfee">\n';
                 var start = weekday[rate]['startHour'];
                 var startTime = moment().hours(start);
                 startTime.minutes((start*100)%100);
@@ -1082,7 +1083,7 @@
                 endTime.minutes((end*100)%100);
 
                 weekdayRate+="Start :"+startTime.format('HHmm')+" - "+endTime.format('HHmm')+"<br>";
-				var prices = weekday[rate]['pricePerHalfHour'];
+                var prices = weekday[rate]['pricePerHalfHour'];
                 //per entry display
                 if(prices[1]==0)
                     weekdayRate += "Per Entry:$"+prices[0];
@@ -1108,7 +1109,7 @@
             }
         }
         else{
-			weekdayDiv.style.display = "none";
+            weekdayDiv.style.display = "none";
         }
         //There is a Saturday Rate
         if(carpark['Rates']['Saturday']!=null){
@@ -1116,11 +1117,11 @@
             saturdayDiv.style.display = "inline";
 
             for(rate in Saturday){
-				//Used to Poulate the List
+                //Used to Poulate the List
                 var saturdayRate = '<li class="item-content">\n' +
-                '<div class="item-inner"id = "satfee">\n';
+                    '<div class="item-inner"id = "satfee">\n';
 
-                var start = weekday[rate]['startHour'];
+                var start = Saturday[rate]['startHour'];
                 var startTime = moment().hours(start);
                 startTime.day(5);
                 startTime.minutes((start*100)%100);
@@ -1162,9 +1163,9 @@
             sundayDiv.style.display = "inline";
 
             for(rate in Sunday){
-				//Used to Poulate the List
+                //Used to Poulate the List
                 var sundayRate = '<li class="item-content">\n' +
-                '<div class="item-inner"id = "satfee">\n';
+                    '<div class="item-inner"id = "satfee">\n';
                 var start = weekday[rate]['startHour'];
                 var startTime = moment().hours(start);
                 startTime.minutes((start*100)%100);
@@ -1199,177 +1200,222 @@
                 sundayRateUL.innerHTML+=sundayRate;
             }
         }else{
-          sundayDiv.style.display = "none";
-       }
+            sundayDiv.style.display = "none";
+        }
 
 
-			document.getElementById('displayCPname').innerHTML = selectedCarpark;
-			document.getElementById('carparkname').innerHTML = selectedCarpark;
+        document.getElementById('displayCPname').innerHTML = selectedCarpark;
+        document.getElementById('carparkname').innerHTML = selectedCarpark;
 
-		var lots = "Not Available";
-					//console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
-					if(json2[selectedCarpark].id !== undefined){
-						lots = apiLots["Data"][json2[selectedCarpark].id];
-					}
-		document.getElementById('displaylots').innerHTML = lots;
-	}
-		function slidervalue(slider){
-			document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
-			var carpark = json[selectedCarpark];
-			var now = moment();
-			var end = moment().add(document.getElementById('slideroutput').innerHTML=slider.value, 'h');
-			var total = 0;
+        var lots = "Not Available";
+        //console.log(selectedCarpark, json2[selectedCarpark].id, apiLots["Data"][json2[selectedCarpark].id]);
+        if(json2[selectedCarpark].id !== undefined){
+            lots = apiLots["Data"][json2[selectedCarpark].id];
+        }
+        document.getElementById('displaylots').innerHTML = lots;
+    }
+    function slidervalue(slider){
+        document.getElementById('slideroutput').innerHTML=slider.value +"Hour";
+        var carpark = json[selectedCarpark];
+        var now = moment();
+        var end = moment().add(document.getElementById('slideroutput').innerHTML=slider.value, 'h');
+        var total = 0;
+        var count =0;
+        while(!now.isSameOrAfter(end)){
+            if(carpark['Rates']==null)
+                break;
 
-			while(!now.isSameOrAfter(end)){
-			    if(carpark['Rates']==null)
-			        break;
-
-				if(now.day()!=5 && now.day()!=6){
-					if(carpark['Rates']['Weekday']!=null){
-					    var weekday = carpark['Rates']['Weekday'];
-						for(rate in weekday){
-
-							var start = weekday[rate]['startHour'];
-							var startTime = moment().hours(start);
-							startTime.minutes((start*100)%100);
-							var end2 = weekday[rate]['endHour'];
-							var endTime = moment().hours(end2);
-							endTime.minutes((end*100)%100);
-
-							if(!now.isBetween(startTime,endTime)||now.day()==5||now.day()==6)
-								continue;
-
-							var prices = weekday[rate]['pricePerHalfHour'];
-							while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-								console.log("outerloop");
-							    //per entry display
-								if(prices[1]==0){
-									total+= prices[0]*100;
-								}
-								else{
-									//1St Hour and subsequent Hour
-									if(prices.length>2){
-										var i, last;
-									    for(i=0;i<prices.length;i++){
-											total+=(prices[i]*100);
-											now.add(30,'m');
-											last=prices[i]*100;
-											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
-											    break;
-										}
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-										    console.log("innerloop");
-										    console.log(last);
-										    total+=last;
-										    console.log(total);
-											now.add(30,'m');
-											console.log("Loop1");
-										}
-									}
-									else{
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-											total+=prices[0]*100;
-											now.add(30,'m');
-											console.log("Loop1");
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				else if(now.day()==5){
-				    if(carpark['Rates']['Saturday']!=null){
-						var saturday = carpark['Rates']['Saturday'];
-						for(rate in saturday){
-
-							var start = saturday[rate]['startHour'];
-							var startTime = moment().hours(start);
-							startTime.minutes((start*100)%100);
-							var end2 = saturday[rate]['endHour'];
-							var endTime = moment().hours(end2);
-							endTime.minutes((end*100)%100);
-
-							if(!now.isBetween(startTime,endTime)||now.day()!=5)
-								continue;
-							var prices = saturday[rate]['pricePerHalfHour'];
-							while(now.isBetween(startTime,endTime)){
-								//per entry display
-								if(prices[1]==0){
-									total+= prices[0]*100;
-								}
-								else{
-									//1St Hour and subsequent Hour
-									if(prices.length>2){
-										for(var i=0;i<prices.length;i++){
-											total+=prices[i]*100;
-											now.add(30,'m');
-											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
-											    break;
-										}
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-											total+=prices[prices.length-1]*100;
-											now.add(30,'m');
-										}
-									}
-									else{
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-											total+=prices[0]*100;
-											now.add(30,'m');
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				else{
-					if(carpark['Rates']['Sunday']!=null){
-						var sunday = carpark['Rates']['Sunday'];
-						for(rate in sunday){
-
-							var start = sunday[rate]['startHour'];
-							var startTime = moment().hours(start);
-							startTime.minutes((start*100)%100);
-							var end2 = sunday[rate]['endHour'];
-							var endTime = moment().hours(end2);
-
-							if(!now.isBetween(startTime,endTime)||now.day()!=5)
-								continue;
-							var prices = sunday[rate]['pricePerHalfHour'];
-							while(now.isBetween(startTime,endTime)){
-								//per entry display
-								if(prices[1]==0){
-									total+= prices[0]*100;
-								}
-								else{
-									//1St Hour and subsequent Hour
-									if(prices.length>2){
-										for(var i=0;i<prices.length;i++){
-											total+=prices[i]*100;
-											now.add(30,'m');
-											if(!now.isBetween(startTime,endTime)||now.isSameOrAfter(end))
-											    break;
-										}
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-											total+=prices[prices.length-1]*100;
-											now.add(30,'m');
-										}
-									}
-									else{
-										while(now.isBetween(startTime,endTime)&&!now.isSameOrAfter(end)){
-											total+=prices[0]*100;
-											now.add(30,'m');
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+            if(count>2){
+                console.log("INFINTE LOOP/ CARPARK NO 24H Parking");
+                break;
             }
-            document.getElementById('calculatefee').innerHTML = "$"+total/100;
-		}
+
+            if(now.day()!=0 && now.day()!=6){
+                if(carpark['Rates']['Weekday']!=null){
+                    var weekday = carpark['Rates']['Weekday'];
+                    for(rate in weekday){
+                        //used for 2 loops where day could have changed to weekends
+                        if(now.day()==0 && now.day()==6)
+                            break;
+                        console.log("Weekday Loop");
+                        var start = weekday[rate]['startHour'];
+                        var startTime = moment(now).hours(start);
+                        startTime.minutes((start*100)%100);
+                        var end2 = weekday[rate]['endHour'];
+                        var endTime = moment(now).hours(end2);
+                        endTime.minutes((end2*100)%100);
+                        if(endTime.isBefore(startTime)){
+                            endTime.add(1,'d');
+                            console.log("EndTime day Added!");
+                        }
+
+                        if(!now.isBetween(startTime,endTime,null,'[]')||now.day()==0||now.day()==6)
+                            continue;
+
+                        var prices = weekday[rate]['pricePerHalfHour'];
+                        if(prices[1]==0){
+                            if(total==0)
+                                total+= prices[0]*100;
+
+                            if(endTime.isBefore(end))
+                                now = endTime;
+                            else
+                                now = end;
+
+                            now.add(1,'m');
+                        }
+                        else{
+                            //1St Hour and subsequent Hour
+                            if(prices.length>2){
+                                var i, last;
+                                for(i=0;i<prices.length;i++){
+                                    console.log('First Loop');
+                                    total+=(prices[i]*100);
+                                    now.add(30,'m');
+                                    last=prices[i]*100;
+                                    if(!now.isBetween(startTime,endTime,null,'[]')||now.isSameOrAfter(end))
+                                        break;
+                                }
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    console.log('Subsequent Loop');
+                                    total+=last;
+                                    now.add(30,'m');
+                                }
+                                console.log("Subsequent Loop Exited");
+                            }
+                            else{
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    total+=prices[0]*100;
+                                    now.add(30,'m');
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            else if(now.day()==6){
+                if(carpark['Rates']['Saturday']!=null){
+                    var saturday = carpark['Rates']['Saturday'];
+                    console.log("Saturday Loop");
+                    for(rate in saturday){
+                        console.log("Saturday");
+                        //used for 2 loops where day could have changed to weekends
+                        if(now.day()!=6)
+                            break;
+                        var start = saturday[rate]['startHour'];
+                        var startTime = moment(now).hours(start);
+                        startTime.minutes((start*100)%100);
+                        var end2 = saturday[rate]['endHour'];
+                        var endTime = moment(now).hours(end2);
+                        endTime.minutes((end2*100)%100);
+                        if(endTime.isBefore(startTime)){
+                            endTime.add(1,'d');
+                            console.log("EndTime day Added!");
+                        }
+
+                        if(!now.isBetween(startTime,endTime,null,'[]')||now.day()!=6)
+                            continue;
+
+                        var prices = saturday[rate]['pricePerHalfHour'];
+                        if(prices[1]==0){
+                             if(total==0)
+                                total+= prices[0]*100;
+
+                            if(endTime.isBefore(end))
+                                now = endTime;
+                            else
+                                now = end;
+
+                            now.add(1,'m');
+                        }
+                        else{
+                            //1St Hour and subsequent Hour
+                            if(prices.length>2){
+                                var i, last;
+                                for(i=0;i<prices.length;i++){
+                                    total+=(prices[i]*100);
+                                    now.add(30,'m');
+                                    last=prices[i]*100;
+                                    if(!now.isBetween(startTime,endTime,null,'[]')||now.isSameOrAfter(end))
+                                        break;
+                                }
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    total+=last;
+                                    now.add(30,'m');
+                                }
+                            }
+                            else{
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    total+=prices[0]*100;
+                                    now.add(30,'m');
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+            else{
+                if(carpark['Rates']['Sunday']!=null){
+                    var sunday = carpark['Rates']['Sunday'];
+                    for(rate in sunday){
+                        if(now.day()!=0)
+                            break;
+                        var start = sunday[rate]['startHour'];
+                        var startTime = moment().hours(start);
+                        startTime.minutes((start*100)%100);
+                        var end2 = sunday[rate]['endHour'];
+                        var endTime = moment().hours(end2);
+                        if(endTime.isBefore(startTime)){
+                            endTime.add(1,'d');
+                            console.log("EndTime day Added!");
+                        }
+                        if(!now.isBetween(startTime,endTime,null,'[]')||now.day()!=0)
+                            continue;
+
+                        var prices = sunday[rate]['pricePerHalfHour'];
+                        //per entry display
+                        if(prices[1]==0){
+                             if(total==0)
+                                total+= prices[0]*100;
+
+                            if(endTime.isBefore(end))
+                                now = endTime;
+                            else
+                                now = end;
+
+                            now.add(1,'m');
+                        }
+                        else{
+                            //1St Hour and subsequent Hour
+                            if(prices.length>2){
+                                var i, last;
+                                for(i=0;i<prices.length;i++){
+                                    total+=(prices[i]*100);
+                                    now.add(30,'m');
+                                    last=prices[i]*100;
+                                    if(!now.isBetween(startTime,endTime,null,'[]')||now.isSameOrAfter(end))
+                                        break;
+                                }
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    total+=last;
+                                    now.add(30,'m');
+                                }
+                            }
+                            else{
+                                while(now.isBetween(startTime,endTime,null,'[]')&&!now.isSameOrAfter(end)){
+                                    total+=prices[0]*100;
+                                    now.add(30,'m');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        document.getElementById('calculatefee').innerHTML = "$"+total/100;
+    }
 
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
@@ -1400,7 +1446,7 @@
             origin:start,
             destination:destination,
             travelMode: 'DRIVING',
-			region:'sls'
+            region:'sls'
         };
         directionsService.route(request, function(response, status) {
             if (status == 'OK') {
@@ -1538,335 +1584,335 @@
 
         }, 1000);
     }
-	
-	function fromdisplaycp(){
-		//document.getElementById('changethisnow').href = "#displayCP";
-		//console.log(document.getElementById('changethisnow').href);
-		//document.getElementById('changethislater').href = "#home";
-		document.getElementById('changethislater').style.zIndex = '100000000000';
-		resetfb();
-		var parentdiv = document.getElementById('parentdiv');
-		var option = document.getElementById("feedbacktype").value;
-
-		var titlediv = document.createElement('div');
-			titlediv.className = "content-block-title";
-			titlediv.setAttribute("style","padding-left:10px");
-			titlediv.innerHTML = "Select Carpark";
-			titlediv.id = "searchcptitle";
-
-			<!-- <div class="list-block"> -->
-		var licontdiv = document.createElement('div');
-			licontdiv.className = "list-block";
-
-			<!-- <ul> -->
-		var ul = document.createElement('ul');
-
-			<!-- <li class="item-content"> -->
-		var licont = document.createElement('li');
-			licont.className = "item-content";
-
-			<!-- <div class="item-inner" style="width: 60%;"> -->
-		var innerdiv = document.createElement('div');
-			innerdiv.className = "item-inner";
-			innerdiv.setAttribute("style","width:60%");
-
-			<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
-		var p = document.createElement('p');
-			//p.css("width","100%");
-			//p.css("text-align","left");
-			p.setAttribute("style","width:100%; text-align:left;");
-			p.id = "xferback1";
-
-			<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
-		var inputdiv = document.createElement('div');
-			inputdiv.className = "item-inner";
-			//inputdiv.css("width","40%");
-			//inputdiv.css("margin","0 auto");
-			inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
-
-			<!-- <a href="#search" style="margin-left: auto">Search</a> -->
-		var a = document.createElement('a');
-			a.href = "#searchfromfeedback";
-			a.setAttribute("style","margin-left:auto;");
-			a.innerHTML="Search";
-			
-		//set feedback type
-		var tryclear = document.getElementById('tryclear');
-
-		while (tryclear.hasChildNodes()) {
-				tryclear.removeChild(tryclear.lastChild);
-			}
-		var defaultoption = document.getElementById('fbtypedefault2');
-		defaultoption.selected = true;
-		option.value = "incorrectcp"
-		var div1 = document.createElement('div');
-			div1.className="item-title";
-			div1.innerHTML = "Type";
-
-		var div2 = document.createElement('div');
-			div2.className = "item-after";
-			div2.innerHTML = "Incorrect Carpark Information";
-
-		tryclear.appendChild(div1);
-		tryclear.appendChild(div2);
-		
-		//pass over the title
-		
-		inputdiv.appendChild(a);
-
-		innerdiv.appendChild(p);
-
-		licont.appendChild(innerdiv);
-		licont.appendChild(inputdiv);
-
-		ul.appendChild(licont);
-
-		licontdiv.appendChild(ul);
-
-		parentdiv.appendChild(titlediv);
-		parentdiv.appendChild(licontdiv);
-		
-		document.getElementById('xferback1').innerHTML = document.getElementById('carparkname').innerHTML;		
-	}
-	
-	function submitfb() {
-		myApp.alert('Thank you!', 'Feedback Submitted!');
-		resetfb();
-		mainView.router.back();
-	}
-	
-	function goBack(){
-		resetfb();
-		mainView.router.back();
-	}
-
-	function resetfb() {
-			//var myApp = new Framework7();
-			var fbtitle = document.getElementById('fbtitle');
-			var fbtext = document.getElementById('fbtext');
-			var fbname = document.getElementById('fbname');
-			var fbcontact = document.getElementById('fbcontact');
-			var fbemail = document.getElementById('fbemail');
-			var option = document.getElementById("feedbacktype");
-			var defaultoption = document.getElementById('fbtypedefault');
-			var tryclear = document.getElementById('tryclear');
-
-			fbtitle.value = "";
-			fbtext.value = "";
-			fbname.value = "";
-			fbcontact.value = "";
-			fbemail.value = "";
-			option.value = "suggestion"
-			defaultoption.selected = true;
-
-
-			var parentdiv = document.getElementById('parentdiv');
-			while (parentdiv.hasChildNodes()) {
-				parentdiv.removeChild(parentdiv.lastChild);
-			}
-
-			while (tryclear.hasChildNodes()) {
-				tryclear.removeChild(tryclear.lastChild);
-			}
-
-			var div1 = document.createElement('div');
-			div1.className="item-title";
-			div1.innerHTML = "Type";
-
-			var div2 = document.createElement('div');
-			div2.className = "item-after";
-			div2.innerHTML = "Suggestion";
-
-			console.log(tryclear.appendChild(div1));
-			console.log(tryclear.appendChild(div2));
-
-		}
-
-		function searchcp() {
-			var parentdiv = document.getElementById('parentdiv');
-			var option = document.getElementById("feedbacktype").value;
-			console.log(option);
-
-			var titlediv = document.createElement('div');
-				titlediv.className = "content-block-title";
-				titlediv.setAttribute("style","padding-left:10px");
-				titlediv.innerHTML = "Select Carpark";
-				titlediv.id = "searchcptitle";
-
-				<!-- <div class="list-block"> -->
-			var licontdiv = document.createElement('div');
-				licontdiv.className = "list-block";
-
-				<!-- <ul> -->
-			var ul = document.createElement('ul');
-
-				<!-- <li class="item-content"> -->
-			var licont = document.createElement('li');
-				licont.className = "item-content";
-
-				<!-- <div class="item-inner" style="width: 60%;"> -->
-			var innerdiv = document.createElement('div');
-				innerdiv.className = "item-inner";
-				innerdiv.setAttribute("style","width:60%");
-
-				<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
-			var p = document.createElement('p');
-				//p.css("width","100%");
-				//p.css("text-align","left");
-				p.setAttribute("style","width:100%; text-align:left;");
-				p.id = "xferback1";
-
-				<!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
-			var inputdiv = document.createElement('div');
-				inputdiv.className = "item-inner";
-				//inputdiv.css("width","40%");
-				//inputdiv.css("margin","0 auto");
-				inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
-
-				<!-- <a href="#search" style="margin-left: auto">Search</a> -->
-			var a = document.createElement('a');
-				a.href = "#searchfromfeedback";
-				a.setAttribute("style","margin-left:auto;");
-				a.innerHTML="Search";
-
-			/*
-			<!-- <div class="content-block-title">Select Carpark:</div> -->
-			<!-- <div class="list-block"> -->
-				<!-- <ul> -->
-					<!-- <li class="item-content"> -->
-					  <!-- <div class="item-inner" style="width: 60%;"> -->
-						<!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
-					  <!-- </div> -->
-					  <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
-							<!-- <a href="#search" style="margin-left: auto">Search</a> -->
-					<!-- </div> -->
-					<!-- </li> -->
-				<!-- </ul> -->
-			<!-- </div> -->
-			*/
-
-			if(option == "missingcp" || option == "incorrectcp") {
-				//console.log("show");
-
-				//create div
-
-				<!-- <div class="content-block-title">Select Carpark:</div> -->
-
-				inputdiv.appendChild(a);
-
-				innerdiv.appendChild(p);
-
-				licont.appendChild(innerdiv);
-				licont.appendChild(inputdiv);
-
-				ul.appendChild(licont);
-
-				licontdiv.appendChild(ul);
-
-				parentdiv.appendChild(titlediv);
-				parentdiv.appendChild(licontdiv);
-			}
-			else {
-				//console.log("hide");
-				//parentdiv.removeChild(titlediv);
-				//parentdiv.removeChild(licontdiv);
-
-				while (parentdiv.hasChildNodes()) {
-					parentdiv.removeChild(parentdiv.lastChild);
-				}
-			}
-		}
-
-		document.getElementById('testingsearch1').innerHTML="";
-		//console.log(json);
-		for (place in json2) {
-				var li = document.createElement('li');
-				li.className="item-content";
-
-				var div2 = document.createElement('div');
-				div2.className = "item-title";
-
-				var a1 = document.createElement('a');
-				a1.href="#index";
-				a1.className="back";
-				a1.id=place;
-				a1.onclick=function(){
-					document.getElementById('xferback1').innerHTML = this.id;
-				};
-				a1.appendChild(document.createTextNode(place));
-				//console.log(a1);
-				div2.appendChild(a1);
-
-				li.appendChild(div2);
-
-				//li.appendChild(document.createTextNode(prediction.description));
-				document.getElementById('testingsearch1').appendChild(li);
-
-				}
-
-		 function initService1() {
-
-			document.getElementById('testingsearch1').innerHTML="";
-
-
-			var displaySuggestions = function(predictions, status) {
-			  if (status != google.maps.places.PlacesServiceStatus.OK) {
-				alert(status);
-				return;
-			  }
-
-			  predictions.forEach(function(prediction) {
-				var li = document.createElement('li');
-				li.className="item-content";
-
-
-				var div2 = document.createElement('div');
-				div2.className = "item-title";
-
-
-				var a1 = document.createElement('a');
-				a1.href="#index";
-				a1.className="back";
-				a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
-				a1.appendChild(document.createTextNode(prediction.description));
-
-				div2.appendChild(a1);
-
-				li.appendChild(div2);
-
-				//li.appendChild(document.createTextNode(prediction.description));
-				document.getElementById('testingsearch1').appendChild(li);
-			  });
-			  for (smth in json2) {
-				var li = document.createElement('li');
-				li.className="item-content";
-				var itemsel = smth;
-				var div2 = document.createElement('div');
-				div2.className = "item-title";
-
-
-				var a1 = document.createElement('a');
-				a1.href="#index";
-				a1.className="back";
-				a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
-				a1.appendChild(document.createTextNode(itemsel));
-
-				div2.appendChild(a1);
-
-				li.appendChild(div2);
-
-				//console.log(a1);
-
-				//li.appendChild(document.createTextNode(prediction.description));
-				document.getElementById('testingsearch1').appendChild(li);
-			  }
-			};
-
-				var service = new google.maps.places.AutocompleteService();
-					service.getQueryPredictions({ input: document.getElementById("searchform1").value }, displaySuggestions);
-
-				//console.log(document.getElementById("searchform").value);
-			  }
+
+    function fromdisplaycp(){
+        //document.getElementById('changethisnow').href = "#displayCP";
+        //console.log(document.getElementById('changethisnow').href);
+        //document.getElementById('changethislater').href = "#home";
+        document.getElementById('changethislater').style.zIndex = '100000000000';
+        resetfb();
+        var parentdiv = document.getElementById('parentdiv');
+        var option = document.getElementById("feedbacktype").value;
+
+        var titlediv = document.createElement('div');
+        titlediv.className = "content-block-title";
+        titlediv.setAttribute("style","padding-left:10px");
+        titlediv.innerHTML = "Select Carpark";
+        titlediv.id = "searchcptitle";
+
+        <!-- <div class="list-block"> -->
+        var licontdiv = document.createElement('div');
+        licontdiv.className = "list-block";
+
+        <!-- <ul> -->
+        var ul = document.createElement('ul');
+
+        <!-- <li class="item-content"> -->
+        var licont = document.createElement('li');
+        licont.className = "item-content";
+
+        <!-- <div class="item-inner" style="width: 60%;"> -->
+        var innerdiv = document.createElement('div');
+        innerdiv.className = "item-inner";
+        innerdiv.setAttribute("style","width:60%");
+
+    <!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+        var p = document.createElement('p');
+        //p.css("width","100%");
+        //p.css("text-align","left");
+        p.setAttribute("style","width:100%; text-align:left;");
+        p.id = "xferback1";
+
+        <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+        var inputdiv = document.createElement('div');
+        inputdiv.className = "item-inner";
+        //inputdiv.css("width","40%");
+        //inputdiv.css("margin","0 auto");
+        inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
+
+    <!-- <a href="#search" style="margin-left: auto">Search</a> -->
+        var a = document.createElement('a');
+        a.href = "#searchfromfeedback";
+        a.setAttribute("style","margin-left:auto;");
+        a.innerHTML="Search";
+
+        //set feedback type
+        var tryclear = document.getElementById('tryclear');
+
+        while (tryclear.hasChildNodes()) {
+            tryclear.removeChild(tryclear.lastChild);
+        }
+        var defaultoption = document.getElementById('fbtypedefault2');
+        defaultoption.selected = true;
+        option.value = "incorrectcp"
+        var div1 = document.createElement('div');
+        div1.className="item-title";
+        div1.innerHTML = "Type";
+
+        var div2 = document.createElement('div');
+        div2.className = "item-after";
+        div2.innerHTML = "Incorrect Carpark Information";
+
+        tryclear.appendChild(div1);
+        tryclear.appendChild(div2);
+
+        //pass over the title
+
+        inputdiv.appendChild(a);
+
+        innerdiv.appendChild(p);
+
+        licont.appendChild(innerdiv);
+        licont.appendChild(inputdiv);
+
+        ul.appendChild(licont);
+
+        licontdiv.appendChild(ul);
+
+        parentdiv.appendChild(titlediv);
+        parentdiv.appendChild(licontdiv);
+
+        document.getElementById('xferback1').innerHTML = document.getElementById('carparkname').innerHTML;
+    }
+
+    function submitfb() {
+        myApp.alert('Thank you!', 'Feedback Submitted!');
+        resetfb();
+        mainView.router.back();
+    }
+
+    function goBack(){
+        resetfb();
+        mainView.router.back();
+    }
+
+    function resetfb() {
+        //var myApp = new Framework7();
+        var fbtitle = document.getElementById('fbtitle');
+        var fbtext = document.getElementById('fbtext');
+        var fbname = document.getElementById('fbname');
+        var fbcontact = document.getElementById('fbcontact');
+        var fbemail = document.getElementById('fbemail');
+        var option = document.getElementById("feedbacktype");
+        var defaultoption = document.getElementById('fbtypedefault');
+        var tryclear = document.getElementById('tryclear');
+
+        fbtitle.value = "";
+        fbtext.value = "";
+        fbname.value = "";
+        fbcontact.value = "";
+        fbemail.value = "";
+        option.value = "suggestion"
+        defaultoption.selected = true;
+
+
+        var parentdiv = document.getElementById('parentdiv');
+        while (parentdiv.hasChildNodes()) {
+            parentdiv.removeChild(parentdiv.lastChild);
+        }
+
+        while (tryclear.hasChildNodes()) {
+            tryclear.removeChild(tryclear.lastChild);
+        }
+
+        var div1 = document.createElement('div');
+        div1.className="item-title";
+        div1.innerHTML = "Type";
+
+        var div2 = document.createElement('div');
+        div2.className = "item-after";
+        div2.innerHTML = "Suggestion";
+
+        console.log(tryclear.appendChild(div1));
+        console.log(tryclear.appendChild(div2));
+
+    }
+
+    function searchcp() {
+        var parentdiv = document.getElementById('parentdiv');
+        var option = document.getElementById("feedbacktype").value;
+        console.log(option);
+
+        var titlediv = document.createElement('div');
+        titlediv.className = "content-block-title";
+        titlediv.setAttribute("style","padding-left:10px");
+        titlediv.innerHTML = "Select Carpark";
+        titlediv.id = "searchcptitle";
+
+        <!-- <div class="list-block"> -->
+        var licontdiv = document.createElement('div');
+        licontdiv.className = "list-block";
+
+        <!-- <ul> -->
+        var ul = document.createElement('ul');
+
+        <!-- <li class="item-content"> -->
+        var licont = document.createElement('li');
+        licont.className = "item-content";
+
+        <!-- <div class="item-inner" style="width: 60%;"> -->
+        var innerdiv = document.createElement('div');
+        innerdiv.className = "item-inner";
+        innerdiv.setAttribute("style","width:60%");
+
+    <!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+        var p = document.createElement('p');
+        //p.css("width","100%");
+        //p.css("text-align","left");
+        p.setAttribute("style","width:100%; text-align:left;");
+        p.id = "xferback1";
+
+        <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+        var inputdiv = document.createElement('div');
+        inputdiv.className = "item-inner";
+        //inputdiv.css("width","40%");
+        //inputdiv.css("margin","0 auto");
+        inputdiv.setAttribute("style","width:40%; margin: 0 auto;");
+
+    <!-- <a href="#search" style="margin-left: auto">Search</a> -->
+        var a = document.createElement('a');
+        a.href = "#searchfromfeedback";
+        a.setAttribute("style","margin-left:auto;");
+        a.innerHTML="Search";
+
+        /*
+        <!-- <div class="content-block-title">Select Carpark:</div> -->
+        <!-- <div class="list-block"> -->
+            <!-- <ul> -->
+                <!-- <li class="item-content"> -->
+                  <!-- <div class="item-inner" style="width: 60%;"> -->
+                    <!-- <p style="margin:auto; width:100%; text-align:left;" id="xferback"></p> -->
+                  <!-- </div> -->
+                  <!-- <div class="item-inner" style="width: 40%; margin:0 auto;"> -->
+                        <!-- <a href="#search" style="margin-left: auto">Search</a> -->
+                <!-- </div> -->
+                <!-- </li> -->
+            <!-- </ul> -->
+        <!-- </div> -->
+        */
+
+        if(option == "missingcp" || option == "incorrectcp") {
+            //console.log("show");
+
+            //create div
+
+        <!-- <div class="content-block-title">Select Carpark:</div> -->
+
+            inputdiv.appendChild(a);
+
+            innerdiv.appendChild(p);
+
+            licont.appendChild(innerdiv);
+            licont.appendChild(inputdiv);
+
+            ul.appendChild(licont);
+
+            licontdiv.appendChild(ul);
+
+            parentdiv.appendChild(titlediv);
+            parentdiv.appendChild(licontdiv);
+        }
+        else {
+            //console.log("hide");
+            //parentdiv.removeChild(titlediv);
+            //parentdiv.removeChild(licontdiv);
+
+            while (parentdiv.hasChildNodes()) {
+                parentdiv.removeChild(parentdiv.lastChild);
+            }
+        }
+    }
+
+    document.getElementById('testingsearch1').innerHTML="";
+    //console.log(json);
+    for (place in json2) {
+        var li = document.createElement('li');
+        li.className="item-content";
+
+        var div2 = document.createElement('div');
+        div2.className = "item-title";
+
+        var a1 = document.createElement('a');
+        a1.href="#index";
+        a1.className="back";
+        a1.id=place;
+        a1.onclick=function(){
+            document.getElementById('xferback1').innerHTML = this.id;
+        };
+        a1.appendChild(document.createTextNode(place));
+        //console.log(a1);
+        div2.appendChild(a1);
+
+        li.appendChild(div2);
+
+        //li.appendChild(document.createTextNode(prediction.description));
+        document.getElementById('testingsearch1').appendChild(li);
+
+    }
+
+    function initService1() {
+
+        document.getElementById('testingsearch1').innerHTML="";
+
+
+        var displaySuggestions = function(predictions, status) {
+            if (status != google.maps.places.PlacesServiceStatus.OK) {
+                alert(status);
+                return;
+            }
+
+            predictions.forEach(function(prediction) {
+                var li = document.createElement('li');
+                li.className="item-content";
+
+
+                var div2 = document.createElement('div');
+                div2.className = "item-title";
+
+
+                var a1 = document.createElement('a');
+                a1.href="#index";
+                a1.className="back";
+                a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
+                a1.appendChild(document.createTextNode(prediction.description));
+
+                div2.appendChild(a1);
+
+                li.appendChild(div2);
+
+                //li.appendChild(document.createTextNode(prediction.description));
+                document.getElementById('testingsearch1').appendChild(li);
+            });
+            for (smth in json2) {
+                var li = document.createElement('li');
+                li.className="item-content";
+                var itemsel = smth;
+                var div2 = document.createElement('div');
+                div2.className = "item-title";
+
+
+                var a1 = document.createElement('a');
+                a1.href="#index";
+                a1.className="back";
+                a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
+                a1.appendChild(document.createTextNode(itemsel));
+
+                div2.appendChild(a1);
+
+                li.appendChild(div2);
+
+                //console.log(a1);
+
+                //li.appendChild(document.createTextNode(prediction.description));
+                document.getElementById('testingsearch1').appendChild(li);
+            }
+        };
+
+        var service = new google.maps.places.AutocompleteService();
+        service.getQueryPredictions({ input: document.getElementById("searchform1").value }, displaySuggestions);
+
+        //console.log(document.getElementById("searchform").value);
+    }
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places&callback=initMap"
