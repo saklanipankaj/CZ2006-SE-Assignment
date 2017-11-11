@@ -17,7 +17,6 @@ class UserController{
         getLocation();
         // Create the search box and link it to the UI element.
         var input = document.getElementById('searchBox');
-        console.log(input);
         searchBox = new google.maps.places.SearchBox(input);
         searchBox.setBounds(map.getBounds());
         // Bias the SearchBox results towards current map's viewport.
@@ -546,7 +545,6 @@ class UserController{
                             if (!now.isBetween(startTime, endTime))
                                 continue;
 
-                            console.log("Saturday");
                             modelText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
                             var prices = Saturday[rate]['pricePerHalfHour'];
                             //per entry display

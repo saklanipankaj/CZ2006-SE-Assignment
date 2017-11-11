@@ -45,13 +45,13 @@
       <file leaf-file-name="UserController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dist/js/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="358" column="9" lean-forward="false" selection-start-line="358" selection-start-column="9" selection-end-line="358" selection-end-column="9" />
+            <state relative-caret-position="159">
+              <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
               <folding>
-                <marker date="1510388176993" expanded="true" signature="8840:8862" ph="..." />
-                <marker date="1510388176993" expanded="true" signature="8982:9006" ph="..." />
-                <marker date="1510388176993" expanded="true" signature="9212:9224" ph="..." />
-                <marker date="1510388176993" expanded="true" signature="18639:18665" ph="..." />
+                <marker date="1510388325576" expanded="true" signature="8812:8834" ph="..." />
+                <marker date="1510388325576" expanded="true" signature="8954:8978" ph="..." />
+                <marker date="1510388325576" expanded="true" signature="9184:9196" ph="..." />
+                <marker date="1510388325576" expanded="true" signature="18558:18584" ph="..." />
               </folding>
             </state>
           </provider>
@@ -114,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ajax</find>
       <find>mandar</find>
       <find>set D</find>
       <find>setDestination</find>
@@ -144,6 +143,7 @@
       <find>recordCP</find>
       <find>search</find>
       <find>searchBox</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>1</replace>
@@ -202,7 +202,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -296,7 +296,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34010416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -590,13 +590,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/js/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="358" column="9" lean-forward="false" selection-start-line="358" selection-start-column="9" selection-end-line="358" selection-end-column="9" />
+        <state relative-caret-position="159">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
           <folding>
-            <marker date="1510388176993" expanded="true" signature="8840:8862" ph="..." />
-            <marker date="1510388176993" expanded="true" signature="8982:9006" ph="..." />
-            <marker date="1510388176993" expanded="true" signature="9212:9224" ph="..." />
-            <marker date="1510388176993" expanded="true" signature="18639:18665" ph="..." />
+            <marker date="1510388325576" expanded="true" signature="8812:8834" ph="..." />
+            <marker date="1510388325576" expanded="true" signature="8954:8978" ph="..." />
+            <marker date="1510388325576" expanded="true" signature="9184:9196" ph="..." />
+            <marker date="1510388325576" expanded="true" signature="18558:18584" ph="..." />
           </folding>
         </state>
       </provider>
