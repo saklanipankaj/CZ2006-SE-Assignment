@@ -33,13 +33,282 @@ class UserController{
         var today = d.getDay();
         var rate;
         //console.log(apiLots);
-
+		var weekdaythreshold = 1;
+		var weekendthreshold = 1.50;
         for (name in json) {
             carpark = json[name];
-            if (carpark["GPS"] != null) {
+            if (carpark["GPS"] != null) 
+			{
                 //for normal carpark with api lots
                 //console.log(carpark);
-                if (carpark.id !== undefined) {
+				if(carpark.id !== undefined) 
+				{
+                    var lots = apiLots["Data"][carpark.id];
+                    if(lots < 50) {
+						//Red
+						//weekday < 50c
+						if(today != 0 || today != 6)
+						{
+							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 6) {
+							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 0) {
+							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_red.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}
+					}else if(lots >= 50 && lots <= 100) 
+					{
+						//Orange
+						if(today != 0 || today != 6)
+						{
+							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 6) {
+							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 0) {
+							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_orange.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}
+					}else
+					// >100 lots
+					{	
+						//Green
+						if(today != 0 || today != 6)
+						{
+							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 6) {
+							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}else if (today == 0) {
+							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							{
+								var image = {
+									url: 'dist/cheapest_carpark_original_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}else
+							{
+								var image = {
+									url: 'dist/carpark_green.png',
+									//size: new google.maps.Size(100, 100),
+									// The origin for this image is (0, 0).
+									origin: new google.maps.Point(0, 0),
+									// The anchor with respect to the Lat and Long
+									anchor: new google.maps.Point(15, 15)}
+							}
+						}
+					}
+				}
+                else //no api data
+                {
+					//Red
+                    if(today != 0 || today != 6)
+					{
+						if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+						{
+							var image = {
+								url: 'dist/cheapest_carpark_original_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}else
+						{
+							var image = {
+								url: 'dist/carpark_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}
+					}else if (today == 6) {
+						if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+						{
+							var image = {
+								url: 'dist/cheapest_carpark_original_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}else
+						{
+							var image = {
+								url: 'dist/carpark_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}
+					}else if (today == 0) {
+						if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+						{
+							var image = {
+								url: 'dist/cheapest_carpark_original_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}else
+						{
+							var image = {
+								url: 'dist/carpark_red.png',
+								//size: new google.maps.Size(100, 100),
+								// The origin for this image is (0, 0).
+								origin: new google.maps.Point(0, 0),
+								// The anchor with respect to the Lat and Long
+								anchor: new google.maps.Point(15, 15)}
+						}
+					}
+                }
+               /*  if (carpark.id !== undefined) {
                     var lots = apiLots["Data"][carpark.id];
                     if (lots == 0) {
                         var image = {
@@ -142,7 +411,7 @@ class UserController{
                         // The anchor with respect to the Lat and Long
                         anchor: new google.maps.Point(15, 15)
                     };
-                }
+                } */
 
                 //for normal carpark without api lots and price > 50c
                 marker = new google.maps.Marker({
