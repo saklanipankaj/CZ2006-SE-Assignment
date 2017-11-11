@@ -23,97 +23,88 @@ class Feedback extends Object{
     private $email;
     private $contactNo;
     private $currentStatus;
+    private $carparkName;
 
-    public function __construct() {
-        $this->id = 0;
-        $this->title = null;
-        $this->category = null;
-        $this->message = null;
-        $this->email = null;
-        $this->contactNo = null;
-        $this->currentStatus = null;
-    }
-
-    public function __getTitle() {
-        return $this->title;
-    }
-    /**
-     *
-     * @param {string} title - title of feedback
-     */
-    public function setTitle($title) {
+    public function __construct(int $id = NULL,string $title = NULL,FeedbackType $category = NULL,string $message = NULL,string $email = NULL,string $contactNo,FeedbackStatus $currentStatus,string $carparkName) {
+        $this->id = $id;
         $this->title = $title;
-    }
-    
-    public function getCategory() {
-        return $this->category;
-    }
-    /**
-     *
-     * @param {string} category - category of feedback
-     */
-    public function setCategory($category) {
         $this->category = $category;
-    }
-
-    public function getMessage() {
-        return $this->message;
-    }
-    /**
-     *
-     * @param {string} message - message in the feedback
-     */
-    public function setMessage($message) {
         $this->message = $message;
-    }
-
-    public function getEmail() {
-        return $this->$email;
-    }
-    /**
-     *
-     * @param {string} email - email of the person who send the feedback
-     */
-    
-    public function setEmail($email) {
         $this->email = $email;
-    }
-
-
-    public function getContactNo() {
-        return $this->contactNo;
-    }
-    /**
-     *
-     * @param {string} contactNo - contactNo of the person who send the feedback
-     */
-    
-    public function setContactNo(contactNo) {
         $this->contactNo = $contactNo;
+        $this->currentStatus = $currentStatus;
+        $this->carparkName = $carparkName;
     }
-    
-    public function getCurrentStatus() {
-        return $this->currentStatus;
-    }
-    /**
-     *
-     * @param {string} currentStatus - status of feedback
-     */
-    public function setCurrentStatus($currentStatus) {
-        $this->currentStatus = currentStatus;
-    }
-    
-    public function getId() {
+
+    public function getId() : int
+    {
         return $this->id;
     }
-    /**
-     *
-     * @param {number} id - id to identify each feedback
-     */
-    public setId($id) {
+
+    public setId(int $id) : void
+    {
         $this->id = $id;
     }
 
+    public function __getTitle() : string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title) : void
+    {
+        $this->title = $title;
+    }
+    
+    public function getCategory() : FeedbackType
+    {
+        return $this->category;
+    }
+
+    public function setCategory(FeedbackType $category) : void
+    {
+        $this->category = $category;
+    }
+
+    public function getMessage() : string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(string $message) : void
+    {
+        $this->message = $message;
+    }
+
+    public function getEmail() : string
+    {
+        return $this->$email;
+    }
+
+    public function setEmail(string $email) : void
+    {
+        $this->email = $email;
+    }
+
+    public function getContactNo() : string
+    {
+        return $this->contactNo;
+    }
+
+    public function setContactNo(string $contactNo) : void
+    {
+        $this->contactNo = $contactNo;
+    }
+    
+    public function getCurrentStatus() : FeedbackStatus
+    {
+        return $this->currentStatus;
+    }
+
+    public function setCurrentStatus(FeedbackStatus $currentStatus) : void
+    {
+        $this->currentStatus = $currentStatus;
+    }
 }
 
 ?>

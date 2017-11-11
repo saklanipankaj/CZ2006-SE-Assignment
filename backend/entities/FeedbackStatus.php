@@ -11,7 +11,7 @@ var FeedbackStatus = {
 
 <?php
 
-abstract class DaysOfWeek
+abstract class FeedbackStatus
 {
     const CLOSED = 1;
     const OPEN = 2;
