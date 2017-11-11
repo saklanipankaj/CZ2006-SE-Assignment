@@ -317,7 +317,7 @@
 
 			$conn = $this->get_connection();
 			$carpark_sql = "SELECT carparks.id AS 'carpark_id',`name`, `avaliablelots`, `location`, locations.id AS 'location_id', Locations.latitude, Locations.longtitude FROM carparks INNER JOIN Locations ON carparks.location = Locations.id 
-			WHERE carparks.name = '$name'";
+			WHERE carparks.id = '$id'";
 
 			$result = mysqli_query($conn, $carpark_sql);
 
@@ -328,8 +328,7 @@
 
 			$rates_sql = "SELECT rates.id AS 'rate_id', rates.startTime, rates.endTime, rates.prices, rates.dayType FROM `rates` INNER JOIN carparks ON rates.carpark = carparks.id WHERE carparks.id = ";
 
-			$carpark_list = array();
-			while($carpark_row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+			if($carpark_row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 			{
 
 				//$list[] = 
@@ -359,7 +358,6 @@
 				$location = new Location($carpark_row['location_id'], $carpark_row['latitude'], $carpark_row['longtitude']);
 				$carpark = new Carpark($carpark_row['carpark_id'],$carpark_row['name'],$carpark_row['avaliablelots'], $location, $rates_dict); 
 
-				$carpark_list[] = $carpark;
 
 			}
 

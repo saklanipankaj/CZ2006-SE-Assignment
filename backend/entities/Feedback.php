@@ -25,7 +25,7 @@ class Feedback extends Object{
     private $currentStatus;
     private $carparkName;
 
-    public function __construct(int $id = NULL,string $title = NULL,FeedbackType $category = NULL,string $message = NULL,string $email = NULL,string $contactNo,FeedbackStatus $currentStatus,string $carparkName) {
+    public function __construct(int $id = NULL,string $title = NULL,string $category = NULL,string $message = NULL,string $email = NULL,string $contactNo,string $currentStatus,string $carparkName) {
         $this->id = $id;
         $this->title = $title;
         $this->category = $category;
@@ -46,7 +46,7 @@ class Feedback extends Object{
         $this->id = $id;
     }
 
-    public function __getTitle() : string
+    public function getTitle() : string
     {
         return $this->title;
     }
@@ -56,12 +56,12 @@ class Feedback extends Object{
         $this->title = $title;
     }
     
-    public function getCategory() : FeedbackType
+    public function getCategory() : string
     {
         return $this->category;
     }
 
-    public function setCategory(FeedbackType $category) : void
+    public function setCategory(string $category) : void
     {
         $this->category = $category;
     }
@@ -96,12 +96,12 @@ class Feedback extends Object{
         $this->contactNo = $contactNo;
     }
     
-    public function getCurrentStatus() : FeedbackStatus
+    public function getCurrentStatus() : string
     {
         return $this->currentStatus;
     }
 
-    public function setCurrentStatus(FeedbackStatus $currentStatus) : void
+    public function setCurrentStatus(string $currentStatus) : void
     {
         $this->currentStatus = $currentStatus;
     }
