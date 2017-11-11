@@ -17,6 +17,7 @@ class UserController{
         getLocation();
         // Create the search box and link it to the UI element.
         var input = document.getElementById('searchBox');
+        console.log(input);
         searchBox = new google.maps.places.SearchBox(input);
         searchBox.setBounds(map.getBounds());
         // Bias the SearchBox results towards current map's viewport.
@@ -260,12 +261,10 @@ class UserController{
                         var Saturday = carpark['Rates']['Saturday'];
                         for (rate in Saturday) {
                             var start = Saturday[rate]['startHour'];
-                            var startTime = moment().hours(start);
-                            startTime.day(5);
+                            var startTime = moment(now).hours(start);
                             startTime.minutes((start * 100) % 100);
                             var end = Saturday[rate]['endHour'];
                             var endTime = moment().hours(end);
-                            endTime.day(5);
                             endTime.minutes((end * 100) % 100);
                             var now = moment();
                             //When endTime is lesser than startTime
@@ -273,15 +272,17 @@ class UserController{
                                 endTime.add(1, 'd');
                                 console.log("EndTime day Added!");
                             }
+
                             //Check if current Time is within the start and endTime then display the price
                             if (!now.isBetween(startTime, endTime))
                                 continue;
 
+                            console.log("Saturday");
                             modelText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
                             var prices = Saturday[rate]['pricePerHalfHour'];
                             //per entry display
                             if (prices[1] == 0)
-                                modelText += "Per Entry:$" + prices[0] + ")<br>";
+                                modelText += "Per Entry:$" + prices[0] + "<br>";
                             else {
                                 //1St Hour and subsequent Hour
                                 if (prices.length > 2) {
@@ -307,10 +308,8 @@ class UserController{
                             var start = Sunday[rate]['startHour'];
                             var startTime = moment().hours(start);
                             startTime.minutes((start * 100) % 100);
-                            startTime.day(6);
                             var end = Sunday[rate]['endHour'];
                             var endTime = moment().hours(end);
-                            endTime.day(6);
                             endTime.minutes((end * 100) % 100);
                             var now = moment();
                             //When endTime is lesser than startTime
@@ -326,7 +325,7 @@ class UserController{
                             var prices = Sunday[rate]['pricePerHalfHour'];
                             //per entry display
                             if (prices[1] == 0)
-                                modelText += "Per Entry:$" + prices[0] + ")<br>";
+                                modelText += "Per Entry:$" + prices[0] + "<br>";
                             else {
                                 //1St Hour and subsequent Hour
                                 if (prices.length > 2) {
@@ -358,6 +357,46 @@ class UserController{
                 markers.push(marker);
             }
         }
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+                // Create a marker for each place.
+                if(searchMarker	!= null)
+                    searchMarker.setMap(null);
+                searchMarker = new google.maps.Marker({
+                    map: map,
+                    title: place.name,
+                    position: place.geometry.location
+                });
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.setZoom(15);
+            map.fitBounds(bounds);
+        });
     }
 
     //Get Lot Information from LTA API
