@@ -46,9 +46,12 @@ class UserController{
                     if(lots < 25) {
 						//Red
 						//weekday < 50c
-						if(today != 0 || today != 6)
+						if(today != 0 && today != 6)
 						{
-							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekdaythreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_red.png',
@@ -68,7 +71,11 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 6) {
-							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1]; }
+							//console.log(name,": ",myhourlyfee);
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_red.png',
@@ -88,7 +95,10 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 0) {
-							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_red.png',
@@ -111,9 +121,12 @@ class UserController{
 					}else if(lots >= 25 && lots <= 100) 
 					{
 						//Orange
-						if(today != 0 || today != 6)
+						if(today != 0 && today != 6)
 						{
-							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekdaythreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_orange.png',
@@ -133,7 +146,12 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 6) {
-							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							//console.log((carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0])*2);
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1]; }
+							console.log(name,": ",myhourlyfee, carpark);
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_orange.png',
@@ -144,6 +162,7 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}else
 							{
+								//console.log(carpark);
 								var image = {
 									url: 'dist/carpark_orange.png',
 									//size: new google.maps.Size(100, 100),
@@ -153,7 +172,10 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 0) {
-							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_orange.png',
@@ -177,9 +199,12 @@ class UserController{
 					// >100 lots
 					{	
 						//Green
-						if(today != 0 || today != 6)
+						if(today != 0 && today != 6)
 						{
-							if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekdaythreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_green.png',
@@ -199,7 +224,10 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 6) {
-							if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_green.png',
@@ -219,7 +247,10 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}else if (today == 0) {
-							if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+							var myhourlyfee;
+							if(typeof carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0]*2; }
+							else { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1]; }
+							if(myhourlyfee <= weekendthreshold)
 							{
 								var image = {
 									url: 'dist/cheapest_carpark_original_green.png',
@@ -246,7 +277,10 @@ class UserController{
 					//Red
                     if(today != 0 || today != 6)
 					{
-						if(carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] <= weekdaythreshold)
+						var myhourlyfee;
+						if(typeof carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0]*2; }
+						else { myhourlyfee = carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Weekday"][0]["pricePerHalfHour"][1]; }
+						if(myhourlyfee <= weekdaythreshold)
 						{
 							var image = {
 								url: 'dist/cheapest_carpark_original_red.png',
@@ -266,7 +300,10 @@ class UserController{
 								anchor: new google.maps.Point(15, 15)}
 						}
 					}else if (today == 6) {
-						if(carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+						var myhourlyfee;
+						if(typeof carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0]*2; }
+						else { myhourlyfee = carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Saturday"][0]["pricePerHalfHour"][1]; }
+						if(myhourlyfee <= weekendthreshold)
 						{
 							var image = {
 								url: 'dist/cheapest_carpark_original_red.png',
@@ -286,7 +323,10 @@ class UserController{
 								anchor: new google.maps.Point(15, 15)}
 						}
 					}else if (today == 0) {
-						if(carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] <= weekendthreshold)
+						var myhourlyfee;
+						if(typeof carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1] === 'undefined') { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0]*2; }
+						else { myhourlyfee = carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][0] + carpark["Rates"]["Sunday"][0]["pricePerHalfHour"][1]; }
+						if(myhourlyfee <= weekendthreshold)
 						{
 							var image = {
 								url: 'dist/cheapest_carpark_original_red.png',
