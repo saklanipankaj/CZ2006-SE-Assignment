@@ -456,3 +456,56 @@ function resetTimer()
 
     }, 1000);
 }
+function selectCarpark()
+{
+        var response;
+
+        $.ajax({
+            url: "backend/selectCarpark.php",
+            method: "POST",
+            data: {'Action': 'GET_selectCarpark' },
+            dataType: 'json',
+            async: false,
+            success:function(data,response)
+            {
+                console.log(data);
+                selected_carpark = data;
+                reponse = data;
+            },
+            error:function(jqXHR, text, errorThrown)
+            {
+                console.log(jqXHR);
+                console.log(text);
+                console.log(errorThrown);
+            }
+        });
+
+        return reponse;
+}
+function save()
+{
+
+    var response;
+
+        $.ajax({
+            url: "backend/save.php",
+            data: {'Action': 'GET_SelectedCarpark' },
+            dataType: 'json',
+            async: false,
+            success:function(data,response)
+            {
+                console.log(data);
+                selected_carpark = data;
+                response = data;
+            },
+            error:function(jqXHR, text, errorThrown)
+            {
+                console.log(jqXHR);
+                console.log(text);
+                console.log(errorThrown);
+            }
+        });
+
+        return response;
+}
+
