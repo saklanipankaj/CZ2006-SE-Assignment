@@ -752,68 +752,6 @@ class UserController{
         });
     }
 
-    //load google map services for SearchCarparkUI
-    initService() {
-        document.getElementById('testingsearch1').innerHTML="";
-        var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-                alert(status);
-                return;
-            }
-
-            predictions.forEach(function(prediction) {
-                var li = document.createElement('li');
-                li.className="item-content";
-
-
-                var div2 = document.createElement('div');
-                div2.className = "item-title";
-
-
-                var a1 = document.createElement('a');
-                a1.href="#index";
-                a1.className="back";
-                a1.onclick=function(){ document.getElementById('xferback1').innerHTML = prediction.description };
-                a1.appendChild(document.createTextNode(prediction.description));
-
-                div2.appendChild(a1);
-
-                li.appendChild(div2);
-
-                //li.appendChild(document.createTextNode(prediction.description));
-                document.getElementById('testingsearch1').appendChild(li);
-            });
-            for (smth in json) {
-                var li = document.createElement('li');
-                li.className="item-content";
-                var itemsel = smth;
-                var div2 = document.createElement('div');
-                div2.className = "item-title";
-
-
-                var a1 = document.createElement('a');
-                a1.href="#index";
-                a1.className="back";
-                a1.onclick=function(){ document.getElementById('xferback').innerHTML = itemsel };
-                a1.appendChild(document.createTextNode(itemsel));
-
-                div2.appendChild(a1);
-
-                li.appendChild(div2);
-
-                //console.log(a1);
-
-                //li.appendChild(document.createTextNode(prediction.description));
-                document.getElementById('testingsearch1').appendChild(li);
-            }
-        };
-
-        var service = new google.maps.places.AutocompleteService();
-        service.getQueryPredictions({ input: document.getElementById("searchform1").value }, displaySuggestions);
-
-        //console.log(document.getElementById("searchform").value);
-    }
-
     //AJAX call to server to submit Feedback
     submitFeedback(){
 
