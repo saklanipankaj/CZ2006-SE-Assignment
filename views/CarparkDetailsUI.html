@@ -1,0 +1,143 @@
+<!-- DisplayCP -->
+<div class="view view-main">
+    <div data-page="displayCP" class="page cached">
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                <div class="left">
+                    <a onclick="mainView.router.back()" class="link icon-only back" id="changethislater">
+                        <i class="icon icon-back"></i>
+                    </a>
+                </div>
+
+                <div class="center sliding" id="displayCPname">~Carpark Details~</div>
+
+                <div class="right">
+
+                    <label class="label-checkbox item-content">
+                        <input type="checkbox" name="my-checkbox" value="Movies">
+                        <div class="item-media">
+                            <i class="icon icon-form-checkbox"></i>
+                        </div>
+                    </label>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <div class="content-block-title" style="margin-top:60px;">Carpark Details:</div>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Name:</div>
+                            <div class="item-after resizable" id="carparkname" >~Carpark Name~</div>
+                        </div>
+                    </li>
+                    <!--						<li class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Address</div>
+                                                    <div class="item-after">~Carpark Address~</div>
+                                                </div>
+
+                                            </li>-->
+
+                    <li class="item-content" id="avalot">
+
+                        <div class="item-inner">
+                            <div class="item-title">Available Lots:</div>
+                            <div class="item-after" id="displaylots"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="weekdayDiv" class="content-block-title">Weekday Fees:</div>
+            <div class="list-block">
+                <ul id="weekDayRate">
+                    <li class="item-content">
+                        <div class="item-inner"id = "weekdayfee">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner"id = "weekdayfee2">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="saturdayDiv" class="content-block-title">Saturday Fees:</div>
+
+            <div class="list-block">
+                <ul id="saturdayRate">
+                    <li class="item-content">
+                        <div class="item-inner"id = "satfee">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner"id = "satfee2">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="sundayDiv" class="content-block-title">Sunday Fees:</div>
+            <div class="list-block">
+                <ul id="sundayRate">
+                    <li class="item-content">
+                        <div class="item-inner">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            ~$00.00~ for first half hour
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block-title">Calculate Fees:</div>
+            <div class="list-block">
+                <div class="item-input">
+                    <div class="range-slider" style="width: 80%;margin-left: 10%;margin-top:15px; margin-bottom: 15px;">
+                        <input type="range" id="slider" oninput="calculateCost(this.value)" min="1" max="12" step="1" class="">
+                    </div>
+                </div>
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Total Time:</div>
+                            <div class="item-after resizable"id = "slideroutput">~HH:MM~</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">Total Fees:</div>
+                            <div class="item-after"id="calculatefee"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="padding: 0 5px;">
+                <div class="row">
+                    <div class="col-50">
+                        <a href="views/PlanRouteUI.html" class="button button-big button-fill color-blue" onclick="setDestination()">Plan Route</a>
+                    </div>
+                    <div class="col-50">
+                        <a href="views/SubmitFeedbackUI.html" class="button button-big button-fill color-red" onclick="carparkFeedback=true;">Feedback</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
