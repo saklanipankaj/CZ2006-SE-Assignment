@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- Your app title -->
+	<title>Carpark Tracking</title>
+
+	<!-- Path to Framework7 iOS CSS theme styles-->
+	<link rel="stylesheet" href="dist/css/framework7.ios.min.css">
+	<!-- Path to Framework7 iOS related color styles -->
+	<link rel="stylesheet" href="dist/css/framework7.ios.colors.min.css">
+	<!-- Path to Framework7 icons-->
+	<link rel="stylesheet" href="dist/css/framework7-icons.css">
+
+
+
+	<!-- Custom css -->
+	<style>
+
+		#map-container { height: 100%} /*Change Google map Height here*/
+
+		.popover {width: 250px;}
+
+		.pac-container{
+			z-index: 20000;
+			display: inline;
+		}
+		/* Default Status bar background */
+		.statusbar-overlay {
+			background: pink;
+			/* We can add transition for smooth color animation */
+			-webkit-transition: 400ms;
+			transition: 400ms;
+		}
+
+		/* Change Status bar background when panel opened */
+		body.with-panel-left-cover .statusbar-overlay {
+			background: #222;
+		}
+
+		.picker-modal{
+			height:42%;
+		}
+
+		.button .active .new{
+			bottom:10% !important;
+			left:90% !important;
+			position:absolute !important;
+		}
+
+	</style>
+
+	<!-- Framework 7 JS -->
+	<script type="text/javascript" src="dist/js/framework7.min.js"></script>
+	<!-- Moments JS -->
+	<script type="text/javascript" src="dist/js/moment-with-locales.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class = "views">
+	<div class = "view view-main">
+		<div class="pages">
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Links popover -->
+<div class="popover popover-links">
+	<div class="popover-angle"></div>
+	<div class="popover-inner">
+		<div class="list-block">
+			<ul>
+				<li><a href="views/RecordCarparkLotInformationUI.html" class="list-button item-link">Record Lot Information</a></li>
+				<li><a href="views/SubmitFeedbackUI.html" class="list-button item-link">Submit Feedback</a></li>
+				<li><a href="#" class="list-button item-link">Quit</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Patht to Framework7 Library JS: required for js itnerativity-->
+<script type = "text/javascript" src = "dist/js/framework7.min.js"></script>
+<script type="text/javascript" src="dist/carparks.json"></script>
+
+<script type = "text/javascript" src = "dist/js/ViewFactory.js"></script>
+<script type = "text/javascript" src = "dist/js/UserController.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDacnVEtNIWnbMCw_QI94kynm0_ytIalQ&libraries=places"></script>
+
+<script>
+    var carparkPlan =false;
+    var carparkFeedback=false;
+
+    var map;
+    var markers = [];
+    var searchMarker;
+    var directionsService, directionsDisplay;
+    var searchBox, start, destination;
+    var apiLots;
+
+
+    var myApp = new Framework7();
+    var mainView = myApp.addView('.view-main',{
+        domCache: true // enable inline pages
+    });
+
+    //Factory Pattern to create the views
+    var viewFactory = new ViewFactory();
+    var userController = new UserController();
+    viewFactory.createView('views/ViewNearbyCarparkUI.html');
+    viewFactory.createView('views/CarparkDetailsUI.html');
+    viewFactory.createView('views/PlanRouteUI.html');
+    viewFactory.createView('views/RecordCarparkLotInformationUI.html');
+    viewFactory.createView('views/SearchCarparkUI.html');
+    viewFactory.createView('views/SubmitFeedback.html');
+
+	//Set the Starting View to ViewNearbyCarparkUI
+	mainView.router.loadPage('views/ViewNearbyCarparkUI.html');
+
+</script>
+<script type = "text/javascript" src = "dist/js/ViewNearbyCarparkUI.js"></script>
+<script type = "text/javascript" src = "dist/js/CarparkDetailsUI.js"></script>
+<script type = "text/javascript" src = "dist/js/PlanRouteUI.js"></script>
+<script type = "text/javascript" src = "dist/js/RecordCarparkLotInformationUI.js"></script>
+<script type = "text/javascript" src = "dist/js/SearchCarparkUI.js"></script>
+<script type = "text/javascript" src = "dist/js/SubmitFeedbackUI.js"></script>
+</body>
+</html>
