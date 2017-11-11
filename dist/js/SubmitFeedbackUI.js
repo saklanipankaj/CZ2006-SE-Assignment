@@ -13,6 +13,34 @@ function submitFeedback(){
     mainView.router.back();
 }
 
+//createFeedback
+function submitFeedback(async){
+	var response;
+
+	$.ajax({
+		url: "backend/server.php",
+		method: "POST",
+		data: {'Action': 'SUBMIT_FEEDBACK' },
+		dataType: 'json',
+		async: false,
+		success:function(data,response)
+		{
+			console.log(data);
+			submitFeedback = data;
+			response = data;
+		},
+		error:function(jqXHR, text, errorThrown)
+		{
+			console.log(jqXHR);
+			console.log(text);
+			console.log(errorThrown);
+		}
+	});
+
+	return response;
+	
+}
+
 //return to previous page
 function goBack(){
     resetfb();

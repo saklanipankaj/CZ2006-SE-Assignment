@@ -1,6 +1,32 @@
 myApp.onPageInit('search', function (page) {
 });
 
+function displayCarparkList(async) {
+	var response;
+
+	$.ajax({
+		url: "backend/server.php",
+		method: "POST",
+		data: {'Action': 'GET_CARPARKLIST' },
+		dataType: 'json',
+		async: false,
+		success:function(data,response)
+		{
+			console.log(data);
+			carparkList = data;
+			response = data;
+		},
+		error:function(jqXHR, text, errorThrown)
+		{
+			console.log(jqXHR);
+			console.log(text);
+			console.log(errorThrown);
+		}
+	});
+
+	return response;
+}
+	
 function searchCarpark() {
     var parentdiv = document.getElementById('parentdiv');
     var option = document.getElementById("feedbacktype").value;
