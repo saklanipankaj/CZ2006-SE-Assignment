@@ -35,12 +35,14 @@ function loadRecordCarparks(){
 }
 
 function calculateCost(elapsedTime){
-    document.getElementById('slideroutput').innerHTML=elapsedTime +"Hour";
+
     var carpark = json[selectedCarpark];
     var now = moment();
-    var end = moment().add(document.getElementById('slideroutput').innerHTML=elapsedTime, 'h');
+    console.log(elapsedTime);
+    var end = moment().add(elapsedTime, 'm');
     var total = 0;
     var count =0;
+    console.log(now.format("HHmm"));
     while(!now.isSameOrAfter(end)){
         if(carpark['Rates']==null)
             break;
@@ -239,7 +241,7 @@ function calculateCost(elapsedTime){
             }
         }
     }
-    document.getElementById('calculatefee').innerHTML = "$"+total/100;
+    document.getElementById('fee').innerHTML = "$"+total/100;
 }
 
 function resetTimer()
@@ -261,11 +263,14 @@ function resetTimer()
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-
         document.getElementById("timer").innerHTML = ("0" + hours).slice(-2) + "h:" + ("0" + minutes).slice(-2) + "m:" + ("0" + seconds).slice(-2)+"s";
 
         // change the price
-        document.getElementById("fee").innerHTML = "$"+((hours*60*60)+(minutes*60)+seconds)/100;
+        if(seconds==1&&hours==0&&minutes==0)
+            calculateCost(1);
+
+        if(hours>1&&minutes==0&&seconds==0)
+            calculateCost(minutes);
 
     }, 1000);
 }

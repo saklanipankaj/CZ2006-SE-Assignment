@@ -169,12 +169,12 @@ function displayCarparkInformation(carparkId) {
 }
 
 function calculateCost(elapsedTime){
-    document.getElementById('slideroutput').innerHTML=elapsedTime +"Hour";
     var carpark = json[selectedCarpark];
     var now = moment();
     var end = moment().add(document.getElementById('slideroutput').innerHTML=elapsedTime, 'h');
     var total = 0;
     var count =0;
+    document.getElementById('slideroutput').innerHTML=elapsedTime+"Hours";
     while(!now.isSameOrAfter(end)){
         if(carpark['Rates']==null)
             break;

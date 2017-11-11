@@ -115,6 +115,7 @@ function loadCP(){
         a1.id=place;
         a1.onclick=function(){
             document.getElementById('xferback').innerHTML = this.id;
+            selectedCarpark= this.id;
         };
         a1.appendChild(document.createTextNode(place));
         //console.log(a1);
