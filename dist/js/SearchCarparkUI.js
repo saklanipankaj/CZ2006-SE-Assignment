@@ -90,7 +90,7 @@ function searchCarpark() {
     <!-- </div> -->
     */
 
-    if(option == "missingcp" || option == "incorrectcp") {
+    if(option == "incorrectcp") {
         //console.log("show");
 
         //create div
