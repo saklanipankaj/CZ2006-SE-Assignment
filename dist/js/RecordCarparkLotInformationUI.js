@@ -4,35 +4,6 @@ myApp.onPageInit('recordCP', function (page) {
 });
 
 //For RecordCPInfo
-function loadRecordCarparks(){
-    document.getElementById('testingsearch').innerHTML="";
-    //console.log(json);
-    //console.log("hrllo");
-    for (place in json) {
-        var li = document.createElement('li');
-        li.className="item-content";
-
-        var div2 = document.createElement('div');
-        div2.className = "item-title";
-
-
-        var a1 = document.createElement('a');
-        a1.href="#index";
-        a1.className="back";
-        a1.id=place;
-        a1.onclick=function(){
-            document.getElementById('xferback').innerHTML = this.id;
-        };
-        a1.appendChild(document.createTextNode(place));
-        //console.log(a1);
-        div2.appendChild(a1);
-
-        li.appendChild(div2);
-
-        //li.appendChild(document.createTextNode(prediction.description));
-        document.getElementById('testingsearch').appendChild(li);
-    }
-}
 
 function calculateCost(elapsedTime){
 
