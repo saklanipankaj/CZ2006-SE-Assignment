@@ -479,7 +479,7 @@ class UserController{
 
                     var now = new Date();
                     var day = now.getDay();
-
+                    var priceText = '';
                     //There is a Weekday Rate
                     if (carpark['Rates']['Weekday'] != null && day != 0 && day != 6) {
                         var weekday = carpark['Rates']['Weekday'];
@@ -501,25 +501,25 @@ class UserController{
                             if (!now.isBetween(startTime, endTime))
                                 continue;
 
-                            modelText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
+                            priceText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
                             var prices = weekday[rate]['pricePerHalfHour'];
                             //per entry display
                             if (prices[1] == 0)
-                                modelText += "Per Entry:$" + prices[0] + "<br>";
+                                priceText += "Per Entry:$" + prices[0] + "<br>";
                             else {
                                 //1St Hour and subsequent Hour
                                 if (prices.length > 2) {
                                     var prev = prices[0];
                                     for (var i = 1; i < prices.length; i++) {
                                         if (prices[i] != prev) {
-                                            modelText += "Price 1st h: $" + prev * 2 + "<br>";
+                                            priceText += "Price 1st h: $" + prev * 2 + "<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $" + prev + "<br>";
+                                    priceText += " Subsequent 1/2 h: $" + prev + "<br>";
                                 }
                                 else {
-                                    modelText += " Price per 1/2 h: $" + prices[0] + "<br>";
+                                    priceText += " Price per 1/2 h: $" + prices[0] + "<br>";
                                 }
                             }
                         }
@@ -545,25 +545,25 @@ class UserController{
                             if (!now.isBetween(startTime, endTime))
                                 continue;
 
-                            modelText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
+                            priceText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
                             var prices = Saturday[rate]['pricePerHalfHour'];
                             //per entry display
                             if (prices[1] == 0)
-                                modelText += "Per Entry:$" + prices[0] + "<br>";
+                                priceText += "Per Entry:$" + prices[0] + "<br>";
                             else {
                                 //1St Hour and subsequent Hour
                                 if (prices.length > 2) {
                                     var prev = prices[0];
                                     for (var i = 1; i < prices.length; i++) {
                                         if (prices[i] != prev) {
-                                            modelText += "Price 1st h: $" + prev * 2 + "<br>";
+                                            priceText += "Price 1st h: $" + prev * 2 + "<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $" + prev + "<br>";
+                                    priceText += " Subsequent 1/2 h: $" + prev + "<br>";
                                 }
                                 else {
-                                    modelText += " Price per 1/2 h: $" + prices[0] + "<br>";
+                                    priceText += " Price per 1/2 h: $" + prices[0] + "<br>";
                                 }
                             }
                         }
@@ -588,29 +588,33 @@ class UserController{
                             if (!now.isBetween(startTime, endTime))
                                 continue;
 
-                            modelText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
+                            priceText += "Start :" + startTime.format('HHmm') + " - " + endTime.format('HHmm') + "<br>";
                             var prices = Sunday[rate]['pricePerHalfHour'];
                             //per entry display
                             if (prices[1] == 0)
-                                modelText += "Per Entry:$" + prices[0] + "<br>";
+                                priceText += "Per Entry:$" + prices[0] + "<br>";
                             else {
                                 //1St Hour and subsequent Hour
                                 if (prices.length > 2) {
                                     var prev = prices[0];
                                     for (var i = 1; i < prices.length; i++) {
                                         if (prices[i] != prev) {
-                                            modelText += "Price 1st h: $" + prev * 2 + "<br>";
+                                            priceText += "Price 1st h: $" + prev * 2 + "<br>";
                                             prev = prices[i];
                                         }
                                     }
-                                    modelText += " Subsequent 1/2 h: $" + prev + "<br>";
+                                    priceText += " Subsequent 1/2 h: $" + prev + "<br>";
                                 }
                                 else {
-                                    modelText += " Price per 1/2 h: $" + prices[0] + "<br>";
+                                    priceText += " Price per 1/2 h: $" + prices[0] + "<br>";
                                 }
                             }
                         }
                     }
+                    if(priceText.length==0)
+                        modelText += "Carpark is Currently Closed!";
+                    else
+                        modelText += priceText;
 
                     modelText += '</p></div>' +
                         '<!-- Floating Action Button -->\n' +
