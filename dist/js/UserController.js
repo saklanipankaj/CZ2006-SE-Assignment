@@ -44,7 +44,7 @@ class UserController{
 				if(carpark.id !== undefined) 
 				{
                     var lots = apiLots["Data"][carpark.id];
-                    if(lots < 50) {
+                    if(lots < 25) {
 						//Red
 						//weekday < 50c
 						if(today != 0 || today != 6)
@@ -109,7 +109,7 @@ class UserController{
 									anchor: new google.maps.Point(15, 15)}
 							}
 						}
-					}else if(lots >= 50 && lots <= 100) 
+					}else if(lots >= 25 && lots <= 100) 
 					{
 						//Orange
 						if(today != 0 || today != 6)
