@@ -754,7 +754,447 @@ class UserController{
 
     //AJAX call to server to submit Feedback
     submitFeedback(){
+		var response;
 
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SUBMIT_FEEDBACK' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				submitFeedback = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+	
     }
+	
+	searchCarparkAddr(addr) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SEARCH_CARPARKADDR' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				searchCarparkAddr = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+
+    searchCarparkName(name) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SEARCH_CARPARKNAME' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				searchCarparkName = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	submitFeedback(title) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SUBMIT_FEEDBACK' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				submitFeedback = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	submitFeedback(title, cat, msg, email, contact, carparkid) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SUBMIT_FEEDBACKS' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				submitFeedbacks = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getAllCarparkCoordinates() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'GET_AllCARPARKCOORD' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getAllCarparkCoordinates = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getAllCarparkCoordinates() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'GET_AllCARPARKCOORD' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getAllCarparkCoordinates = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+
+	geCarparkInformation() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'GET_AllCARPARKCOORD' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getAllCarparkCoordinates = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	savePicture() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SAVE_PIC' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				savePic = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	saveLotInformation(localDescription) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SAVE_LOTINFO' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				saveLotInformation = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	addFavourites() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'ADD_FAVOURTIES' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				addFavourites = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getLocalCarparkList() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'ADD_CARPARKLIST' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getLocalCarparkList = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getLocalCarparkList(localCarparkList) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'ADD_CARPARKLIST' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getLocalCarparkList = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getStartDate() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "GET",
+			data: {'Action': 'GET_STARTDATE' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getStartDate = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getStartDate(startDate) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "GET",
+			data: {'Action': 'GET_STARTDATE' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getStartDate = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getUser() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "GET",
+			data: {'Action': 'GET_USER' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getUser = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+	
+	getUser(user) {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "GET",
+			data: {'Action': 'GET_USER' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getUser = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+
 
 }
