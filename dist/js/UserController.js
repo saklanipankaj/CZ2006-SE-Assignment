@@ -283,7 +283,7 @@ class UserController{
 						if(myhourlyfee <= weekdaythreshold)
 						{
 							var image = {
-								url: 'dist/cheapest_carpark_original_red.png',
+								url: 'dist/cheapest_carpark_original_grey.png',
 								//size: new google.maps.Size(100, 100),
 								// The origin for this image is (0, 0).
 								origin: new google.maps.Point(0, 0),
@@ -292,7 +292,7 @@ class UserController{
 						}else
 						{
 							var image = {
-								url: 'dist/carpark_red.png',
+								url: 'dist/carpark_grey.png',
 								//size: new google.maps.Size(100, 100),
 								// The origin for this image is (0, 0).
 								origin: new google.maps.Point(0, 0),
