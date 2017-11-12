@@ -752,11 +752,39 @@ class UserController{
         });
     }
 
+    //AJAX call to server to submit Feedback
+    submitFeedback(){
+		var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'SUBMIT_FEEDBACK' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				submitFeedback = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+	
+    }
+	
 	searchCarparkAddr(addr) {
         var response;
 
 		$.ajax({
-			url: "backend/ServerCarparkCollection.php",
+			url: "backend/server.php",
 			method: "POST",
 			data: {'Action': 'SEARCH_CARPARKADDR' },
 			dataType: 'json',
@@ -782,7 +810,7 @@ class UserController{
         var response;
 
 		$.ajax({
-			url: "backend/ServerCarparkCollection.php",
+			url: "backend/server.php",
 			method: "POST",
 			data: {'Action': 'SEARCH_CARPARKNAME' },
 			dataType: 'json',
@@ -803,40 +831,12 @@ class UserController{
 
 		return response;
     };
-
-    //AJAX call to server to submit Feedback
-    submitFeedback(title){
-		var response;
-
-		$.ajax({
-			url: "backend/ServerFeedbackCollection.php",
-			method: "POST",
-			data: {'Action': 'SUBMIT_FEEDBACK' },
-			dataType: 'json',
-			async: false,
-			success:function(data,response)
-			{
-				console.log(data);
-				submitFeedback = data;
-				response = data;
-			},
-			error:function(jqXHR, text, errorThrown)
-			{
-				console.log(jqXHR);
-				console.log(text);
-				console.log(errorThrown);
-			}
-		});
-
-		return response;
-    }
-	
 	
 	submitFeedback(title) {
         var response;
 
 		$.ajax({
-			url: "backend/ServerFeedbackCollection.php",
+			url: "backend/server.php",
 			method: "POST",
 			data: {'Action': 'SUBMIT_FEEDBACK' },
 			dataType: 'json',
@@ -858,19 +858,19 @@ class UserController{
 		return response;
     };
 	
-	submitFeedback(title,cat,msg,email,contact,carparkid){
-		var response;
+	submitFeedback(title, cat, msg, email, contact, carparkid) {
+        var response;
 
 		$.ajax({
-			url: "backend/ServerFeedbackCollection.php",
+			url: "backend/server.php",
 			method: "POST",
-			data: {'Action': 'SUBMIT_FEEDBACK' },
+			data: {'Action': 'SUBMIT_FEEDBACKS' },
 			dataType: 'json',
 			async: false,
 			success:function(data,response)
 			{
 				console.log(data);
-				submitFeedback = data;
+				submitFeedbacks = data;
 				response = data;
 			},
 			error:function(jqXHR, text, errorThrown)
@@ -882,13 +882,13 @@ class UserController{
 		});
 
 		return response;
-    }
+    };
 	
 	getAllCarparkCoordinates() {
         var response;
 
 		$.ajax({
-			url: "backend/ServerCarparkCollection.php",
+			url: "backend/server.php",
 			method: "POST",
 			data: {'Action': 'GET_AllCARPARKCOORD' },
 			dataType: 'json',
@@ -910,19 +910,45 @@ class UserController{
 		return response;
     };
 	
-	geCarparkInformation() {
+	getAllCarparkCoordinates() {
         var response;
 
 		$.ajax({
-			url: "backend/ServerCarparkCollection.php",
+			url: "backend/server.php",
 			method: "POST",
-			data: {'Action': 'GET_CARPARKINFO' },
+			data: {'Action': 'GET_AllCARPARKCOORD' },
 			dataType: 'json',
 			async: false,
 			success:function(data,response)
 			{
 				console.log(data);
-				getCarparkInformation = data;
+				getAllCarparkCoordinates = data;
+				response = data;
+			},
+			error:function(jqXHR, text, errorThrown)
+			{
+				console.log(jqXHR);
+				console.log(text);
+				console.log(errorThrown);
+			}
+		});
+
+		return response;
+    };
+
+	geCarparkInformation() {
+        var response;
+
+		$.ajax({
+			url: "backend/server.php",
+			method: "POST",
+			data: {'Action': 'GET_AllCARPARKCOORD' },
+			dataType: 'json',
+			async: false,
+			success:function(data,response)
+			{
+				console.log(data);
+				getAllCarparkCoordinates = data;
 				response = data;
 			},
 			error:function(jqXHR, text, errorThrown)
@@ -1092,13 +1118,13 @@ class UserController{
 		return response;
     };
 	
-	setStartDate(startDate) {
+	getStartDate(startDate) {
         var response;
 
 		$.ajax({
 			url: "backend/server.php",
 			method: "GET",
-			data: {'Action': 'SET_STARTDATE' },
+			data: {'Action': 'GET_STARTDATE' },
 			dataType: 'json',
 			async: false,
 			success:function(data,response)
@@ -1144,13 +1170,13 @@ class UserController{
 		return response;
     };
 	
-	setUser(user) {
+	getUser(user) {
         var response;
 
 		$.ajax({
 			url: "backend/server.php",
 			method: "GET",
-			data: {'Action': 'SET_USER' },
+			data: {'Action': 'GET_USER' },
 			dataType: 'json',
 			async: false,
 			success:function(data,response)

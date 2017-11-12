@@ -62,7 +62,7 @@ function enterSearchtext()
     var response;
 
     $.ajax({
-        url: "backend/server.php",
+        url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
         data: {'Action': 'SET_searchtext' },
         dataType: 'json',
@@ -70,7 +70,6 @@ function enterSearchtext()
         success:function(data,response)
         {
             console.log(data);
-            enterSearchtext = data;
             reponse = data;
         },
         error:function(jqXHR, text, errorThrown)
@@ -85,9 +84,10 @@ function enterSearchtext()
 };
 function displayFoundCarpark() {
     var response;
+    var foundcarpark;
 
     $.ajax({
-        url: "backend/server.php",
+        url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
         data: {'Action': 'GET_FoundCarpark' },
         dataType: 'json',
@@ -112,15 +112,14 @@ function planRoute() {
     var response;
 
     $.ajax({
-        url: "backend/server.php",
+        url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
-        data: {'Action': 'GET_planRoute' },
+        data: {'Action': 'SET_planRoute' },
         dataType: 'json',
         async: false,
         success:function(data,response)
         {
             console.log(data);
-            planRoute = data;
             reponse = data;
         },
         error:function(jqXHR, text, errorThrown)
@@ -139,13 +138,12 @@ function displayCurrentLocation() {
     $.ajax({
         url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
-        data: {'Action': 'GET_displayCurrentLocation' },
+        data: {'Action': 'SET_displayCurrentLocation' },
         dataType: 'json',
         async: false,
         success:function(data,response)
         {
             console.log(data);
-            displayCurrentLocation_ = data;
             reponse = data;
         },
         error:function(jqXHR, text, errorThrown)
@@ -163,15 +161,15 @@ function viewNearbyCarpark(dest) {
     var dest;
 
     $.ajax({
-        url: "backend/server.php",
+        url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
-        data: {'Action': 'GET_NearbyCarpark'},
+        data: {'Action': 'GET_NearbyCarpark' ,'Dest':'GET_dest' },
         dataType: 'json',
         async: false,
         success:function(data,response)
         {
             console.log(data);
-            viewNearbyCarpark_ = data;
+            dest = data;
             reponse = data;
         },
         error:function(jqXHR, text, errorThrown)
@@ -189,15 +187,14 @@ function viewNearbyCarpark(radius) {
     var response;
 
     $.ajax({
-        url: "backend/server.php",
+        url: "backend/viewNearbyCarparkUI.php",
         method: "POST",
-        data: {'Action': 'GET_viewNearbyCarpark'},
+        data: {'Action': 'GET_viewNearbyCarpark' ,'Radius':'GET_radius'},
         dataType: 'json',
         async: false,
         success:function(data,response)
         {
             console.log(data);
-            viewNearbyCarpark_ = data;
             reponse = data;
         },
         error:function(jqXHR, text, errorThrown)
