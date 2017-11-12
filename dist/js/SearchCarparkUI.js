@@ -35,6 +35,7 @@ function searchCarpark() {
     var titlediv = document.createElement('div');
     titlediv.className = "content-block-title";
     titlediv.setAttribute("style","padding-left:10px");
+    titlediv.setAttribute("style","padding-left:10px");
     titlediv.innerHTML = "Select Carpark";
     titlediv.id = "searchcptitle";
 

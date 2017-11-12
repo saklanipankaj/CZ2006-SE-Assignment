@@ -1,3 +1,4 @@
+var carparkPlan;
 myApp.onPageInit('plan_route', function (page) {
     userController.initSearchBox();
     if(carparkPlan){
@@ -37,4 +38,7 @@ function displayRoute(){
 function resetRoute(){
     directionsDisplay.setMap(null);
     $('#clearBtn').toggle();
+}
+function setDestination(){
+    carparkPlan=true;
 }

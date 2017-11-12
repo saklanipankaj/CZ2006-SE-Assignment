@@ -375,3 +375,4 @@ function calculateCost(elapsedTime){
     }
     document.getElementById('calculatefee').innerHTML = "$"+total/100;
 }
+
